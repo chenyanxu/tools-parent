@@ -1,7 +1,7 @@
-package cn.com.rexen.tools.command;
+package com.kalix.tools.command;
 
-import cn.com.rexen.core.util.JNDIHelper;
-import cn.com.rexen.core.util.ScriptRunner;
+import com.kalix.framework.core.util.JNDIHelper;
+import com.kalix.framework.core.util.ScriptRunner;
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Argument;
 import org.apache.karaf.shell.api.action.Command;

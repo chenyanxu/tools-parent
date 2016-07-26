@@ -1,6 +1,6 @@
-package cn.com.rexen.tools.command;
+package com.kalix.tools.command;
 
-import cn.com.rexen.tools.command.internal.InitActivator;
+import com.kalix.tools.command.internal.InitActivator;
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Command;
 import org.apache.karaf.shell.api.action.Completion;

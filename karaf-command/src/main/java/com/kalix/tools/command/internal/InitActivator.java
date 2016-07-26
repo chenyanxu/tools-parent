@@ -1,6 +1,6 @@
-package cn.com.rexen.tools.command.internal;
+package com.kalix.tools.command.internal;
 
-import cn.com.rexen.core.util.SystemUtil;
+import com.kalix.framework.core.util.SystemUtil;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 

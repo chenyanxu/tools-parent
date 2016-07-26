@@ -1,4 +1,4 @@
-package cn.com.rexen.tools.command;
+package com.kalix.tools.command;
 
 /**
  * Created by sunlf on 2015/12/4.
