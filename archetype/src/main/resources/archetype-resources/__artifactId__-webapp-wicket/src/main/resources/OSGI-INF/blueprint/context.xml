@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint
+        xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+        default-activation="lazy"
+        >
+
+    <!-- 发布菜单目录 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuModule" ranking="500">
+        <bean class="${package}.webapp.wicket.CartypeMenuModule">
+        </bean>
+    </service>
+
+
+    <!-- 发布车型维护子菜单模块 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.CartypeMenuItemsModule">
+        </bean>
+    </service>
+
+    <!-- 发布竞品对比子菜单模块 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.CompetingMenuItemsModule">
+        </bean>
+    </service>
+
+    <!-- 发布换装选配子菜单模块 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.ChangeMenuItemsModule">
+        </bean>
+    </service>
+
+    <!-- 发布品牌维护子菜单模块 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.BrandMenuItemsModule">
+        </bean>
+    </service>
+
+    <!-- 发布产品管理子菜单模块 -->
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.ProductMenuItemsModule">
+        </bean>
+    </service>
+
+    <!--&lt;!&ndash; 发布购车方案子菜单模块 &ndash;&gt;
+    <service interface="cn.com.rexen.core.web.api.module.IMenuItemsModule">
+        <bean class="${package}.webapp.wicket.SchemeMenuItemsModule">
+        </bean>
+    </service>-->
+</blueprint>

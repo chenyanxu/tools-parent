@@ -1,0 +1,114 @@
+<archetype-descriptor name="sample-archetype">
+    <fileSets>
+        <fileSet filtered="true">
+            <directory></directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-api</directory>
+            <includes>
+                <include>osgi.bnd</include>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-api/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <!-- <fileSet filtered="true">
+             <directory>__artifactId__-model/src/test/java</directory>
+             <includes>
+                 <include>**/*.java</include>
+             </includes>
+         </fileSet>-->
+        <!--begin for core -->
+        <fileSet filtered="true">
+            <directory>__artifactId__-core</directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>osgi.bnd</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-core/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-core/src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <!--end for core -->
+        <!--begin for entities -->
+        <fileSet filtered="true">
+            <directory>__artifactId__-entities</directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>osgi.bnd</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-entities/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-entities/src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <!--end for entities -->
+        <!--begin for persist -->
+        <fileSet filtered="true">
+            <directory>__artifactId__-persist-jpa</directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>osgi.bnd</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-persist-jpa/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-persist-jpa/src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <!--end for persist -->
+        <!--begin for wicket -->
+        <fileSet filtered="true">
+            <directory>__artifactId__-webapp-wicket</directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>osgi.bnd</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-webapp-wicket/src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>__artifactId__-webapp-wicket/src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+                <include>**/*.html</include>
+            </includes>
+        </fileSet>
+        <!--end for wicket -->
+    </fileSets>
+</archetype-descriptor>

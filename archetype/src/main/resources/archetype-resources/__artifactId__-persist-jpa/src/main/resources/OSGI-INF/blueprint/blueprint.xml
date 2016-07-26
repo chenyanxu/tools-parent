@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- default-activation="lazy" -->
+<blueprint
+        xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
+        xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+        xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="userBeanDaoOpenjpa"
+          class="cn.com.rexen.admin.persist.openjpa.UserBeanDaoImpl"> <!--init-method="init">-->
+        <jpa:context property="entityManager" unitname="admin-cm"/>
+        <tx:transaction method="*" value="Required"/>
+        <!--<property name="persistEntityService" ref="persistEntityService" />-->
+    </bean>
+
+    <service id="userBeanDao" ref="userBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IUserBeanDao">
+
+    </service>
+    <!--<reference id="persistEntityService"   interface="cn.com.rexen.core.api.persistence.PersistEntityService"/>-->
+
+</blueprint>
+

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <script type="text/javascript">
+        function writeCookie(name, value, hours) {
+            var expire = "";
+            if (hours != null) {
+                expire = new Date((new Date()).getTime() + hours * 3600000);
+                expire = "; expires=" + expire.toGMTString();
+            }
+            document.cookie = name + "=" + escape(value) + expire;
+        }
+        function readCookie(name) {
+            var cookieValue = "";
+            var search = name + "=";
+            if (document.cookie.length > 0) {
+                offset = document.cookie.indexOf(search);
+                if (offset != -1) {
+                    offset += search.length;
+                    end = document.cookie.indexOf(";", offset);
+                    if (end == -1) end = document.cookie.length;
+                    cookieValue = unescape(document.cookie.substring(offset, end))
+                }
+            }
+            return cookieValue;
+        }
+        function clear() {
+            writeCookie("hovers", "", 222);
+            document.location = document.location.href;
+        }
+    </script>
+</head>
+<body wicket:id="iris">
+<style>
+    A.applink:hover {
+        border: 2px dotted #DCE6F4;
+        padding: 2px;
+        background-color: #ffff00;
+        color: green;
+        text-decoration: none
+    }
+
+    A.applink {
+        border: 2px dotted #DCE6F4;
+        padding: 2px;
+        color: #2F5BFF;
+        background: transparent;
+        text-decoration: none
+    }
+
+    A.info {
+        color: #2F5BFF;
+        background: transparent;
+        text-decoration: none
+    }
+
+    A.info:hover {
+        color: green;
+        background: transparent;
+        text-decoration: underline
+    }
+
+    .modal-body {
+        max-height: 500px !important;
+    / / 7 列 的 高 度
+    }
+
+    .row-fluid [class*="span"]:first-child {
+        margin-left: 0px
+    }
+
+    .btn {
+        padding: 2px 10px !important;
+    }
+
+    .dropdown-menu {
+        min-width: 70px !important;
+    }
+
+    .portlet-body .btn-group {
+        margin-bottom: 0px !important;
+    }
+</style>
+
+<div id="portlet-config" class="modal hide">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>Widget Settings</h3>
+    </div>
+    <div class="modal-body">
+        Widget settings form goes here
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <!-- begin-->
+        <div class="span12">
+
+            <h3 class="page-text">
+
+                <small></small>
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="../../home/">首页</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li><a href="#">产品管理</a></li>
+            </ul>
+
+        </div>
+        <!--end -->
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="portlet box blue">
+                <div class="portlet-text">
+                    <div class="caption"><i class="icon-edit"></i>车型管理</div>
+                    <div class="tools"></div>
+                </div>
+                <div class="portlet-body">
+                    <!--ajax弹出层提交表单 开始-->
+                    <div class="clearfix" aria-hidden="true">
+
+
+                        <div id="form_modal2" class="modal hide fade" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel2" aria-hidden="true">
+
+                            <div class="modal-header  portlet-text">
+
+                                <button wicket:id="reset_from_1" type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true"></button>
+
+                                <h3 id="myModalLabel2"><label>添加车型</label></h3>
+
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form wicket:id="add_cartype_form" class="form-horizontal">
+                                    <div class="control-group">
+
+                                        <label class="control-label">产品名称</label>
+
+                                        <div class="controls">
+
+                                            <input class="m-wrap m-ctrl-medium date-picker" wicket:id="productName"
+                                                   size="16" type="text" value=""/>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="control-group">
+
+                                        <label class="control-label">车型名称</label>
+
+                                        <div class="controls">
+
+                                            <input class="m-wrap m-ctrl-medium date-picker" wicket:id="name" size="16"
+                                                   type="text" value=""/>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="control-group">
+
+                                        <label class="control-label">价格</label>
+
+                                        <div class="controls">
+
+                                            <input class="m-wrap m-ctrl-medium date-picker" wicket:id="price" size="16"
+                                                   type="text" value=""/>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button class="btn green btn-primary" wicket:id="submit_button"
+                                                data-dismiss="modal" aria-hidden="true">保存
+                                        </button>
+
+                                        <button class="btn" wicket:id="reset_from_2" data-dismiss="modal">取消</button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <div class="control-group">
+
+                                <label class="control-label"></label>
+
+                                <div class="controls">
+
+                                    <a class="btn green" href="#form_modal2" data-toggle="modal">
+
+                                        新增<i class="icon-share"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--ajax弹出层提交表单 结束-->
+                    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                        <thead>
+                        <tr>
+                            <th>产品名称</th>
+                            <th class="hidden-480">车型名称</th>
+                            <th class="hidden-480">价格(万元)</th>
+                            <th class="hidden-480">创建时间</th>
+                            <th class="hidden-480">当前版本</th>
+                            <th class="hidden-480">发布状态</th>
+                            <th class="hidden-480" style="width: 40px!important;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="" wicket:id="cartypeRow">
+                            <td><span wicket:id="productNameData"></span></td>
+                            <td><span wicket:id="nameData"></span></td>
+                            <td><span wicket:id="priceData"></span></td>
+                            <td><span wicket:id="createDate"></span></td>
+                            <td><span wicket:id="version"></span></td>
+                            <td><span wicket:id="state"></span></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn black" href="#" data-toggle="dropdown">
+                                        <i class="icon-edit"></i> 更多
+                                        <i class="icon-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a wicket:id="edit" href="#form_modal2">编辑</a></li>
+                                        <li><a class="delete" wicket:id="del">删除</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">查看历史</a></li>
+                                        <li><a href="#">发布</a></li>
+                                        <li class="divider"></li>
+                                        <li><a wicket:id="editParameter">查看参数</a></li>
+                                        <li><a wicket:id="editConfiguration">查看配置</a></li>
+                                        <li><a wicket:id="editResources">查看资源</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

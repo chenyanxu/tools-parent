@@ -1,0 +1,11 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+#Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
+#Import-Package: *,org.ops4j.pax.wicket.spi
+#-wab:src/main/webapp
+#打包类库
+#-wablib: {maven-dependencies}
+#Web-ContextPath: /
+#Include-Resource: src/main/resources

@@ -1,0 +1,6 @@
+
+#
+# This field gives the application version number.
+#
+app.version = ${project.version}
+

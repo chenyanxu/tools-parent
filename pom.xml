@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.com.rexen.kalix</groupId>
+        <artifactId>kalix-project</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>modules.tools</artifactId>
+    <name>Kalix :: Modules - Tools</name>
+    <packaging>pom</packaging>
+
+    <properties>
+    </properties>
+
+    <modules>
+        <!--<module>archetype</module>-->
+
+        <module>branding</module>
+        <!--<module>maven-kalix-plugin</module>-->
+        <!--<module>maven-kalix-deploy-plugin</module>-->
+        <module>karaf-command</module>
+        <module>assembly</module>
+        <!--<module>webconsole</module>-->
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>

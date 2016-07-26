@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <script type="text/javascript">
+        function writeCookie(name, value, hours) {
+            var expire = "";
+            if (hours != null) {
+                expire = new Date((new Date()).getTime() + hours * 3600000);
+                expire = "; expires=" + expire.toGMTString();
+            }
+            document.cookie = name + "=" + escape(value) + expire;
+        }
+        function readCookie(name) {
+            var cookieValue = "";
+            var search = name + "=";
+            if (document.cookie.length > 0) {
+                offset = document.cookie.indexOf(search);
+                if (offset != -1) {
+                    offset += search.length;
+                    end = document.cookie.indexOf(";", offset);
+                    if (end == -1) end = document.cookie.length;
+                    cookieValue = unescape(document.cookie.substring(offset, end))
+                }
+            }
+            return cookieValue;
+        }
+        function clear() {
+            writeCookie("hovers", "", 222);
+            document.location = document.location.href;
+        }
+    </script>
+</head>
+<body wicket:id="iris">
+<style>
+    A.applink:hover {
+        border: 2px dotted #DCE6F4;
+        padding: 2px;
+        background-color: #ffff00;
+        color: green;
+        text-decoration: none
+    }
+
+    A.applink {
+        border: 2px dotted #DCE6F4;
+        padding: 2px;
+        color: #2F5BFF;
+        background: transparent;
+        text-decoration: none
+    }
+
+    A.info {
+        color: #2F5BFF;
+        background: transparent;
+        text-decoration: none
+    }
+
+    A.info:hover {
+        color: green;
+        background: transparent;
+        text-decoration: underline
+    }
+
+    .pagination ul {
+        display: none !important;
+    }
+
+    div.dataTables_length label {
+        display: none !important;
+    }
+
+    div.dataTables_filter label {
+        display: none !important;
+    }
+
+    div.dataTables_info {
+        display: none !important;
+    }
+
+    .span6 {
+        display: none;
+    }
+
+    .icon-remove {
+        padding-right: 5px;
+    }
+
+    .row-fluid [class*="span"]:first-child {
+        margin-left: 0px
+    }
+</style>
+
+<div id="portlet-config" class="modal hide">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button"></button>
+        <h3>Widget Settings</h3>
+    </div>
+    <div class="modal-body">
+        Widget settings form goes here
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+
+        </div>
+    </div>
+</div>
+<div class="row-fluid ">
+    <div class="span12">
+        <!-- BEGIN TAB PORTLET-->
+        <div class="portlet box blue tabbable">
+            <div class="portlet-text">
+                <div class="caption"><i class="icon-reorder"></i>红旗H7 3.0L 车型参数</div>
+            </div>
+            <div class="portlet-body">
+                <div class="tabbable portlet-tabs">
+                    <ul class="nav nav-tabs">
+                        <!--<li><a href="#portlet_tab3" data-toggle="tab">技术型</a></li>-->
+                        <li><a href="#portlet_tab2" data-toggle="tab">技术型</a></li>
+                        <!-- <li class="active"><a href="#portlet_tab1" data-toggle="tab">尊贵型</a></li>  -->
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="portlet_tab1">
+
+                            <div class="portlet-body">
+                                <div class="accordion" id="accordion1">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_1">
+                                                <i class="icon-angle-left"></i>
+                                                整车尺寸及质量
+                                            </a>
+                                        </div>
+                                        <div id="collapse_1" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">长×宽×高
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="5095×1875×1485">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">轴距
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2970">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">前轮距/后轮距[mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1610/1608">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">整备质量
+                                                                                [kg]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1800">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_2">
+                                                <i class="icon-angle-left"></i>
+                                                发动机
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">发动机型号</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="CA4GC20T">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">排量
+                                                                                [L]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2.0">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">气缸数</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="4">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">最大输出扭矩
+                                                                                [Nm/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="260/2000-4500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">额定功率
+                                                                                [kW/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="150/5500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">环保标准</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="国Ⅳ/京Ⅴ">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_3">
+                                                <i class="icon-angle-left"></i>
+                                                动力传动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">驱动方式</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="前置后驱">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">变速器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="6速手自一体式变速器">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">轮胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="225/55 R17">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">备胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="全尺寸备胎">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_4">
+                                                <i class="icon-angle-left"></i>
+                                                底盘转向系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_4" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="双叉臂式独立前悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="多连杆式独立后悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">助力类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="电液式助力转向系统">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_5">
+                                                <i class="icon-angle-left"></i>
+                                                制动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_5" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="portlet_tab2">
+                            <div class="portlet-body">
+                                <div class="accordion" id="accordion2">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_6">
+                                                <i class="icon-angle-left"></i>
+                                                整车尺寸及质量
+                                            </a>
+                                        </div>
+                                        <div id="collapse_6" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+
+
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">长×宽×高
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="5095×1875×1485">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">轴距
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2970">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">前轮距/后轮距[mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1610/1608">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">整备质量
+                                                                                [kg]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1800">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_7">
+                                                <i class="icon-angle-left"></i>
+                                                发动机
+                                            </a>
+                                        </div>
+                                        <div id="collapse_7" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">发动机型号</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="CA4GC20T">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">排量
+                                                                                [L]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2.0">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">气缸数</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="4">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">最大输出扭矩
+                                                                                [Nm/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="260/2000-4500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">额定功率
+                                                                                [kW/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="150/5500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">环保标准</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="国Ⅳ/京Ⅴ">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_8">
+                                                <i class="icon-angle-left"></i>
+                                                动力传动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_8" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">驱动方式</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="前置后驱">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">变速器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="6速手自一体式变速器">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">轮胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="225/55 R17">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">备胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="全尺寸备胎">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_9">
+                                                <i class="icon-angle-left"></i>
+                                                底盘转向系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_9" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="双叉臂式独立前悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="多连杆式独立后悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">助力类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="电液式助力转向系统">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_10">
+                                                <i class="icon-angle-left"></i>
+                                                制动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_10" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="portlet_tab3">
+                            <div class="portlet-body">
+                                <div class="accordion" id="accordion3">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_11">
+                                                <i class="icon-angle-left"></i>
+                                                整车尺寸及质量
+                                            </a>
+                                        </div>
+                                        <div id="collapse_11" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+
+
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">长×宽×高
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="5095×1875×1485">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">轴距
+                                                                                [mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2970">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">前轮距/后轮距[mm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1610/1608">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">整备质量
+                                                                                [kg]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="1800">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_12">
+                                                <i class="icon-angle-left"></i>
+                                                发动机
+                                            </a>
+                                        </div>
+                                        <div id="collapse_12" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">发动机型号</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="CA4GC20T">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">排量
+                                                                                [L]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="2.0">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">气缸数</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="4">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">最大输出扭矩
+                                                                                [Nm/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="260/2000-4500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">额定功率
+                                                                                [kW/rpm]</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="150/5500">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">环保标准</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="国Ⅳ/京Ⅴ">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_13">
+                                                <i class="icon-angle-left"></i>
+                                                动力传动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_13" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">驱动方式</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="前置后驱">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">变速器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="6速手自一体式变速器">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">轮胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="225/55 R17">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">备胎</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="全尺寸备胎">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_14">
+                                                <i class="icon-angle-left"></i>
+                                                底盘转向系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_14" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="双叉臂式独立前悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后悬架类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="多连杆式独立后悬架带横向稳定杆">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6"
+                                                                             style="margin-left: 0px">
+                                                                            <label class="control-label span3">助力类型</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="电液式助力转向系统">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i> 保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                               data-parent="#accordion1" href="#collapse_15">
+                                                <i class="icon-angle-left"></i>
+                                                制动系统
+                                            </a>
+                                        </div>
+                                        <div id="collapse_15" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+
+                                                <div class="container-fluid">
+                                                    <!-- BEGIN PAGE CONTENT-->
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                            <div class="portlet box">
+                                                                <div class="">
+                                                                    <div class="caption"></div>
+                                                                    <div class="tools">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="clearfix">
+                                                                    </div>
+
+                                                                    <form action="#" class="horizontal-form">
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">前轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group span6">
+                                                                            <label class="control-label span3">后轮制动器</label>
+
+                                                                            <div class="controls">
+                                                                                <input type="text" class="m-wrap span6"
+                                                                                       value="通风盘式">
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </form>
+                                                                    <div class="span12" style="margin-left: 0px">
+                                                                        <button type="submit" class="btn blue"><i
+                                                                                class="icon-ok"></i>保存
+                                                                        </button>
+                                                                        <button type="button" class="btn"><i
+                                                                                class="icon-remove"></i>取消
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- END EXAMPLE TABLE PORTLET-->
+                                                        </div>
+                                                    </div>
+                                                    <!-- END PAGE CONTENT -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TAB PORTLET-->
+    </div>
+</div>
+</body>
+</html>

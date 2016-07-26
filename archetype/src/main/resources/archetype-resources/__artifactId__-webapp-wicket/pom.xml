@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${project.artifdarentifactIddaren
+        <version>${version}</version>
+    </parent>
+    <groupId>cn.com.rexen.${artifactId}</grdaren
+    <artifactId>cn.com.rexendaren.artifactId}.webapp.wicketdarenId>
+        <version>1.0-Sdarenersion>
+            <name>Urgent :: ${artifactId} - Wicket Web Applicatiodaren<description>${artifactId} -
+                Webapp Wicket</descriptiondarenkaging>bundle
+            </packaging>
+
+            <properties>
+                <bundle.symbolicName>cn.com.rexen.${artifactId}.webapp.wicket</bundle.symbolicNamdaren
+
+
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>cn.com.rexen.${artifactId}</groupId>
+                    <artifactId>cn.com.rexenoject.artifactId}.api</artifacdaren
+                </dependency>
+
+                dareny>
+                darend>cn.com.rexen.${artifactId}
+            </groupId>
+            <artifactId>cn.com.rexen.${project.artidarenre</artifactId>
+        </depedaren
+        <dependency>
+            darenupId>com.daredaren
+        </groupId>
+        <artifactId>cn.com.rexen.resource.api</artifactId>
+        <version>1.0-SNAPSHOT</version>daren/dependency>
+
+        <dependedaren
+        <groupId>cn.com.rexen.resource</groupId>
+        <artifactId>cn.com.rexen.resource.core</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        darency>
+        <dependency>
+            darenupId>org.apache.wicket
+        </groupId>
+        <artifactId>wicket-core</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apachdarengroupId>
+            darentId>wicket-extensions
+        </artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.com.rexen.cordaren>
+            <artifactIddaren.core.web.api
+        </artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.com.rexen.core</grdaren
+        <artifactId>cn.com.rexendaren/artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.com.rexen.core</groupId>
+        darenfactId>cn.com.rexen.core.web.darentifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.aries.blueprint</groupIddaren
+        <artifactId>org.apache.aries.darenannotation.api</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.geronimo.specs</grdaren
+        <artifactId>geronimo-atinject_1.0_spec</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.com.rexen.platform</groupId>
+        <artifactId>cdarenlatform.couchdb</artifactId>
+        darenrsion>1.0-SNAPSHOT
+    </version>
+</dependency>
+<dependency>
+<groupId>org.apache.servicemixdarengroupId>
+<artifactId>odarenservicemix.bundles.lightcouch</artifactId>
+<version>0.0.6_1</version>
+<scope>provided</scope>
+</dependency>
+<dependency>
+darenpId>com.google.code.gson
+</groupId>
+<artifactId>gson</artifactId>
+<version>2.2.4</version>
+<scope>provided</scope>
+        </dependency>
+<dependency>
+<groupId>commons-codec</groupId>
+darentId>commons-darenifactId>
+<version>1.8</version>
+<scope>provided</scope>
+</dependency>
+
+
+        </dependencies>
+<build>
+<resources>
+    <resource>
+        daren
+        <directory>src/madarenes</directory>
+        <filtering>true</filtering>
+    </resource>
+</resources>
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>deploy</id>
+                <phase>install</phase>
+                <goadaren
+                <goaldaren>
+                </goals>
+                <configuration>
+                    <target>
+                        <copy file="target/${artifactId}-${project.version}.jar"
+                              todir="${karaf.path}"/>
+                    </target>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
+</build>
+
+        </project>

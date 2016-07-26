@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+
+    <div class="portlet box blue">
+
+        <div class="portlet-text">
+
+            <div class="caption"><i class="icon-reorder"></i>添加品牌</div>
+
+        </div>
+
+        <div class="portlet-body form">
+
+            <!-- BEGIN FORM-->
+
+            <form wicket:id="add_brand_form">
+
+                <div class="control-group">
+
+                    <label class="control-label">品牌名称</label>
+
+                    <div class="controls">
+
+                        <input type="text" class="span6 m-wrap" wicket:id="name"/>
+
+                        <!--<span class="help-inline">Some hint here</span>-->
+
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button type="submit" class="btn blue">提交</button>
+
+                    <button type="button" class="btn">取消</button>
+
+                </div>
+
+            </form>
+
+            <!-- END FORM-->
+
+        </div>
+
+    </div>
+</wicket:panel>
