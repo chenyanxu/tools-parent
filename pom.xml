@@ -22,6 +22,7 @@
         <!--<module>maven-kalix-plugin</module>-->
         <!--<module>maven-kalix-deploy-plugin</module>-->
         <module>karaf-command</module>
+        <module>karaf-features</module>
         <module>assembly</module>
         <!--<module>webconsole</module>-->
     </modules>

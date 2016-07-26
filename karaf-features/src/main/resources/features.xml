@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--repo-add mvn:cn.com.rexen.kalix.kalix.poms/karaf-features/1.0.0-SNAPSHOT/xml/features-->
+<!--feature:install kalix-->
+<!--feature:install activiti-->
+<!--feature:install couchdb-->
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="kalix-1.0.0">
+    <repository>mvn:org.apache.shiro/shiro-features/${shiro.version}/xml/features</repository>
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+    <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
+    <repository>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</repository>
+    <repository>mvn:org.ops4j.pax.cdi/pax-cdi-features/0.12.0/xml/features</repository>
+    <repository>mvn:io.hawt/hawtio-karaf/2.0.0/xml/features</repository>
+    <repository>mvn:org.apache.karaf.decanter/apache-karaf-decanter/1.0.1/xml/features</repository>
+
+    <feature name="bonecp" version="0.8.0.RELEASE">
+        <bundle>mvn:com.jolbox/bonecp/0.8.0.RELEASE</bundle>
+    </feature>
+
+    <feature name="derby-driver" version="10.8.2.2">
+        <!--<feature>bonecp</feature>-->
+        <bundle>mvn:org.apache.derby/derby/10.8.2.2</bundle>
+    </feature>
+
+    <feature name="mssql-server-driver" version="4.0">
+        <bundle>wrap:mvn:com.microsoft.sqlserver/sqljdbc4/4.0</bundle>
+    </feature>
+
+    <feature name="bonecp" version="0.8.0.RELEASE">
+        <bundle>mvn:com.jolbox/bonecp/0.8.0.RELEASE</bundle>
+    </feature>
+
+    <feature name="mysql-driver" version="5.1.18">
+        <!--<feature>bonecp</feature>-->
+        <!--<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/1.9.0</bundle>-->
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/2.7.0</bundle>
+        <bundle>mvn:mysql/mysql-connector-java/5.1.18</bundle>
+    </feature>
+
+    <feature name="postgresql-driver">
+        <!--<feature>bonecp</feature>-->
+        <bundle>mvn:org.postgresql/postgresql/${postgresql.version}</bundle>
+    </feature>
+
+    <feature name="ipojo" version="1.12.1" description="Apache Felix iPOJO Core Runtime">
+        <bundle>mvn:org.apache.felix/org.apache.felix.ipojo/1.12.1</bundle>
+    </feature>
+    <feature name="ipojo-command" version="1.12.1" description="Apache Felix iPOJO Shell Command">
+        <feature version="1.12.1">ipojo</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.gogo/1.12.1
+        </bundle>
+    </feature>
+    <feature name="ipojo-all" version="1.12.1" description="Apache Felix iPOJO All Runtime Bundles">
+        <feature version="1.12.1">ipojo-command</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.composite/1.12.1
+        </bundle>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.api/1.12.1
+        </bundle>
+    </feature>
+    <feature name="ipojo-webconsole" version="1.12.1" description="Apache Felix iPOJO Web Console Plugin">
+        <feature version="1.12.1">ipojo</feature>
+        <feature>webconsole</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.webconsole/1.7.0
+        </bundle>
+    </feature>
+
+    <feature name="jsr303">
+        <!--<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr303-api-1.0.0/2.4.0</bundle>-->
+        <!--<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/2.4.0</bundle>-->
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr303-api-1.0.0/2.7.0</bundle>
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/2.7.0</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.hibernate-validator/4.1.0.Final_3
+        </bundle>
+        <!--<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.hibernate-validator/4.1.0.Final_3</bundle>-->
+        <!--<bundle>mvn:org.hibernate/hibernate-validator/4.3.0.Final</bundle>-->
+        <!--<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr303-api-1.0.0/2.4.0</bundle>-->
+        <!--<bundle>mvn:joda-time/joda-time/2.3</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsoup/1.5.2_2</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/0.9.8_1</bundle>
+        <bundle>mvn:com.code-troopers/wicket-jsr303-parsley/0.4</bundle>-->
+    </feature>
+
+
+
+    <feature name="couchdb" version="1.0.0">
+        <!-- 根据camel的couchdb feature生成 2.15.3-->
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/${lightcouch.version}</bundle>
+        <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+        <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.4.1</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.4.1</bundle>
+        <bundle>mvn:commons-io/commons-io/2.2</bundle>
+        <bundle>mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>
+    </feature>
+
+    <feature name="activiti" version="${activiti.version}">
+        <bundle>mvn:joda-time/joda-time/2.9</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/1.6.3_1</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/3.2.11_1</bundle>
+        <bundle>mvn:org.mybatis/mybatis/3.3.0</bundle>
+        <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/2.7.0</bundle>
+        <bundle>mvn:org.apache.commons/commons-lang3/3.4</bundle>
+        <bundle>mvn:com.h2database/h2/1.3.170</bundle>
+        <bundle>mvn:org.mvel/mvel2/2.2.1.Final</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/2.6.3</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.3</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/2.6.3</bundle>
+        <bundle>mvn:org.activiti/activiti-engine/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-bpmn-converter/${activiti.version}</bundle>
+        <!--<bundle>mvn:org.activiti/activiti-spring/${activiti.version}</bundle>-->
+        <bundle>mvn:org.activiti/activiti-bpmn-model/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-osgi/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-process-validation/${activiti.version}</bundle>
+        <!--<bundle>mvn:org.activiti/activiti-camel/${activiti.version}</bundle>-->
+        <bundle>mvn:org.activiti/activiti-image-generator/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-ldap/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-jmx/${activiti.version}</bundle>
+        <!--<bundle>mvn:org.apache.servicemix.activiti/org.apache.servicemix.activiti.config/6.0.0</bundle>-->
+    </feature>
+
+    <feature name="jackson">
+        <bundle>mvn:org.codehaus.jackson/jackson-core-asl/1.9.8</bundle>
+        <bundle>mvn:org.codehaus.jackson/jackson-mapper-asl/1.9.8</bundle>
+        <bundle>mvn:org.codehaus.jackson/jackson-jaxrs/1.9.8</bundle>
+        <!--<bundle>mvn:org.codehaus.jackson/jackson-xc/1.9.8</bundle>-->
+        <!--<bundle>mvn:de.undercouch/bson4jackson/1.3.0</bundle>-->
+        <bundle>mvn:commons-codec/commons-codec/1.7</bundle>
+    </feature>
+
+
+
+    <feature name="shiro-ehcache" version="1.0">
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ehcache/2.6.8_1</bundle>
+        <!--备注：ehcache默认的版本是2.5.0.1，这里要用这个替换一下-->
+        <bundle>mvn:org.apache.shiro/shiro-ehcache/1.2.3</bundle>
+    </feature>
+
+    <feature name="jedis">
+        <!--<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1</bundle>-->
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${cglib.version}</bundle>
+        <bundle>mvn:org.apache.commons/commons-pool2/${commons-pool2.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jedis/${jedis.version}</bundle>
+    </feature>
+
+
+
+    <feature name="cometed">
+        <bundle>mvn:org.cometd.java/bayeux-api/2.9.1</bundle>
+        <bundle>mvn:org.cometd.java/cometd-java-common/2.9.1</bundle>
+        <bundle>mvn:org.cometd.java/cometd-java-server/2.9.1</bundle>
+        <bundle>mvn:org.cometd.java/cometd-websocket-jetty/2.9.1</bundle>
+        <bundle>mvn:org.cometd.java/cometd-java-client/2.9.1</bundle>
+    </feature>
+
+    <feature name="atmosphere">
+        <bundle>mvn:org.atmosphere/atmosphere-runtime/2.1.8</bundle>
+    </feature>
+
+    <feature name="xstream" version="1.4.7" start-level="50">
+        <bundle dependency="true">mvn:org.codehaus.jettison/jettison/1.3.5</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/1.1.4c_7</bundle>
+        <bundle dependency="true">mvn:joda-time/joda-time/1.6.2</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.kxml2/2.3.0_2</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.7_1
+        </bundle>
+    </feature>
+
+    <feature name="aries-annotation" version="3.0.1" description="Aries Annotations">
+        <bundle start-level="20" dependency="true">mvn:org.apache.commons/commons-jexl/2.1.1</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.ow2.asm/asm-all/4.1</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.apache.xbean/xbean-bundleutils/3.16</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.apache.xbean/xbean-asm4-shaded/3.16</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.apache.xbean/xbean-reflect/3.16</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.apache.xbean/xbean-finder-shaded/3.16</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.api/1.0.0</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.annotation.impl/1.0.0
+        </bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.jexl.evaluator/1.0.0</bundle>
+    </feature>
+
+    <feature name="camel-swagger" version="2.17.0" start-level="50">
+        <details>
+            camel-swagger is deprecated, use camel-swagger-java instead
+        </details>
+        <feature>http</feature>
+        <!--<feature version="2.16.0">camel-core</feature>-->
+        <feature version="2.17.0">camel-core</feature>
+        <!--  must use Scala 2.10  -->
+        <bundle dependency="true">mvn:org.scala-lang/scala-library/2.10.4</bundle>
+        <bundle dependency="true">mvn:org.scala-lang/scala-reflect/2.10.4</bundle>
+        <bundle>mvn:javax.ws.rs/jsr311-api/1.1.1</bundle>
+        <bundle dependency="true">mvn:com.google.guava/guava/18.0</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/2.6.2</bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-databind/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/1_2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.module/jackson-module-paranamer/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.module/jackson-module-scala_2.10/2.6.1
+        </bundle>
+        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.paranamer/2.7_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/3.2.8_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/0.9.10_1
+        </bundle>
+        <bundle>mvn:org.apache.camel/camel-swagger/2.16.0</bundle>
+        <bundle>mvn:javax.validation/validation-api/1.1.0.Final/jar</bundle>
+        <bundle>mvn:io.swagger/swagger-core/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-models/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-annotations/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-jaxrs/1.5.3</bundle>
+        <bundle>mvn:org.apache.camel/camel-swagger-java/2.16.0</bundle>
+    </feature>
+
+
+    <feature name="shiro-cas" version="1.0">
+        <bundle>mvn:org.apache.shiro/shiro-cas/1.2.3</bundle>
+        <bundle>wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1</bundle>
+    </feature>
+
+    <feature name="jpa" description="OSGi Persistence Container" version="2.2.0">
+        <details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine, you have to install one by yourself (OpenJPA for instance)</details>
+        <feature version="[1.1,2)" prerequisite="false" dependency="false">transaction-api</feature>
+        <feature version="[2.0.0,2.2.0)" prerequisite="false" dependency="false">persistence-api</feature>
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.2.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.2.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.2.0</bundle>
+        <conditional>
+            <condition>aries-blueprint</condition>
+            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.2.0</bundle>
+        </conditional>
+    </feature>
+
+    <feature name="openjpa" description="Apache OpenJPA 2.4.x persistence engine support" version="${openjpa.version}">
+        <details>Enable Apache OpenJPA as persistence engine.</details>
+        <feature prerequisite="false" dependency="false">jndi</feature>
+        <feature version="[1.2,1.3)" prerequisite="false" dependency="false">transaction-api</feature>
+        <feature version="[2.0.0,2.1.0)" prerequisite="false" dependency="false">persistence-api</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.0_spec/1.1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_2.5_spec/1.2</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-el_1.0_spec/1.0.1</bundle>
+        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle dependency="true">mvn:commons-collections/commons-collections/3.2.2</bundle>
+        <bundle dependency="true">mvn:commons-pool/commons-pool/1.6</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/1.7.0_6</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/1.14.1_1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/4.3</bundle>
+        <bundle>mvn:org.apache.openjpa/openjpa/2.4.0-Release</bundle>
+    </feature>
+
+    <feature name="kalix-core" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.core/core-util/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-cache/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-delegate/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-mq/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-rest/${parent.version}</bundle>
+        <!--<bundle>mvn:cn.com.rexen.kalix.core/core-restfultest/${parent.version}</bundle>-->
+        <bundle>mvn:cn.com.rexen.kalix.core/core-swagger/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+        <!--<configfile finalname="/etc/CouchdbConfig.cfg">mvn:cn.com.rexen.kalix.core/karaf-features/${project.version}/cfg-->
+        <!--</configfile>-->
+    </feature>
+
+    <feature name="kalix-web" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.extjs.wrapper/extjs-wrapper/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.core/core-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.admin/admin-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.app/app-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.workflow/workflow-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-osgi" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-rest/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-security" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-admin" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-demo" version="1.0">
+        <feature>kalix-meetingroom</feature>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-meetingroom" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-app" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-audit" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-duty" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-message" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-middleware" version="1.0">
+        <feature>kalix-middleware-workflow</feature>
+        <feature>kalix-middleware-attachment</feature>
+        <feature>kalix-middleware-couchdb</feature>
+        <feature>kalix-middleware-excel</feature>
+    </feature>
+
+    <feature name="kalix-middleware-workflow" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-engine/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-middleware-attachment" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-rest/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-middleware-couchdb" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-rest/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-middleware-excel" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-rest/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-all" version="4.0.5">
+
+        <!--<bundle>mvn:cn.com.rexen.kalix.core/core-util/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-cache/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-delegate/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-mq/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-rest/${parent.version}</bundle>
+        &lt;!&ndash;<bundle>mvn:cn.com.rexen.kalix.core/core-restfultest/${parent.version}</bundle>&ndash;&gt;
+        <bundle>mvn:cn.com.rexen.kalix.core/core-swagger/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.wrapper/extjs-wrapper/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.core/core-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.admin/admin-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.app/app-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-engine/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-rest/${parent.version}</bundle>-->
+        <feature>kalix-core</feature>
+        <feature>kalix-security</feature>
+        <feature>kalix-osgi</feature>
+        <feature>kalix-admin</feature>
+        <feature>kalix-web</feature>
+        <feature>kalix-app</feature>
+        <feature>kalix-demo</feature>
+        <feature>kalix-audit</feature>
+        <feature>kalix-duty</feature>
+        <feature>kalix-message</feature>
+        <feature>kalix-middleware</feature>
+        <feature>kalix-config</feature>
+        <bundle>mvn:cn.com.rexen.kalix/karaf-command/${parent.version}</bundle>
+    </feature>
+    <!-- kalix config files -->
+    <feature name="kalix-config">
+        <configfile finalname="/etc/ConfigCouchdb.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigCouchdb
+        </configfile>
+        <configfile finalname="/etc/ConfigWebContext.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigWebContext
+        </configfile>
+        <configfile finalname="/etc/ConfigShiro.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigShiro
+        </configfile>
+        <configfile finalname="/etc/ConfigCache.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigCache
+        </configfile>
+        <configfile finalname="/etc/ConfigRedis.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigRedis
+        </configfile>
+        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigMessagePool
+        </configfile>
+        <configfile finalname="/etc/ConfigLogin.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/ConfigLogin
+        </configfile>
+        <configfile finalname="/etc/org.ops4j.datasource-kalix.cfg" override="true">
+            mvn:cn.com.rexen.kalix.poms/karaf-features/${project.version}/cfg/org.ops4j.datasource-kalix
+        </configfile>
+    </feature>
+
+    <feature name="kalix-base" version="1.0.0">
+        <feature version="${openjpa.version}">openjpa</feature>
+        <feature>transaction</feature>
+        <feature>war</feature>
+        <feature>webconsole</feature>
+        <feature>jndi</feature>
+        <feature>eventadmin</feature>
+        <feature version="${jpa.version}">jpa</feature>
+        <feature>mysql-driver</feature>
+        <feature>derby-driver</feature>
+        <feature>postgresql-driver</feature>
+        <feature>pax-jdbc-config</feature>
+        <feature>pax-jdbc-pool-dbcp2</feature>
+        <feature>jsr303</feature>
+        <feature>camel-blueprint</feature>
+        <!--<feature>camel-jetty</feature>-->
+        <feature>camel-metrics</feature>
+        <feature>camel-jackson</feature>
+        <feature>camel-servlet</feature>
+        <feature>camel-dozer</feature>
+        <feature>camel-swagger-java</feature>
+        <feature>camel-shiro</feature>
+        <feature>shiro-core</feature>
+        <!--<feature>shiro-web</feature>-->
+        <feature>jedis</feature>
+        <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
+        <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
+        <bundle>mvn:com.google.guava/guava/15.0</bundle>
+        <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
+        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle>mvn:org.apache.shiro/shiro-web/1.2.4</bundle>
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
+    </feature>
+
+
+    <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
+    <!-- feature:repo-add mvn:cn.com.rexen.kalix.poms/karaf-features/1.0.0-SNAPSHOT/xml/features-->
+    <!-- feature:install -v kalix activiti-->
+    <!-- feature:install -v activiti-->
+    <!--install -s mvn:org.postgresql/postgresql/9.4-1200-jdbc41-->
+    <!-- install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->
+    <!--install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1-->
+</features>
