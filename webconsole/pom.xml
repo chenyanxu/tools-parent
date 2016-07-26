@@ -9,7 +9,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webconsole</artifactId>
+    <groupId>com.kalix.tools</groupId>
+    <artifactId>tools-webconsole</artifactId>
     <name>Kalix :: Tools - Web Console</name>
     <description>Tools Web Console</description>
     <packaging>bundle</packaging>

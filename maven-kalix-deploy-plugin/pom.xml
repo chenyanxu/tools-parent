@@ -1,14 +1,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--<parent>-->
-        <!--<groupId>org.sonatype.oss</groupId>-->
-        <!--<artifactId>oss-parent</artifactId>-->
-        <!--<version>9</version>-->
-    <!--</parent>-->
+
     <parent>
-        <groupId>cn.com.rexen.kalix</groupId>
-        <artifactId>modules.tools</artifactId>
+        <groupId>com.kalix.tools</groupId>
+        <artifactId>tools-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -16,14 +12,12 @@
 
     </properties>
 
-    <groupId>cn.com.rexen.tools</groupId>
-    <artifactId>maven-kalix-deploy-plugin</artifactId>
+    <groupId>com.kalix.tools</groupId>
+    <artifactId>tools-kalix-deploy-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>maven-kalix-deploy-plugin</name>
+    <name>Kalix :: Tools - Karaf Deploy Plugin</name>
 
     <dependencies>
-
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
