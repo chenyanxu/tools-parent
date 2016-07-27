@@ -117,8 +117,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>cn.com.rexen.kalix</groupId>
-                                    <artifactId>branding</artifactId>
+                                    <groupId>com.kalix.tools</groupId>
+                                    <artifactId>tools-karaf-branding</artifactId>
                                     <version>1.0.0-SNAPSHOT</version>
                                     <outputDirectory>target/assembly/lib</outputDirectory>
                                     <destFileName>karaf-branding-1.0.0-SNAPSHOT.jar</destFileName>

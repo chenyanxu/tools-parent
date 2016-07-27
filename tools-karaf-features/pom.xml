@@ -156,6 +156,21 @@
                                     <type>cfg</type>
                                     <classifier>org.ops4j.datasource-kalix</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigApplication.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigApplication</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigMenu.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigMenu</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigModule.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigModule</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>
