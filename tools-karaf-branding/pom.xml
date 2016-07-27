@@ -10,9 +10,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.kalix.tools</groupId>
     <artifactId>tools-karaf-branding</artifactId>
-    <name>Kalix :: Tools - Karaf Branding</name>
+    <name>Kalix Tools Karaf Branding</name>
     <packaging>bundle</packaging>
 
     <build>

@@ -10,10 +10,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.kalix.tools</groupId>
     <artifactId>tools-karaf-command</artifactId>
-    <name>Kalix :: Tools - Karaf Command</name>
-    <description>Karaf Command</description>
+    <name>Kalix Tools Karaf Command</name>
     <packaging>bundle</packaging>
 
     <properties>

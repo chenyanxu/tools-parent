@@ -14,12 +14,12 @@
 
     <modules>
         <!--<module>archetype</module>-->
-        <module>branding</module>
+        <module>tools-karaf-branding</module>
         <!--<module>maven-kalix-plugin</module>-->
         <!--<module>maven-kalix-deploy-plugin</module>-->
-        <module>karaf-command</module>
-        <module>karaf-features</module>
-        <module>assembly</module>
+        <module>tools-karaf-command</module>
+        <module>tools-karaf-features</module>
+        <module>tools-karaf-assembly</module>
         <!--<module>webconsole</module>-->
     </modules>
 

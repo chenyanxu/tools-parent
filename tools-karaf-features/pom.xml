@@ -9,9 +9,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.kalix.tools</groupId>
     <artifactId>tools-karaf-features</artifactId>
-    <name>Kalix :: Tools - Karaf Features</name>
+    <name>Kalix Tools Karaf Features</name>
     <packaging>pom</packaging>
 
     <properties>
