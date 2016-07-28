@@ -284,7 +284,7 @@
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/1.14.1_1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/4.3</bundle>
-        <bundle>mvn:org.apache.openjpa/openjpa/2.4.0-Release</bundle>
+        <bundle>mvn:org.apache.openjpa/openjpa/2.4.0.Release</bundle>
     </feature>
 
     <feature name="framework-core" version="1.0">
