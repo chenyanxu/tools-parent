@@ -1,5 +1,5 @@
 1.本模块主要功能是用于发布karaf的feature
-2.在karaf 3.0.0版本中执行如下命令
+2.在karaf 4.0.5版本中执行如下命令
 feature:repo-add mvn:cn.com.rexen.core/karaf-features/1.0/xml/features
 feature:repo-add mvn:org.apache.cxf.karaf/apache-cxf/2.7.10/xml/features
 feature:repo-add mvn:org.apache.shiro/shiro-features/1.2.3/xml/features

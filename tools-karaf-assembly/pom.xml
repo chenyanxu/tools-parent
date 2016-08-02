@@ -58,6 +58,14 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>com.kalix.oa</groupId>
+            <artifactId>karaf-features</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>com.kalix.tools</groupId>
             <artifactId>tools-karaf-branding</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -190,6 +198,7 @@
                         <feature>activiti</feature>
                         <feature>couchdb</feature>
                         <feature>kalix-all</feature>
+                        <feature>oa-all</feature>
                         <!--<feature>kalix-core</feature>-->
                         <!--<feature>kalix-security</feature>-->
                         <!--<feature>kalix-osgi</feature>-->
