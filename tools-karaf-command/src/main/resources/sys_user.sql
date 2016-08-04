@@ -1,0 +1,11 @@
+DELETE FROM "public"."sys_user";
+INSERT INTO "public"."sys_user" VALUES ('1', '系统', '2015-07-30 16:42:50', '管理员', '2015-07-30 16:42:50', '1', '1', '123', '0', null, '2016-08-04 15:13:54.808', '0:0:0:0:0:0:0:1', 'admin', '123', '管理员', 'ICy5YqxZB1uWSwcVLSNLcA==', '123', '', null, null);
+DELETE FROM "public"."sys_role";
+INSERT INTO "public"."sys_role" VALUES ('1', '管理员', '2015-11-17 02:32:42.692', '管理员', '2015-11-17 02:32:42.707', '1', '超级管理员', '', '系统应用');
+DELETE FROM "public"."sys_role_user";
+INSERT INTO "public"."sys_role_user" VALUES ('1', '管理员', '2015-11-17 01:52:55.053', '管理员', '2015-11-17 01:52:55.053', '1', '1', '1');
+--DELETE FROM "public"."sys_role_application";
+--INSERT INTO "public"."sys_role_application" VALUES ('1', '管理员', '2015-11-17 00:11:36.699', '管理员', '2015-11-17 00:11:36.699', '0', '1', '1');
+--INSERT INTO "public"."sys_role_application" VALUES ('2', '管理员', '2016-06-03 16:28:40.754', '管理员', '2016-06-03 16:28:40.754', '0', '2', '1');
+--INSERT INTO "public"."sys_role_application" VALUES ('3', '管理员', '2016-06-03 16:28:40.754', '管理员', '2016-06-03 16:28:40.754', '0', '3', '1');
+--INSERT INTO "public"."sys_role_function" VALUES ('1', '管理员', '2015-11-17 00:11:36.703', '管理员', '2015-11-17 00:11:36.703', '0', '1', '1');

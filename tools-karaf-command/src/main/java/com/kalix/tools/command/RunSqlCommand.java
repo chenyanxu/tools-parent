@@ -33,7 +33,7 @@ public class RunSqlCommand implements Action {
         try {
             System.out.println("begin init kalix database with " + arg);
             //get datasource
-            DataSource dataSource = getKalixDataSource();
+            DataSource dataSource = Util.getKalixDataSource();
             //run script
             ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, false);
             InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(arg);
@@ -48,20 +48,5 @@ public class RunSqlCommand implements Action {
         return null;
     }
 
-    /**
-     * 获得kalix数据源
-     *
-     * @return
-     */
-    private DataSource getKalixDataSource() {
-        Map<String, String> map = new HashMap<>();
-        map.put("osgi.jndi.service.name", "jdbc/ds");
 
-        try {
-            return JNDIHelper.getJNDIServiceForName(DataSource.class.getName(), map);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
