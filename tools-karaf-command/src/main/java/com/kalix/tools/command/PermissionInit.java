@@ -17,14 +17,26 @@ import java.util.List;
  * Created by Administrator on 2016-08-03.
  */
 public class PermissionInit {
-    private String appSql = "INSERT INTO public.sys_application VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '1');";
+    private String appSql = "INSERT INTO public.sys_application " +
+            "(id, createby, creationdate, updateby, updatedate, code, location, name, remark, version_) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '1');";
     private String appClearSql = "DELETE FROM public.sys_application;";
 
-    private String funSql = "INSERT INTO public.sys_function VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1');";
+    private String funSql = "INSERT INTO public.sys_function " +
+            "(id, createby, creationdate, updateby, updatedate, applicationid, code, isleaf, name, parentid, permission, remark, version_) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1');";
     private String funClearSql = "DELETE FROM public.sys_function;";
 
     private String role_funClearSql = "DELETE FROM public.sys_role_function;";
     private String app_funClearSql = "DELETE FROM public.sys_role_application;";
+
+    private String role_funSql = "INSERT INTO public.sys_role_function " +
+            "(id, createby, creationdate, updateby, updatedate, functionid, roleid, version_) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '1', '1');";
+    private String role_applicationsql = "INSERT INTO public.sys_role_application " +
+            "(id, createby, creationdate, updateby, updatedate, applicationid, roleid, version_) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s','%s', '1',  '1');";
+
     String strNow = Util.getNowString();
 
     //get datasource
@@ -67,10 +79,9 @@ public class PermissionInit {
      * @param appId
      */
     private void insertApplicationPermit(int appId) {
-        String sql = "INSERT INTO public.sys_role_application VALUES ('%s', '管理员', '%s', '管理员', '%s', '0', '%s', '1');";
         StringBuilder builder = new StringBuilder();
         for (int i = 1; i <= appId; i++) {
-            String str = String.format(sql, String.valueOf(i), strNow, strNow, String.valueOf(i));
+            String str = String.format(role_applicationsql, String.valueOf(i), strNow, strNow, String.valueOf(i));
             builder.append(str);
         }
         try {
@@ -90,7 +101,6 @@ public class PermissionInit {
      * @param moduleId
      */
     private void insertFunctionPermit(int moduleId) {
-        String role_funSql = "INSERT INTO public.sys_role_function VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '1', '1');";
         StringBuilder builder = new StringBuilder();
         for (int i = 1; i <= moduleId; i++) {
             String str = String.format(role_funSql, String.valueOf(i), strNow, strNow, String.valueOf(i));
