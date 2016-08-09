@@ -36,7 +36,7 @@ public class InitKalixDbCommand implements Action {
 
     private void init(){
         DataSource dataSource = Util.getKalixDataSource();
-        ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, false);
+        ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, true);
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && !applicationList.isEmpty()) {
             for (IApplication application : applicationList) {

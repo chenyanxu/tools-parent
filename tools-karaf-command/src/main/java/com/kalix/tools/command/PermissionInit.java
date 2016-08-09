@@ -43,7 +43,7 @@ public class PermissionInit {
     //get datasource
     DataSource dataSource = Util.getKalixDataSource();
     //run script
-    ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, false);
+    ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, true);
 
     public void init() {
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
@@ -108,9 +108,9 @@ public class PermissionInit {
             builder.append(str);
         }
         try {
-            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kalix_public_sys_user.sql");
+            /*InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kalix_public_sys_user.sql");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            scriptRunner.runScript(br);
+            scriptRunner.runScript(br);*/
 
             StringReader reader = new StringReader(builder.toString());
             System.out.println("insert role function data ");

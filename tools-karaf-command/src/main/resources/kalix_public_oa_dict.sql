@@ -1,3 +1,4 @@
+DELETE FROM public.oa_dict;
 INSERT INTO public.oa_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (59910, 'qwer', '2016-07-28 14:39:34.644000', 'qwer', '2016-07-28 14:39:34.644000', '', '公司公章', '印章类型', '0', 1);
 INSERT INTO public.oa_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (59911, 'qwer', '2016-07-28 14:40:03.491000', 'qwer', '2016-07-28 14:40:03.491000', '', '公司合同专用章', '印章类型', '1', 1);
 INSERT INTO public.oa_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (59912, 'qwer', '2016-07-28 14:40:18.361000', 'qwer', '2016-07-28 14:40:18.361000', '', '学院公章', '印章类型', '2', 1);

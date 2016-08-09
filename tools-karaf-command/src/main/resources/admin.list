@@ -1,3 +1,4 @@
 kalix_public_sys_dict.sql
 kalix_public_sys_organization.sql
 kalix_public_sys_duty.sql
+kalix_public_sys_user.sql
