@@ -48,7 +48,7 @@ public class PermissionInit {
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && !applicationList.isEmpty()) {
             int appId = 0;
-            int moduleId = 0;
+            int moduleId = 1000;
             clearData();//清空表数据
             for (IApplication application : applicationList) {
                 ++appId;
@@ -102,7 +102,7 @@ public class PermissionInit {
      */
     private void insertFunctionPermit(int moduleId) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 1; i <= moduleId; i++) {
+        for (int i = 1000; i <= moduleId; i++) {
             String str = String.format(role_funSql, String.valueOf(i), strNow, strNow, String.valueOf(i));
             builder.append(str);
         }

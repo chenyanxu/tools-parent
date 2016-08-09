@@ -1,7 +1,7 @@
 DELETE FROM public.sys_user;
 INSERT INTO public.sys_user (id, createby, creationdate, updateby, updatedate, available, email, is_ent_user, jgdm, logindate, loginip, loginname, mobile, name, password, phone, qyid, relateid, version_) VALUES (1, '系统', '2016-08-04 15:13:54.808000', '系统', '2016-08-04 15:13:54.808000', 1, null, null, null, null, null, 'admin', null, 'admin', 'ICy5YqxZB1uWSwcVLSNLcA==', null, null, null, 1);
 DELETE FROM public.sys_role;
-INSERT INTO public.sys_role (id, createby, creationdate, updateby, updatedate, app, name, remark, version_) VALUES (1, '管理员', '2015-11-17 02:32:42.692000', '管理员', '2015-11-17 02:32:42.707000', '超级管理员', '', '系统应用', 1);
+INSERT INTO public.sys_role (id, createby, creationdate, updateby, updatedate, app, name, remark, version_) VALUES (1, '管理员', '2015-11-17 02:32:42.692000', '管理员', '2015-11-17 02:32:42.707000', '系统应用', '超级管理员', '系统应用', 1);
 DELETE FROM public.sys_role_user;
 INSERT INTO public.sys_role_user (id, createby, creationdate, updateby, updatedate, roleid, userid, version_) VALUES (1, '管理员', '2015-11-17 01:52:55.053000', '管理员', '2015-11-17 01:52:55.053000', 1, 1, 1);
 --DELETE FROM public.sys_role_application;
