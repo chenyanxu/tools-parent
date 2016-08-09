@@ -4,6 +4,8 @@ DELETE FROM public.sys_role;
 INSERT INTO public.sys_role (id, createby, creationdate, updateby, updatedate, app, name, remark, version_) VALUES (1, '管理员', '2015-11-17 02:32:42.692000', '管理员', '2015-11-17 02:32:42.707000', '系统应用', '超级管理员', '系统应用', 1);
 DELETE FROM public.sys_role_user;
 INSERT INTO public.sys_role_user (id, createby, creationdate, updateby, updatedate, roleid, userid, version_) VALUES (1, '管理员', '2015-11-17 01:52:55.053000', '管理员', '2015-11-17 01:52:55.053000', 1, 1, 1);
+DELETE FROM public.sys_organization_user;
+INSERT INTO public.sys_organization_user (id, createby, creationdate, updateby, updatedate, orgid, userid, version_) VALUES (1, '管理员', '2016-08-09 13:09:00.000000', '管理员', '2016-08-09 13:09:00.000000', 40810, 1, 1);
 --DELETE FROM public.sys_role_application;
 --INSERT INTO public.sys_role_application VALUES ('1', '管理员', '2015-11-17 00:11:36.699', '管理员', '2015-11-17 00:11:36.699', '0', '1', '1');
 --INSERT INTO public.sys_role_application VALUES ('2', '管理员', '2016-06-03 16:28:40.754', '管理员', '2016-06-03 16:28:40.754', '0', '2', '1');
