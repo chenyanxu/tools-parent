@@ -6,5 +6,8 @@
 
 # debug maven plugin
   http://blog.csdn.net/mn960mn/article/details/48417207
+# 实现逻辑
+* sql语句通过ide的Database工具倒出
+* 在resources下建立对应app名字的.list文件，在文件中加入需要初始化的sql语句
 
-#target karaf 4.0.5
+# target karaf 4.0.5

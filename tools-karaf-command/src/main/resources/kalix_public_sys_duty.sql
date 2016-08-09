@@ -1,3 +1,4 @@
+DELETE FROM public.sys_duty;
 INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, version_, orgid) VALUES (43711, null, '2016-06-15 10:46:26.243000', null, '2016-06-15 10:46:26.243000', '办公室副职', '办公室副职', 1, 42121);
 INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, version_, orgid) VALUES (44712, 'qwer', '2016-07-07 09:21:18.145000', 'qwer', '2016-07-07 09:21:18.145000', ' 办公室正职', ' 办公室正职', 1, 42110);
 INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, version_, orgid) VALUES (44713, 'qwer', '2016-07-07 09:21:35.352000', 'qwer', '2016-07-07 09:21:35.352000', ' 办公室副职', ' 办公室副职', 1, 42110);

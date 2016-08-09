@@ -1,0 +1,6 @@
+DELETE FROM public.sys_dict;
+INSERT INTO public.sys_dict (id, createby, creationdate, updateby, updatedate, version_, description, label, type, value) VALUES (92510, 'qwer', '2016-07-01 09:14:46.699000', 'qwer', '2016-07-01 09:14:46.699000', 1, '', '是', 'sf', '1');
+INSERT INTO public.sys_dict (id, createby, creationdate, updateby, updatedate, version_, description, label, type, value) VALUES (92511, 'qwer', '2016-07-01 09:15:07.697000', 'qwer', '2016-07-01 09:15:07.697000', 1, '', '否', 'sf', '0');
+INSERT INTO public.sys_dict (id, createby, creationdate, updateby, updatedate, version_, description, label, type, value) VALUES (102112, 'qwer', '2016-08-01 11:15:40.730000', 'qwer', '2016-08-01 11:15:40.730000', 1, '', '无岗位', '岗位名称', '0');
+INSERT INTO public.sys_dict (id, createby, creationdate, updateby, updatedate, version_, description, label, type, value) VALUES (1001, null, '2015-07-10 13:21:44.000000', null, '2015-07-10 13:21:44.000000', 3, '', '男', 'sex', '1');
+INSERT INTO public.sys_dict (id, createby, creationdate, updateby, updatedate, version_, description, label, type, value) VALUES (1101, null, '2015-07-23 15:52:06.000000', '管理员', '2015-12-08 20:45:37.306000', 8, '', '女', 'sex', '0');

@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2016-08-03.
+ * 初始化权限
  */
 public class PermissionInit {
     private String appSql = "INSERT INTO public.sys_application " +
@@ -107,7 +108,7 @@ public class PermissionInit {
             builder.append(str);
         }
         try {
-            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("sys_user.sql");
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kalix_public_sys_user.sql");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             scriptRunner.runScript(br);
 
