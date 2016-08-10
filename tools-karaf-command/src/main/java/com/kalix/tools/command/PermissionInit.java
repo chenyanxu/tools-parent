@@ -108,7 +108,7 @@ public class PermissionInit {
             builder.append(str);
         }
         try {
-            /*InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kalix_public_sys_user.sql");
+            /*InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("kalix_public_sys_all.sql");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             scriptRunner.runScript(br);*/
 
