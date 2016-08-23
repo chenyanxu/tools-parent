@@ -1,4 +1,4 @@
-DELETE * FROM public.oa_category;
+DELETE FROM public.oa_category;
 INSERT INTO public.oa_category (id, createby, creationdate, updateby, updatedate, version_, description, icon, key, name) VALUES (45713, null, '2016-05-24 16:10:22.000000', null, '2016-05-27 09:53:51.682000', 2, '人事相关流程', 'x-fa fa-male', 'person', '人事类');
 INSERT INTO public.oa_category (id, createby, creationdate, updateby, updatedate, version_, description, icon, key, name) VALUES (45714, null, '2016-05-24 16:11:53.000000', null, '2016-05-27 10:00:53.773000', 3, '项目相关流程', 'x-fa fa-columns', 'project', '项目类');
 INSERT INTO public.oa_category (id, createby, creationdate, updateby, updatedate, version_, description, icon, key, name) VALUES (45715, null, '2016-05-24 16:08:42.000000', null, '2016-05-27 10:03:40.929000', 2, '行政相关流程', 'x-fa fa-building', 'admin', '行政类');
