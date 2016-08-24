@@ -116,6 +116,21 @@
                                     <type>xml</type>
                                     <classifier>features</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigCouchdb.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigCouchdb</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigRedis.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigRedis</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/org.ops4j.datasource-kalix.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>org.ops4j.datasource-kalix</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

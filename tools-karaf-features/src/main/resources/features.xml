@@ -451,23 +451,23 @@
     </feature>
     <!-- kalix config files -->
     <feature name="kalix-config">
+        <configfile finalname="/etc/ConfigWebContext.cfg" override="true">
+            mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigWebContext
+        </configfile>
+        <configfile finalname="/etc/ConfigShiro.cfg" override="true">
+            mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigShiro
+        </configfile>
+        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
+            mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigMessagePool
+        </configfile>
+        <configfile finalname="/etc/ConfigLogin.cfg" override="true">
+            mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigLogin
+        </configfile>
         <configfile finalname="/etc/ConfigCouchdb.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigCouchdb
         </configfile>
-        <configfile finalname="/etc/ConfigWebContext.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigWebContext
-        </configfile>
-        <configfile finalname="/etc/ConfigShiro.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigShiro
-        </configfile>
         <configfile finalname="/etc/ConfigRedis.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigRedis
-        </configfile>
-        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigMessagePool
-        </configfile>
-        <configfile finalname="/etc/ConfigLogin.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigLogin
         </configfile>
         <configfile finalname="/etc/org.ops4j.datasource-kalix.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/org.ops4j.datasource-kalix
