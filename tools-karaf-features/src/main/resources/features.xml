@@ -460,9 +460,6 @@
         <configfile finalname="/etc/ConfigShiro.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigShiro
         </configfile>
-        <configfile finalname="/etc/ConfigCache.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigCache
-        </configfile>
         <configfile finalname="/etc/ConfigRedis.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigRedis
         </configfile>
@@ -474,15 +471,6 @@
         </configfile>
         <configfile finalname="/etc/org.ops4j.datasource-kalix.cfg" override="true">
             mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/org.ops4j.datasource-kalix
-        </configfile>
-        <configfile finalname="/etc/ConfigApplication.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigApplication
-        </configfile>
-        <configfile finalname="/etc/ConfigModule.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigModule
-        </configfile>
-        <configfile finalname="/etc/ConfigMenu.cfg" override="true">
-            mvn:com.kalix.tools/tools-karaf-features/${project.version}/cfg/ConfigMenu
         </configfile>
     </feature>
 
