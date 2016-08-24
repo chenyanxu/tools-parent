@@ -457,9 +457,6 @@
         <configfile finalname="/etc/ConfigShiro.cfg" override="true">
             mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigShiro
         </configfile>
-        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
-            mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigMessagePool
-        </configfile>
         <configfile finalname="/etc/ConfigLogin.cfg" override="true">
             mvn:com.kalix.framework.core/framework-core-etc/${project.version}/cfg/ConfigLogin
         </configfile>
