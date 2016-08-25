@@ -7,6 +7,6 @@
 ## tools-karaf-branding
 kalix brand
 ## tools-karaf-command
-karaf自定义命令
+karaf自定义命令,refer to its readme
 ## tools-karaf-features
 kalix项目的feature文件，tools-karaf-assembly使用该文件build karaf。
