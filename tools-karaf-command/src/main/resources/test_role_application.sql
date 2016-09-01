@@ -1,0 +1,1 @@
+INSERT INTO public.sys_role_application (id, createby, creationdate, updateby, updatedate, applicationid, roleid, version_) VALUES (101, 'admin', '2016-09-01 14:36:53.906000', 'admin', '2016-09-01 14:36:53.906000', 3, 501, 1);

@@ -1,0 +1,2 @@
+--add 办公自动化角色
+INSERT INTO public.sys_role (id, createby, creationdate, updateby, updatedate, app, name, remark, version_) VALUES (501, '管理员', '2016-09-01 10:56:43.403000', '管理员', '2016-09-01 10:56:43.403000', 'oa', '办公自动化角色', '用于办公自动化的所有用户', 1);
