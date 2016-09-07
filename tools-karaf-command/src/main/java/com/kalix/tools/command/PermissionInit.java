@@ -151,25 +151,28 @@ public class PermissionInit {
         //數據格式 "新增,add;刪除,delete;修改,edit;查看,view";
         Integer btnParentId = new Integer(moduleId);
         String strBtns = menu.getButtons();
-        String[] btns = strBtns.split(";");
-        StringBuilder build=new StringBuilder();
-        for (String btn : btns) {
-            String[] values=btn.split(",");
-            String strName=values[0];
-            String strKey=values[1];
-            String btnStr = String.format(funSql, String.valueOf(++moduleId), strNow, strNow, String.valueOf(appId),
-                    strKey, "1", strName, String.valueOf(btnParentId), menu.getPermission() + ":"+strKey); // 格式化字符串
-            build.append(btnStr);
-        }
-
-        StringReader btnReader = new StringReader(build.toString());
-        try {
-            System.out.println("insert button data of " + menu.getId());
-            scriptRunner.runScript(btnReader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        StringBuilder build = null;
+        //when button value equal null it means no buttons has permission
+        if (!strBtns.equals("null")) {
+            String[] btns = strBtns.split(";");
+            build = new StringBuilder();
+            for (String btn : btns) {
+                String[] values = btn.split(",");
+                String strName = values[0];
+                String strKey = values[1];
+                String btnStr = String.format(funSql, String.valueOf(++moduleId), strNow, strNow, String.valueOf(appId),
+                        strKey, "1", strName, String.valueOf(btnParentId), menu.getPermission() + ":" + strKey); // 格式化字符串
+                build.append(btnStr);
+            }
+            StringReader btnReader = new StringReader(build.toString());
+            try {
+                System.out.println("insert button data of " + menu.getId());
+                scriptRunner.runScript(btnReader);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return moduleId;
     }
