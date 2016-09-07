@@ -9,7 +9,8 @@ import com.kalix.framework.core.web.manager.MenuManager;
 import com.kalix.framework.core.web.manager.ModuleManager;
 
 import javax.sql.DataSource;
-import java.io.*;
+import java.io.IOException;
+import java.io.StringReader;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,8 +20,8 @@ import java.util.List;
  */
 public class PermissionInit {
     private String appSql = "INSERT INTO public.sys_application " +
-            "(id, createby, creationdate, updateby, updatedate, code, location, name, remark, version_) " +
-            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '1');";
+            "(id, createby, creationdate, updateby, updatedate, code, location, name ,iconCls ,remark, version_) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '%s', '1');";
     private String appClearSql = "DELETE FROM public.sys_application;";
 
     private String funSql = "INSERT INTO public.sys_function " +
@@ -200,7 +201,7 @@ public class PermissionInit {
      * @param application
      */
     private void insertApplication(int appId, IApplication application) {
-        String str = String.format(appSql, String.valueOf(appId), strNow, strNow, application.getId(), application.getText(), application.getText()); // 格式化字符串
+        String str = String.format(appSql, String.valueOf(appId), strNow, strNow, application.getId(), application.getText(), application.getIconCls(), application.getText()); // 格式化字符串
         StringReader reader = new StringReader(str);
         try {
             System.out.println("insert application data of " + application.getId());
