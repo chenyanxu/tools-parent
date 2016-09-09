@@ -2,9 +2,9 @@
 buildName: "tools-parent"
 codeReview: false
 links:
-  Current: "http://172.30.221.109:80/kubernetes/pods?namespace=develop"
+  Current: "http://172.30.8.74:80/kubernetes/pods?namespace=develop"
   Git: "https://github.com/chenyanxu/tools-parent.git"
-  Job: "http://jenkins.apps.kalix.com/job/tools-parent"
+  Job: "http://jenkins.app.kalix.com/job/tools-parent"
 environments:
   Current: "develop"
 useLocalFlow: true
