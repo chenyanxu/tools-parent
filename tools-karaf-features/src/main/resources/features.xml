@@ -371,7 +371,6 @@
         <bundle>mvn:com.kalix.admin.audit/admin-audit-entities/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.audit/admin-audit-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.audit/admin-audit-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.admin.audit/admin-audit-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.audit/admin-audit-extjs/${parent.version}</bundle>
     </feature>
 
@@ -383,7 +382,6 @@
         <bundle>mvn:com.kalix.admin.duty/admin-duty-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.duty/admin-duty-rest/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.duty/admin-duty-extjs/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.admin.duty/admin-duty-web/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-message" version="1.0">
@@ -435,7 +433,7 @@
 
     <feature name="kalix-all" version="4.0.5">
         <feature>framework-core</feature>
-        <feature>framework-webapp</feature>
+        <!--<feature>framework-webapp</feature>-->
         <feature>framework-osgi</feature>
         <feature>admin-core</feature>
         <feature>framework-extjs</feature>
