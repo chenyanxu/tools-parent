@@ -331,7 +331,6 @@
         <bundle>mvn:com.kalix.admin.core/admin-core-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-dto/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.admin.core/admin-core-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-extjs/${parent.version}</bundle>
     </feature>
 
