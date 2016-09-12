@@ -1,3 +1,4 @@
+DELETE from public.sys_organization_user;
 INSERT INTO public.sys_organization_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, orgid, userid, version_) VALUES (1, null, null, null, null, null, null, 40810, 19, 1);
 INSERT INTO public.sys_organization_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, orgid, userid, version_) VALUES (2, null, null, null, null, null, null, 40810, 18, 1);
 INSERT INTO public.sys_organization_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, orgid, userid, version_) VALUES (3, null, null, null, null, null, null, 40810, 17, 1);

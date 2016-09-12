@@ -1,3 +1,4 @@
+DELETE FROM public.sys_organization;
 INSERT INTO public.sys_organization (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, areaid, centercode, code, dept, isleaf, name, parentid, version_) VALUES (40810, '管理员', null, '2016-02-29 13:52:29.641000', 'qwer', null, '2016-03-03 14:01:13.897000', 10, '001001', '001', false, 0, '吉林动画学院', -1, 5);
 INSERT INTO public.sys_organization (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, areaid, centercode, code, dept, isleaf, name, parentid, version_) VALUES (42110, null, null, null, null, null, null, 0, null, '001001001', true, 1, '董事长办公室 （校友会办公室）', 42011, null);
 INSERT INTO public.sys_organization (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, areaid, centercode, code, dept, isleaf, name, parentid, version_) VALUES (42114, null, null, null, null, null, null, 0, null, '001001003', true, 1, '人才培养质量监控办公室', 42011, null);

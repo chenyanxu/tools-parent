@@ -1,3 +1,4 @@
+DELETE from public.sys_duty_user;
 INSERT INTO public.sys_duty_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, dutyid, orgid, userid, version_) VALUES (45413, '管理员', null, '2016-07-26 08:46:26.119000', '管理员', null, '2016-07-26 08:46:26.119000', 43710, 42120, 43810, 1);
 INSERT INTO public.sys_duty_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, dutyid, orgid, userid, version_) VALUES (45414, '管理员', null, '2016-07-26 08:46:26.127000', '管理员', null, '2016-07-26 08:46:26.127000', 43710, 42120, 43811, 1);
 INSERT INTO public.sys_duty_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, dutyid, orgid, userid, version_) VALUES (45415, '管理员', null, '2016-07-26 08:48:40.476000', '管理员', null, '2016-07-26 08:48:40.476000', 43711, 42121, 43812, 1);
