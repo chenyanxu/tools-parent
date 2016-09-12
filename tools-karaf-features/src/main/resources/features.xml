@@ -404,6 +404,8 @@
 
     <feature name="kalix-middleware-workflow" version="1.0">
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-engine/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-entities/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-api/${parent.version}</bundle>
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-rest/${parent.version}</bundle>
