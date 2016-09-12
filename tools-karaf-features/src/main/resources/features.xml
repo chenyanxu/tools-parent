@@ -301,6 +301,7 @@
         <!--<bundle>mvn:com.kalix.framework.core/framework-core-swagger/${parent.version}</bundle>-->
         <bundle>mvn:com.kalix.framework.core/framework-core-util/${parent.version}</bundle>
         <bundle>mvn:com.kalix.framework.core/framework-core-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.framework.webapp/framework-webapp-main/${parent.version}</bundle>
     </feature>
 
     <feature name="framework-extjs" version="1.0">
