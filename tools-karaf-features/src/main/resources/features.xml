@@ -403,6 +403,15 @@
         <feature>kalix-middleware-excel</feature>
     </feature>
 
+    <feature name="admin-config">
+        <configfile finalname="/etc/ConfigAdminApp.cfg" override="true">
+            mvn:com.kalix.admin.core/admin-core-etc/${project.version}/cfg/ConfigAdminApp
+        </configfile>
+        <configfile finalname="/etc/ConfigAdminDict.cfg" override="true">
+            mvn:com.kalix.admin.core/admin-core-etc/${project.version}/cfg/ConfigAdminDict
+        </configfile>
+    </feature>
+
     <feature name="kalix-middleware-workflow" version="1.0">
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-engine/${parent.version}</bundle>
         <bundle>mvn:com.kalix.middleware.workflow/middleware-workflow-entities/${parent.version}</bundle>
@@ -444,6 +453,7 @@
         <!--<feature>kalix-demo</feature>-->
         <feature>admin-audit</feature>
         <feature>admin-duty</feature>
+        <feature>admin-config</feature>
         <!--<feature>kalix-message</feature>-->
         <feature>kalix-middleware</feature>
         <feature>kalix-config</feature>
