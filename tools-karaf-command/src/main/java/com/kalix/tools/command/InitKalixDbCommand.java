@@ -1,7 +1,6 @@
 package com.kalix.tools.command;
 
 import com.kalix.framework.core.api.web.IApplication;
-import com.kalix.framework.core.util.JNDIHelper;
 import com.kalix.framework.core.util.ScriptRunner;
 import com.kalix.framework.core.web.manager.ApplicationManager;
 import org.apache.karaf.shell.api.action.Action;
@@ -13,9 +12,7 @@ import org.apache.karaf.shell.api.action.lifecycle.Service;
 import javax.sql.DataSource;
 import java.io.*;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sunlf on 2015/12/4.
@@ -67,7 +64,7 @@ public class InitKalixDbCommand implements Action {
 
         }
         else {
-            System.out.println("错误，未发现已经启动的应用！");
+            System.out.println("error,there is no a running application！");
         }
     }
 
