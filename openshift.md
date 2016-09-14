@@ -35,4 +35,5 @@ install jenkins
     Hit '<tab>' for a list of available commands
     and '[cmd] --help' for help on a specific command.
     Hit '<ctrl-d>' or 'osgi:shutdown' to shutdown
+# testing
 
