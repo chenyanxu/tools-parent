@@ -2,9 +2,9 @@
 
 - [run examle](#run-example)
 - [install databse](#install-databse)  
-    - [install couchdb](install-couchdb)
-    - [install postgresql](install-postgresql)
-    - [install redis](install-redis)  
+    - [install couchdb](#install-couchdb)
+    - [install postgresql](#install-postgresql)
+    - [install redis](#install-redis)  
 - [install fabric](#install-fabric)       
 - [install karaf](#install-karaf) 
     - [ssh to karaf](#ssh-to-karaf) 
