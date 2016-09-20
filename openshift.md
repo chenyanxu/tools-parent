@@ -1,18 +1,36 @@
 # install openshift
-install openshift
-## run example
+
+- [run examle](#run-example)
+- [install databse](#install-databse)  
+    - [install couchdb](install-couchdb)
+    - [install postgresql](install-postgresql)
+    - [install redis](install-redis)  
+- [install fabric](#install-fabric)       
+- [install karaf](#install-karaf) 
+    - [ssh to karaf](#ssh-to-karaf) 
+# run example
+
+```bash
 $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex.git
-# install databse
+```
+
+# install databse  
+
+```bash
  oc new-project database
  oadm policy add-scc-to-user fabric8-develop -z default
+```
+
 ## install couchdb
 ## install postgresql
+```bash
   docker tag sameersbn/postgresql 172.30.14.164:5000/openshift/postgresql
-  oc new-app openshift/postgresql -e 'PG_PASSWORD=1234' -e 'DB_NAME=kalix'
+  oc new-app openshift/postgresql -e 'PG_PASSWORD=1234' -e 'DB_NAME=kalix' -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass'
   oc create -f https://github.com/chenyanxu/karaf-s2i/blob/master/postgresql/postgresql-pvc.yaml
   oc volumes dc/postgresql --add --claim-name=postgresql --mount-path=/var/lib/postgresql \ -t persistentVolumeClaim --overwrite
+```
   成功界面
-
+```bash
     Initializing datadir...
     Initializing certdir...
     Initializing logdir...
@@ -35,24 +53,30 @@ $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex
     LOG:  MultiXact member wraparound protections are now enabled
     LOG:  autovacuum launcher started
     LOG:  database system is ready to accept connections
+```
 
+* postgresql cluster  
 
-* postgresql cluster
-
-
+    ```bash  
     oc new-app openshift/postgresql-db --name postgresql-slave01 \
-      -e 'REPLICATION_MODE=slave' -e 'REPLICATION_SSLMODE=prefer' \
-      -e 'REPLICATION_HOST=postgresql-db.databse.svc.cluster.local' -e 'REPLICATION_PORT=5432'  \
-      -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass'
+          -e 'REPLICATION_MODE=slave' -e 'REPLICATION_SSLMODE=prefer' \
+      -e 'REPLICATION_HOST=postgresql-db.database.svc.cluster.local' -e 'REPLICATION_PORT=5432'  \
+      -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass' 
+    ```
 
 ## install redis
-
 # install fabric8
 install fabric8
-# install cd-pipeline
+> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/postgresql)  
+
+## install cd-pipeline
+
 install jenkins
+
 # install karaf
+
 ## ssh to karaf
+
     [root@master ~]# oc get svc
     NAME           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     tools-parent   172.30.161.85   <none>        8101/TCP,8181/TCP,8778/TCP   8h
@@ -76,5 +100,6 @@ install jenkins
     Hit '<tab>' for a list of available commands
     and '[cmd] --help' for help on a specific command.
     Hit '<ctrl-d>' or 'osgi:shutdown' to shutdown
+
 # testing
 
