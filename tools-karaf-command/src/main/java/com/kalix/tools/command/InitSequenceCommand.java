@@ -5,7 +5,6 @@ import org.apache.karaf.shell.api.action.Command;
 import org.apache.karaf.shell.api.action.lifecycle.Service;
 
 import javax.sql.DataSource;
-import java.io.*;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import java.util.Arrays;
 
 /**
  * Created by sunlf on 2015/12/4.
- * 运行特定的sql脚本，通过参数指定脚本名称
+ * 通过查找初始化的表的最大id设置openjpaseq表的最大id值
  */
 @Command(scope = "kalix", name = "init-sequence", description = "init openjpaseq table")
 @Service
@@ -66,6 +65,8 @@ public class InitSequenceCommand implements Action {
         Arrays.sort(idsSort);
         //update the sequence table
         statement.execute("UPDATE openjpaseq set sequence_value="+idsSort[ids.size()-1].toString());
+
+        System.out.println("succeed to set openjpa sequence value to " + idsSort[ids.size() - 1].toString());
 
         return null;
     }
