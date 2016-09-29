@@ -65,7 +65,13 @@ $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex
       -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass' 
     ```
 
-## install redis 
+## install redis
+
+## install oracle
+
+oc new-app sath89/oracle-xe-11g --name=oracle
+
+refer https://github.com/MaksymBilenko/docker-oracle-xe-11g
 
 # install fabric8
 install fabric8
