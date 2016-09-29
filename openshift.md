@@ -121,6 +121,12 @@ docker push 172.30.97.105:5000/openshift/apiman
 oc new-app openshift/apiman
 ```
 
+# install karaf release
+
+```bash
+    oc new-app --strategy=source openshift/s2i-karaf~https://github.com/chenyanxu/tools-parent.git --context-dir=tools-karaf-assembly -e 'MAVEN_ARGS=mvn clean install karaf:assembly karaf:archive' --name=karaf-release
+```
+
 > **Note**: 
   > **create router http://apiman.kalix.vagrant.f8/**
   > access http://apiman.kalix.vagrant.f8/apimanui and input user:admin password:admin123!
