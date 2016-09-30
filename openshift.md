@@ -125,3 +125,17 @@ oc new-app openshift/apiman
   > **create router http://apiman.kalix.vagrant.f8/**
   > access http://apiman.kalix.vagrant.f8/apimanui and input user:admin password:admin123!
   > access http://apiman.kalix.vagrant.f8/auth/admin to access 
+  
+# backup and restore of postgresql
+
+```bash
+
+Backup your databases
+
+docker exec -t your-db-container pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+
+Restore your databases
+
+cat your_dump.sql | docker exec -i your-db-container psql -U postgres
+
+```
