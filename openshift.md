@@ -89,6 +89,7 @@ install jenkins
 ### note
 
   https://github.com/openshift/origin/issues/11170
+  https://docs.openshift.org/latest/install_config/configuring_pipeline_execution.html
 
 # install karaf
 
