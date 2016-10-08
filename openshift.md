@@ -81,6 +81,15 @@ install fabric8
 
 install jenkins
 
+### example of jenkins
+
+  https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline
+  https://github.com/OpenShiftDemos/openshift-cd-demo
+
+### note
+
+  https://github.com/openshift/origin/issues/11170
+
 # install karaf
 
 ## ssh to karaf
