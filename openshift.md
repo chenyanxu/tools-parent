@@ -65,7 +65,13 @@ $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex
       -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass' 
     ```
 
-## install redis 
+## install redis
+
+## install oracle
+
+oc new-app sath89/oracle-xe-11g --name=oracle
+
+refer https://github.com/MaksymBilenko/docker-oracle-xe-11g
 
 # install fabric8
 install fabric8
@@ -74,6 +80,15 @@ install fabric8
 ## install cd-pipeline
 
 install jenkins
+
+### example of jenkins
+
+  https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline
+  https://github.com/OpenShiftDemos/openshift-cd-demo
+
+### note
+
+  https://github.com/openshift/origin/issues/11170
 
 # install karaf
 
