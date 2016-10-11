@@ -254,25 +254,25 @@
         <bundle>wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1</bundle>
     </feature>
 
-    <feature name="jpa" description="OSGi Persistence Container" version="2.2.0">
+    <!--<feature name="jpa" description="OSGi Persistence Container" version="2.3.0">
         <details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine, you have to install one by yourself (OpenJPA for instance)</details>
         <feature version="[1.1,2)" prerequisite="false" dependency="false">transaction-api</feature>
-        <feature version="[2.0.0,2.2.0)" prerequisite="false" dependency="false">persistence-api</feature>
-        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.2.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.2.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.2.0</bundle>
+        &lt;!&ndash;<feature version="[2.0.0,2.2.0)" prerequisite="false" dependency="false">persistence-api</feature>&ndash;&gt;
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.2</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.3.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.3.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.3.0</bundle>
         <conditional>
             <condition>aries-blueprint</condition>
-            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.2.0</bundle>
+            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.3.0</bundle>
         </conditional>
-    </feature>
+    </feature>-->
 
     <feature name="openjpa" description="Apache OpenJPA 2.4.x persistence engine support" version="${openjpa.version}">
         <details>Enable Apache OpenJPA as persistence engine.</details>
         <feature prerequisite="false" dependency="false">jndi</feature>
         <feature version="[1.2,1.3)" prerequisite="false" dependency="false">transaction-api</feature>
-        <feature version="[2.0.0,2.1.0)" prerequisite="false" dependency="false">persistence-api</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.0_spec/1.1.1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_2.5_spec/1.2</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-el_1.0_spec/1.0.1</bundle>
