@@ -65,7 +65,13 @@ $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex
       -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass' 
     ```
 
-## install redis 
+## install redis
+
+## install oracle
+
+oc new-app sath89/oracle-xe-11g --name=oracle
+
+refer https://github.com/MaksymBilenko/docker-oracle-xe-11g
 
 # install fabric8
 install fabric8
@@ -74,6 +80,16 @@ install fabric8
 ## install cd-pipeline
 
 install jenkins
+
+### example of jenkins
+
+  https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline
+  https://github.com/OpenShiftDemos/openshift-cd-demo
+
+### note
+
+  https://github.com/openshift/origin/issues/11170
+  https://docs.openshift.org/latest/install_config/configuring_pipeline_execution.html
 
 # install karaf
 
@@ -115,7 +131,27 @@ docker push 172.30.97.105:5000/openshift/apiman
 oc new-app openshift/apiman
 ```
 
+# install karaf release
+
+```bash
+    oc new-app --strategy=source openshift/s2i-karaf~https://github.com/chenyanxu/tools-parent.git --context-dir=tools-karaf-assembly -e 'MAVEN_ARGS=mvn clean install karaf:assembly karaf:archive' --name=karaf-release
+```
+
 > **Note**: 
   > **create router http://apiman.kalix.vagrant.f8/**
   > access http://apiman.kalix.vagrant.f8/apimanui and input user:admin password:admin123!
   > access http://apiman.kalix.vagrant.f8/auth/admin to access 
+  
+# backup and restore of postgresql
+
+```bash
+
+Backup your databases
+
+docker exec -t your-db-container pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+
+Restore your databases
+
+cat your_dump.sql | docker exec -i your-db-container psql -U postgres
+
+```
