@@ -327,13 +327,13 @@
     <feature name="admin-core" version="1.0">
         <!--<feature>framework-core</feature>-->
         <bundle>mvn:com.kalix.admin.core/admin-core-entities/${parent.version}</bundle>
-        <!--<bundle>mvn:com.kalix.admin.core/admin-core-dto/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.admin.core/admin-core-dto/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-api/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-rest/${parent.version}</bundle>
         <bundle>mvn:com.kalix.admin.core/admin-core-extjs/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.admin.core/admin-core-etc/${parent.version}</bundle>-->
+        <bundle>mvn:com.kalix.admin.core/admin-core-etc/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-demo" version="1.0">
