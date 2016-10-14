@@ -21,9 +21,9 @@
         <!--<openjpa.version>2.4.0.Release</openjpa.version>-->
         <geronimoJpaSpec.version>1.1</geronimoJpaSpec.version>
         <geronimoJtaSpec.version>1.1.1</geronimoJtaSpec.version>
-        <commonsCollections.version>3.2.1</commonsCollections.version>
-        <commonsLang.version>2.5</commonsLang.version>
-        <commonsPool.version>1.5.4</commonsPool.version>
+        <commonsCollections.version>3.2.2</commonsCollections.version>
+        <commonsLang.version>2.6</commonsLang.version>
+        <commonsPool.version>1.6</commonsPool.version>
         <serp.version>1.13.1</serp.version>
         <log4j.version>1.2.17</log4j.version>
         <geronimo.inject.version>1.2</geronimo.inject.version>
@@ -31,7 +31,7 @@
         <!--<cglib.version>2.2.2_1</cglib.version>-->
         <cglib.version>3.2.1_1</cglib.version>
         <aopalliance.version>1.0_6</aopalliance.version>
-        <shiro.version>1.2.4</shiro.version>
+        <shiro.version>1.3.2</shiro.version>
         <jsr339.version>2.2.0</jsr339.version>
         <ognl.version>3.0.6_1</ognl.version>
         <javassist.version>3.12.1.GA_3</javassist.version>
@@ -40,7 +40,7 @@
         <!--<camel.version>2.16.2</camel.version>-->
         <camel.version>2.18.0</camel.version>
         <activemq.version>5.13.0</activemq.version>
-        <guava.version>15.0</guava.version>
+        <guava.version>18.0</guava.version>
         <jedis.version>2.6.2_1</jedis.version>
         <org.apache.servicemix.bundles.jedis.version>2.6.2_1</org.apache.servicemix.bundles.jedis.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
@@ -49,7 +49,7 @@
         <pax-cdi-api.version>0.11.0</pax-cdi-api.version>
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
         <!--<jackson2-version>2.6.3</jackson2-version>-->
-        <jackson2-version>2.7.2</jackson2-version>
+        <jackson2-version>2.8.3</jackson2-version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <hibernate.jpa21.version>1.0.0.Final</hibernate.jpa21.version>
         <hibernate.jpamodelgen.version>1.3.0.Final</hibernate.jpamodelgen.version>
@@ -128,6 +128,11 @@
                                     <file>target/classes/org.ops4j.datasource-kalix.cfg</file>
                                     <type>cfg</type>
                                     <classifier>org.ops4j.datasource-kalix</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigWebContext.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigWebContext</classifier>
                                 </artifact>
                             </artifacts>
                         </configuration>
