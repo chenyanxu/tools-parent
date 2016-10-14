@@ -23,7 +23,7 @@
         <geronimoJtaSpec.version>1.1.1</geronimoJtaSpec.version>
         <commonsCollections.version>3.2.2</commonsCollections.version>
         <commonsLang.version>2.6</commonsLang.version>
-        <commonsPool.version>1.6.0</commonsPool.version>
+        <commonsPool.version>1.6</commonsPool.version>
         <serp.version>1.13.1</serp.version>
         <log4j.version>1.2.17</log4j.version>
         <geronimo.inject.version>1.2</geronimo.inject.version>
