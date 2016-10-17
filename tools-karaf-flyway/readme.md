@@ -1,29 +1,18 @@
-# tools-karaf-command
-## 自定义karaf command
-  需要注意osgi.bnd文件中的 Karaf-Commands: *，只有加入这行，command才可以起作用。
+# tools-karaf-flyway
+本模块用于数据库的版本升级以及维护
+## 默认设置baseline为1，执行成功后，数据库schema_version表的数据为：
 
-## 本模块用于扩展karaf的命令
-  目前实现了数据库的初始化功能。
+```
+1	1	<< Flyway Baseline >>	BASELINE	<< Flyway Baseline >>		postgres	2016-10-17 21:28:37.512	0	t
+2	2	init	SQL	V2__init.sql	-963441802	postgres	2016-10-17 21:28:37.604	19	t
+3	2.1	add person	SQL	V2_1__add_person.sql	1218304230	postgres	2016-10-17 21:28:37.639	5	t
+```
 
-## debug maven plugin
-  http://blog.csdn.net/mn960mn/article/details/48417207
-## 实现逻辑
-* sql语句通过ide的Database工具倒出
-* 在resources下建立对应app名字的.list文件，在文件中加入需要初始化的sql语句
-  * 例如对应admin应用建立admin.list文件
-  * 如果想初始化组织结构，在admin.list文件中加入kalix_public_sys_organization.sql
-## 实现的karaf命令
-* kalix:list
-  * 列出当前目录下全部的sql文件
-* kalix:run
-  * 运行特定的sql文件，注意需要去掉.sql后缀
-* kalix:init-db
-  * 根据.list文件，执行相应的sql文件
-* kalix:permit
-  * 实现了admin的初始化
-    * 插入admin用户
-    * 插入"超级管理员"角色
-    * 授权admin用户"超级管理员"角色
-    * 初始化组织结构表
-    * 初始化职务表duty
-    * 分配admin用户组织结构id为1
+## 版本号规则
+
+SQL 脚本文件及Java 代码类名必须遵循以下命名规则：V<version>[_<SEQ>][__description] 。版本号的数字间以小数点（. ）或下划线（_ ）分隔开，版本号与描述间以连续的两个下划线（__ ）分隔开。如V1_1_0__Update.sql 。Java 类名规约不允许存在小数点，所以Java 类名中版本号的数字间只能以下划线进行分隔。
+
+## 测试代码
+
+* V2__init.sql
+* V2_1__add_person.sql

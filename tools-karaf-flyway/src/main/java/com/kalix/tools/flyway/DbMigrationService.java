@@ -13,8 +13,8 @@ public class DbMigrationService {
         ClassLoader thisClassLoader = this.getClass().getClassLoader();
         getFlyway().setDataSource(datasource);
         getFlyway().setClassLoader(thisClassLoader);
-
         flyway.setBaselineOnMigrate(true);
+//        flyway.setBaselineVersionAsString("0");
         getFlyway().migrate();
     }
 
