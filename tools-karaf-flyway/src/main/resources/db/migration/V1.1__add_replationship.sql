@@ -1,0 +1,1 @@
+ALTER TABLE sprints ADD report_id INT;

@@ -20,6 +20,7 @@
         <module>tools-karaf-command</module>
         <module>tools-karaf-features</module>
         <module>tools-karaf-assembly</module>
+        <module>tools-karaf-flyway</module>
         <!--<module>webconsole</module>-->
     </modules>
 

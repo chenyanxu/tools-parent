@@ -459,6 +459,7 @@
         <!--<feature>kalix-message</feature>-->
         <feature>kalix-middleware</feature>
         <bundle>mvn:com.kalix.tools/tools-karaf-command/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.tools/tools-karaf-flyway/${parent.version}</bundle>
     </feature>
     <!-- kalix config files -->
     <feature name="kalix-config">
@@ -515,6 +516,7 @@
         <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:org.apache.shiro/shiro-web/${shiro.version}</bundle>
         <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
+        <bundle dependency="true">mvn:org.flywaydb/flyway-core/4.0.3</bundle>
     </feature>
 
 
