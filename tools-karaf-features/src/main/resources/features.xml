@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--repo-add mvn:com.kalix.kalix.poms/tools-karaf-features/1.0.0-SNAPSHOT/xml/features-->
-<!--feature:install kalix-->
+<!--repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features-->
+<!--feature:install kalix-base-->
 <!--feature:install activiti-->
 <!--feature:install couchdb-->
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="kalix-1.0.0">
