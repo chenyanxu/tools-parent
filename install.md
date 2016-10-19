@@ -74,7 +74,7 @@
 
 * **下载工程文件**
 
-```
+```bash
    git clone https://github.com/chenyanxu/tools-parent.git
    cd tools-parent.git
    cp install.bat D:\java-develop\project
@@ -93,7 +93,7 @@
 
   执行D:\java-develop\tools\apache-karaf-4.0.7\bin\karaf.bat。显示如下：
 
-```
+```bash
         __ __                  ____      
        / //_/____ __________ _/ __/      
       / ,<  / __ `/ ___/ __ `/ /_        
@@ -113,7 +113,7 @@ karaf@root()>
 
   karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 
-```
+```bash
 karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 ```
@@ -122,7 +122,7 @@ Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/f
 
   安装完成后，输入 la
 
-```
+```bash
 204 | Active   |  30 | 4.3.0                 | OPS4J Pax Web - Service SPI
 205 | Active   |  80 | 1.0.0.201505202023    | org.osgi:org.osgi.service.jdbc
 206 | Active   |  80 | 1.0.0.201505202024    | org.osgi:org.osgi.service.jpa
@@ -139,7 +139,7 @@ karaf@root()>
 
 * **发布工程文件到karaf**
 
-```
+```bash
    cd D:\java-develop\project
    build.bat
 ```
