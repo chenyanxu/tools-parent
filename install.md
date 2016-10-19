@@ -1,7 +1,9 @@
 # kalix 安装文档
 
 ## 说明
-本文详细的描述了kalix项目的安装使用过程，如果在安装过程中出现任何问题，请联系QQ：1907310
+
+本文详细的描述了kalix项目的开发环境的搭建过程，如果在安装过程中出现任何问题，请联系QQ：1907310。
+
 目标使用环境：windows。
 
 ## 安装前提条件
@@ -44,7 +46,7 @@
   
   说明：对象关系型数据库管理系统（ORDBMS）,用于数据库存储。
   
-  备注：默认用户名：admin，密码：1234。
+  备注：需要新建数据库kalix，默认用户名：postgres，密码：1234。
   
 5. **Redis**
 
@@ -67,3 +69,89 @@
   说明：CouchDB是一个面向文档的数据库，在它里面所有文档域（Field）都是以键值对的形式存储的。用于存储附件、图片等。
   
   备注：默认用户名：admin，密码：123456，可以访问 http://localhost:5984/_utils 地址新建数据库kalix。
+
+## 安装过程
+
+1. **下载工程文件**
+
+```
+   git clone https://github.com/chenyanxu/tools-parent.git
+   cd tools-parent.git
+   cp install.bat D:\java-develop\project
+   cp build.bat D:\java-develop\project
+   cd D:\java-develop\project
+   install.bat
+```
+
+此时将会自动下载工程文件，并进行构建。
+
+2. **运行karaf**
+
+删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
+
+删除D:\java-develop\tools\apache-karaf-4.0.7\deploy下所有的文件
+
+执行D:\java-develop\tools\apache-karaf-4.0.7\bin\karaf.bat。显示如下：
+
+```
+        __ __                  ____      
+       / //_/____ __________ _/ __/      
+      / ,<  / __ `/ ___/ __ `/ /_        
+     / /| |/ /_/ / /  / /_/ / __/        
+    /_/ |_|\__,_/_/   \__,_/_/         
+
+  Apache Karaf (4.0.7)
+
+Hit '<tab>' for a list of available commands
+and '[cmd] --help' for help on a specific command.
+Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown Karaf.
+
+karaf@root()>
+```
+
+3. **安装karaf feature**
+
+karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+
+```
+karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+```
+
+karaf命令提示符下，输入 feature:install -v kalix-base activiti couchdb 
+
+安装完成后，输入 la
+
+```
+204 | Active   |  30 | 4.3.0                 | OPS4J Pax Web - Service SPI
+205 | Active   |  80 | 1.0.0.201505202023    | org.osgi:org.osgi.service.jdbc
+206 | Active   |  80 | 1.0.0.201505202024    | org.osgi:org.osgi.service.jpa
+207 | Active   |  80 | 9.4.0.build-1202      | PostgreSQL JDBC Driver JDBC41
+208 | Active   |  50 | 1.17.0                | SnakeYAML
+209 | Active   |  10 | 3.1.4                 | Stax2 API
+210 | Active   |  10 | 4.4.1                 | Woodstox XML-processor
+211 | Active   |  80 | 0                     | wrap_file__C__Users_admin_.m2_repository_de_danielbechler_java-object-diff_0.92.1_java-object-diff-0.92.1.jar
+212 | Active   |  50 | 0                     | wrap_file__C__Users_admin_.m2_repository_io_swagger_swagger-parser_1.0.22_swagger-parser-1.0.22.jar
+karaf@root()>
+```
+
+此时karaf的运行环境已经安装成功了。
+
+3. **发布工程文件到karaf**
+
+```
+   cd D:\java-develop\project
+   build.bat
+```
+
+4. **安装数据库初始化数据**
+
+karaf命令提示符下，输入 kalix:init-db
+
+5. **安装权限初始化数据**
+
+karaf命令提示符下，输入 kalix:permit
+
+6. **访问kalix网站**
+
+访问 http://localhost:8181 
