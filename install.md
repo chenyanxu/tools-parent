@@ -108,10 +108,8 @@
 
 ### 运行karaf
 
-* 删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
-
+1. 删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
 * 删除D:\java-develop\tools\apache-karaf-4.0.7\deploy下所有的文件
-
 * 执行D:\java-develop\tools\apache-karaf-4.0.7\bin\karaf.bat。显示如下：
 
 ```bash
