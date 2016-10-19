@@ -83,15 +83,15 @@
    install.bat
 ```
 
-此时将会自动下载工程文件，并进行构建。
+  此时将会自动下载工程文件，并进行构建。
 
 2. **运行karaf**
 
-删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
+  删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
 
-删除D:\java-develop\tools\apache-karaf-4.0.7\deploy下所有的文件
+  删除D:\java-develop\tools\apache-karaf-4.0.7\deploy下所有的文件
 
-执行D:\java-develop\tools\apache-karaf-4.0.7\bin\karaf.bat。显示如下：
+  执行D:\java-develop\tools\apache-karaf-4.0.7\bin\karaf.bat。显示如下：
 
 ```
         __ __                  ____      
@@ -111,16 +111,16 @@ karaf@root()>
 
 3. **安装karaf feature**
 
-karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+  karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 
 ```
 karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 ```
 
-karaf命令提示符下，输入 feature:install -v kalix-base activiti couchdb 
+  karaf命令提示符下，输入 feature:install -v kalix-base activiti couchdb 
 
-安装完成后，输入 la
+  安装完成后，输入 la
 
 ```
 204 | Active   |  30 | 4.3.0                 | OPS4J Pax Web - Service SPI
@@ -135,7 +135,7 @@ karaf命令提示符下，输入 feature:install -v kalix-base activiti couchdb
 karaf@root()>
 ```
 
-此时karaf的运行环境已经安装成功了。
+  此时karaf的运行环境已经安装成功了。
 
 3. **发布工程文件到karaf**
 
@@ -146,12 +146,12 @@ karaf@root()>
 
 4. **安装数据库初始化数据**
 
-karaf命令提示符下，输入 kalix:init-db
+  karaf命令提示符下，输入 kalix:init-db
 
 5. **安装权限初始化数据**
 
-karaf命令提示符下，输入 kalix:permit
+  karaf命令提示符下，输入 kalix:permit
 
 6. **访问kalix网站**
 
-访问 http://localhost:8181 
+  访问 http://localhost:8181 
