@@ -72,7 +72,7 @@
 
 ## 安装过程
 
-1. **下载工程文件**
+* **下载工程文件**
 
 ```
    git clone https://github.com/chenyanxu/tools-parent.git
@@ -85,7 +85,7 @@
 
   此时将会自动下载工程文件，并进行构建。
 
-2. **运行karaf**
+* **运行karaf**
 
   删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
 
@@ -109,7 +109,7 @@ Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown Karaf.
 karaf@root()>
 ```
 
-3. **安装karaf feature**
+* **安装karaf feature**
 
   karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 
@@ -137,21 +137,21 @@ karaf@root()>
 
   此时karaf的运行环境已经安装成功了。
 
-3. **发布工程文件到karaf**
+* **发布工程文件到karaf**
 
 ```
    cd D:\java-develop\project
    build.bat
 ```
 
-4. **安装数据库初始化数据**
+* **安装数据库初始化数据**
 
   karaf命令提示符下，输入 kalix:init-db
 
-5. **安装权限初始化数据**
+* **安装权限初始化数据**
 
   karaf命令提示符下，输入 kalix:permit
 
-6. **访问kalix网站**
+* **访问kalix网站**
 
   访问 http://localhost:8181 
