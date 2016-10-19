@@ -1,5 +1,26 @@
 # kalix 安装文档
 
+- [说明](##说明)
+- [安装前提条件](##安装前提条件)
+    - [新建工程目录](###新建工程目录)
+    - [新建osgi运行目录](###新建osgi运行目录) 
+- [提前预装软件](##提前预装软件)
+    - [jdk](###jdk)
+    - [Maven](###Maven)
+    - [Karaf](###Karaf)
+    - [PostgreSQL](###PostgreSQL)
+    - [Redis](###Redis)
+    - [Git](###Git)
+    - [CouchDB](###CouchDB)
+- [安装过程](##安装过程)
+    - [下载工程文件](###下载工程文件)
+    - [运行karaf](###运行karaf)
+    - [安装karaf feature](###安装karaffeature)
+    - [发布工程文件到karaf](###发布工程文件到karaf)
+    - [初始化数据](###初始化数据)
+    - [访问kalix网站](###访问kalix网站)   
+
+
 ## 说明
 
 本文详细的描述了kalix项目的开发环境的搭建过程，如果在安装过程中出现任何问题，请联系QQ：1907310。
@@ -8,25 +29,23 @@
 
 ## 安装前提条件
 
-## 文件目录
-
-1. 新建工程目录
+### 新建工程目录
 
 创建 D:\java-develop\project ，用于存储项目工程的根目录。
 
-2. 新建osgi运行目录
+### 新建osgi运行目录
 
 创建 D:\java-develop\tools ，用于存储karaf根目录。
 
 ## 提前预装软件
 
-1. **jdk**
+### jdk
 
 版本：jdk-8u66-windows-x64
   
 备注：需要配置JAVA_HOME环境变量。
   
-2. **Maven**
+### Maven
 
 版本：apache-maven-3.3.9
   
@@ -34,7 +53,7 @@
   
 备注：需要配置M2_HOME环境变量，并需要配置svn.exe文件到系统path环境变量中。
   
-3. **Karaf**
+### Karaf
 
 版本： [apache-karaf-4.0.7](http://karaf.apache.org)
   
@@ -42,7 +61,7 @@
   
 备注：需要解包到D:\java-develop\tools\apache-karaf-4.0.7。
   
-4. **PostgreSQL**
+### PostgreSQL
 
 版本：postgresql-9.4.4-3-windows-x64
   
@@ -50,13 +69,13 @@
   
 备注：需要新建数据库kalix，默认用户名：postgres，密码：1234。
   
-5. **Redis**
+### Redis
 
 版本：Redis-x64-2.8.21
   
 说明：Redis是一个开源的、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。用于cache。
   
-6. **Git**
+### Git
 
 版本：git-1.9.2
   
@@ -64,7 +83,7 @@
   
 备注：需要配置git.exe文件到系统path环境变量中。
   
-7. **CouchDB**
+### CouchDB
 
 版本： [couchdb-1.6.1_R16B02](http://couchdb.apache.org)
   
@@ -74,7 +93,7 @@
 
 ## 安装过程
 
-* **下载工程文件**
+### 下载工程文件
 
 ```bash
    git clone https://github.com/chenyanxu/tools-parent.git
@@ -87,7 +106,7 @@
 
 此时单独将会自动下载工程文件，并进行构建。
 
-* **运行karaf**
+### 运行karaf
 
 删除D:\java-develop\tools\apache-karaf-4.0.7\data目录
 
@@ -111,7 +130,7 @@ Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown Karaf.
 karaf@root()>
 ```
 
-* **安装karaf feature**
+### 安装karaf feature
 
 karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 
@@ -139,21 +158,19 @@ karaf@root()>
 
 此时karaf的运行环境已经安装成功了。
 
-* **发布工程文件到karaf**
+### 发布工程文件到karaf
 
 ```bash
    cd D:\java-develop\project
    build.bat
 ```
 
-* **安装数据库初始化数据**
+### 初始化数据
 
-karaf命令提示符下，输入 kalix:init-db
+* karaf命令提示符下，输入 kalix:init-db
 
-* **安装权限初始化数据**
+* 安装权限初始化数据,karaf命令提示符下，输入 kalix:permit
 
-karaf命令提示符下，输入 kalix:permit
-
-* **访问kalix网站**
+### 访问kalix网站
 
 访问 http://localhost:8181 
