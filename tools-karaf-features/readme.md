@@ -41,8 +41,8 @@ add following maven:
 
 安装开发环境
 1.删除karaf目录下的data目录,然后删除deploy目录下的全部jar包
-2.重启karaf后，命令行输入feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
-3.输入feature:install -v kalix-base activiti couchdb，此时开发环境以及安装成功
+2.重启karaf后，命令行输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+3.输入 feature:install -v kalix-base activiti couchdb，此时开发环境以及安装成功
 4.在idea环境下运行install，如果看到下面的画面，就说明安装成功！
 
     ********************************************************************
