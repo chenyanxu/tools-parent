@@ -48,6 +48,7 @@
 > 数据源配置文件：org.ops4j.datasource-kalix.cfg,文件位于：
 D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org.ops4j.datasource-kalix.cfg，
 配置文件命名必须以org.ops4j.datasource-XXX.cfg格式。
+
 ```bash
     osgi.jdbc.driver.name=PostgreSQL JDBC Driver-pool-xa
     serverName=postgresql-db.database.svc.cluster.local
@@ -57,6 +58,7 @@ D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org
     password=1234
     dataSourceName=jdbc/ds
 ```
+
 ### 查看datasource安装是否成功
 ```bash
     karaf@root()> service:list javax.sql.DataSource
@@ -91,4 +93,31 @@ D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org
     feature:install webconsole
 ```
 
-## jndi
+## [JNDI Service](http://aries.apache.org/modules/jndiproject.html)
+### install
+
+```bash
+    feature:install jndi
+```
+
+### 说明
+>  在osgi注册的每个osgi service都会自动注册一个jndi名字，这样就可以通过jndi获得osgi service。
+
+### 示例
+> framework-core-util中JNDIHelper类封装了利用jndi服务使用osgi service的方法
+```java
+public static final <T> T getJNDIServiceForName(String serviceName) throws IOException {
+        try {
+            InitialContext ic = new InitialContext();
+
+            return (T) ic.lookup("osgi:service/" + serviceName);
+        } catch (NamingException e) {
+            e.printStackTrace();
+            IOException ioe = new IOException("service resolution failed");
+            ioe.initCause(e);
+            throw ioe;
+        }
+    }
+```
+## karaf 参考资料
+* [Karaf Tutorials](http://liquid-reality.de/display/liquid/Karaf+Tutorials)
