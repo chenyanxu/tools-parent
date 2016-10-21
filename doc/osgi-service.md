@@ -40,8 +40,8 @@
 ### install
 
 ```bash
-    feature:repo-add mvn:org.ops4j.pax.jdbc/pax-jdbc-features/0.9.0/xml/features
-    feature:install pax-jdbc-postgresql pax-jdbc-config
+    karaf@root()> feature:repo-add mvn:org.ops4j.pax.jdbc/pax-jdbc-features/0.9.0/xml/features
+    karaf@root()> feature:install pax-jdbc-postgresql pax-jdbc-config
 ```
 
 ### postgresql datasource
@@ -90,34 +90,30 @@ D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org
 ### install
 
 ```bash
-    feature:install webconsole
+    karaf@root()> feature:install webconsole
 ```
 
 ## [JNDI Service](http://aries.apache.org/modules/jndiproject.html)
 ### install
 
 ```bash
-    feature:install jndi
+    karaf@root()> feature:install jndi
 ```
 
 ### 说明
 >  在osgi注册的每个osgi service都会自动注册一个jndi名字，这样就可以通过jndi获得osgi service。
 
+> The osgi:service lookup scheme is defined by the JNDI Service Specification and follows the scheme:
+
+```
+    osgi:service/<interface>[/<filter>]
+```
+
 ### 示例
 > framework-core-util中JNDIHelper类封装了利用jndi服务使用osgi service的方法
 ```java
-public static final <T> T getJNDIServiceForName(String serviceName) throws IOException {
-        try {
-            InitialContext ic = new InitialContext();
-
-            return (T) ic.lookup("osgi:service/" + serviceName);
-        } catch (NamingException e) {
-            e.printStackTrace();
-            IOException ioe = new IOException("service resolution failed");
-            ioe.initCause(e);
-            throw ioe;
-        }
-    }
+public static final <T> T getJNDIServiceForName(String serviceName) throws IOException
+public static final <T> T getJNDIServiceForName(String serviceName, String filter) throws IOException
 ```
 ## karaf 参考资料
 * [Karaf Tutorials](http://liquid-reality.de/display/liquid/Karaf+Tutorials)
