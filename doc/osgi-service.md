@@ -35,7 +35,8 @@
 * Knopflerfish Log service support.
 * Tomcat Juli API support.
 
-## [Pax Web Service](https://ops4j1.jira.com/wiki/display/paxweb/Pax+Web)
+## Pax Web Service
+> [Pax Web Service](https://ops4j1.jira.com/wiki/display/paxweb/Pax+Web)
 > pax 4.0 支持
 * Servlet 3.0
 * JSP 2.0
