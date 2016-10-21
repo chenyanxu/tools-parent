@@ -165,9 +165,14 @@ karaf@root()>
 
 ### 初始化数据
 
-* karaf命令提示符下，输入 kalix:init-db
-
-* 安装权限初始化数据,karaf命令提示符下，输入 kalix:permit
+> 初始化数据库的用户，权限以及组织机构
+```bash
+    karaf@root()> kalix:init-db
+```
+> 安装权限初始化数据
+```bash
+    karaf@root()> kalix:permit
+```
 
 ### 访问kalix网站
 
