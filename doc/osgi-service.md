@@ -3,14 +3,14 @@
 > 本文对kalix中使用到的OSGI的系统服务，进行了说明，并具体举例如何在kalix中使用这些服务。
 开发人员可以参考本文。
 
-- [Apache Felix Configuration Admin Service](#Apache-Felix-Configuration-Admin-Service)
-- [Apache Felix Preferences Service](#Apache-Felix-Preferences-Service)
-- [Apache Felix Event Admin](#Apache-Felix-Event-Admin)
-- [Pax Logging Service](#Pax-Logging-Service)
-- [Pax Web Service](#Pax-Web-Service)
-- [Pax jdbc](#Pax-jdbc)
-- [Felix Web Console](#Felix-Web-Console)
-- [JNDI Service](#JNDI-Service)
+- [Apache Felix Configuration Admin Service](#apache-felix-configuration-admin-service)
+- [Apache Felix Preferences Service](#apache-felix-preferences-service)
+- [Apache Felix Event Admin](#apache-felix-event-admin)
+- [Pax Logging Service](#pax-logging-service)
+- [Pax Web Service](#pax-web-service)
+- [Pax jdbc](#pax-jdbc)
+- [Felix Web Console](#felix-web-console)
+- [JNDI Service](#jndi-service)
 - [karaf 参考资料](#karaf-参考资料)
 
 ## [Apache Felix Configuration Admin Service](http://felix.apache.org/documentation/subprojects/apache-felix-config-admin.html)
@@ -35,8 +35,7 @@
 * Knopflerfish Log service support.
 * Tomcat Juli API support.
 
-## Pax Web Service
-> [Pax Web Service](https://ops4j1.jira.com/wiki/display/paxweb/Pax+Web)
+## [Pax Web Service](https://ops4j1.jira.com/wiki/display/paxweb/Pax+Web)
 > pax 4.0 支持
 * Servlet 3.0
 * JSP 2.0
