@@ -3,6 +3,16 @@
 > 本文对kalix中使用到的OSGI的系统服务，进行了说明，并具体举例如何在kalix中使用这些服务。
 开发人员可以参考本文。
 
+- [Apache Felix Configuration Admin Service](#Apache-Felix-Configuration-Admin-Service)
+- [Apache Felix Preferences Service](#Apache-Felix-Preferences-Service)
+- [Apache Felix Event Admin](#Apache-Felix-Event-Admin)
+- [Pax Logging Service](#Pax-Logging-Service)
+- [Pax Web Service](#Pax-Web-Service)
+- [Pax jdbc](#Pax-jdbc)
+- [Felix Web Console](#Felix-Web-Console)
+- [JNDI Service](#JNDI-Service)
+- [karaf 参考资料](#karaf-参考资料)
+
 ## [Apache Felix Configuration Admin Service](http://felix.apache.org/documentation/subprojects/apache-felix-config-admin.html)
 
 > OSGi的配置管理：简称ConfigAdmin
@@ -109,7 +119,7 @@ D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org
     osgi:service/<interface>[/<filter>]
 ```
 
-### 示例
+### Kalix 示例
 > framework-core-util中JNDIHelper类封装了利用jndi服务使用osgi service的方法
 ```java
 public static final <T> T getJNDIServiceForName(String serviceName) throws IOException
