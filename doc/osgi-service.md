@@ -125,5 +125,6 @@ D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org
 public static final <T> T getJNDIServiceForName(String serviceName) throws IOException
 public static final <T> T getJNDIServiceForName(String serviceName, String filter) throws IOException
 ```
+
 ## karaf 参考资料
 * [Karaf Tutorials](http://liquid-reality.de/display/liquid/Karaf+Tutorials)
