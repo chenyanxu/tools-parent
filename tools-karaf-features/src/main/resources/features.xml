@@ -284,18 +284,19 @@
     </feature>
 
     <feature name="framework-core" version="1.0">
-        <bundle>mvn:com.kalix.framework.core/framework-core-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-cache/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-delegate/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-util/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-api/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-cache/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-delegate/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/framework-core-etc/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-impl/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-mq/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-rest/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-impl/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-mq/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-rest/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/core-restfultest/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-security/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-security-authc/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-security/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-security-authc/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/framework-core-swagger/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-util/${parent.version}</bundle>
+
         <bundle>mvn:com.kalix.framework.core/framework-core-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.framework.webapp/framework-webapp-main/${parent.version}</bundle>
     </feature>
