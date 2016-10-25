@@ -25,10 +25,6 @@
         <bundle>wrap:mvn:com.microsoft.sqlserver/sqljdbc4/4.0</bundle>
     </feature>
 
-    <feature name="bonecp" version="0.8.0.RELEASE">
-        <bundle>mvn:com.jolbox/bonecp/0.8.0.RELEASE</bundle>
-    </feature>
-
     <feature name="mysql-driver" version="5.1.18">
         <!--<feature>bonecp</feature>-->
         <!--<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/1.9.0</bundle>-->
