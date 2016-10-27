@@ -128,3 +128,4 @@ public static final <T> T getJNDIServiceForName(String serviceName, String filte
 
 ## karaf 参考资料
 * [Karaf Tutorials](http://liquid-reality.de/display/liquid/Karaf+Tutorials)
+* [blueprint reference](http://www.ibm.com/developerworks/cn/opensource/os-osgiblueprint/)
