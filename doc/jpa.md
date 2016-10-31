@@ -1,6 +1,6 @@
 # 数据持久化（JPA）
 ## transaction 事务控制
-> method 
+> blueprint 配置
 ```java
 <blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
            xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
@@ -11,6 +11,7 @@
 </blueprint>
 ```
 
+> 方法加入```@Transactional```即可
 ```java
 @Override
     @Transactional
@@ -63,3 +64,15 @@
         return jsonStatus;
     }
 ```
+
+## 异常控制
+
+> 在 framework-parent\core-parent\framework-core-impl 的 KalixCamelHttpTransportServlet 中实现了对异常返回的封装
+```java
+        if (exchange.getException() == null) {
+            consumer.getBinding().writeResponse(exchange, response);
+        } else {
+            response.setHeader("Content-Type", " text/html;charset=utf-8");
+            response.getWriter().write("{success:false,msg:'" + exchange.getException().getMessage() + "'}");
+        }
+```        
