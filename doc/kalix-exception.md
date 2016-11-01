@@ -1,6 +1,7 @@
 # 异常处理
 ## 异常基类
 > 所有的kalix的异常均为 RuntimeException
+
 ```java
 public class KalixRuntimeException extends RuntimeException {
     private String content; //系统返回的错误描述
