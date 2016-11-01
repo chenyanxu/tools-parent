@@ -9,3 +9,5 @@
 - [权限技术文档](kalix-permit.md)
 - [Rest Service 技术文档](kalix-rest.md)
 - [FAQ](faq.md)
+  - [如何获得 osgi-service](faq.md#如何获得-osgi-service)
+  - [如何获得 bundleContext](faq.md#如何获得-bundleContext)

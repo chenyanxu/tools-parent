@@ -5,9 +5,41 @@
 
 ## 如何获得 osgi service
 
-### blueprint 方式 
+### blueprint 方式
+
+```xml
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+">
+    <tx:enable-annotations/>
+    <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
+    <reference id="auditService" interface="com.kalix.admin.audit.api.biz.IAuditBeanService"/>
+    <reference id="newsBeanDao" interface="com.kalix.common.news.api.dao.INewsBeanDao"/>
+
+    <service id="newsBeanService" interface="com.kalix.common.news.api.biz.INewsBeanService"
+             ref="beanServiceImpl"/>
+
+    <bean id="beanServiceImpl" class="com.kalix.common.news.biz.NewsBeanServiceImpl">
+        <tx:transaction method="*" value="Required"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="auditBeanService" ref="auditService"/>
+        <property name="dao" ref="newsBeanDao"/>
+    </bean>
+
+</blueprint>
+```
 
 ### jndi 方式
+
+```java
+    try {
+            this.eventAdmin = JNDIHelper.getJNDIServiceForName(EventAdmin.class.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+```
 
 ## 如何获得 bundleContext
 
