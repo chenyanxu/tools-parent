@@ -1,2 +1,11 @@
 # kalix 开发文档
-[OSGI 系统服务](osgi-service.md)
+- [OSGI 系统服务](osgi-service.md)
+- [数据持久化（JPA）](jpa.md)
+- [kalix app 技术文档](kalix-app.md)
+- [kalix 菜单实现技术文档](kalix-menu.md)
+- [](kalix-base-svc.md)
+- [kalix 业务服务](kalix-biz-svc.md)
+- [kalix 基础服务](kalix-exception.md)
+- [kalix 权限技术文档](kalix-permit.md)
+- [kalix rest service 技术文档](kalix-rest.md)
+- [FAQ](faq.md)
