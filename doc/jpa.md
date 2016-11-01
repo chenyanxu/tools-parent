@@ -2,18 +2,18 @@
 ## transaction 事务控制
 > blueprint 配置
 ```java
-<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
-           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
-           default-activation="eager"
-           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
-    <jpa:enable/>
-    <tx:enable-annotations/>
-</blueprint>
+    <blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+               xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+               default-activation="eager"
+               xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+        <jpa:enable/>
+        <tx:enable-annotations/>
+    </blueprint>
 ```
 
 > 方法加入```@Transactional```即可
 ```java
-@Override
+    @Override
     @Transactional
     public void doDelete(long entityId, JsonStatus jsonStatus) {
         dao.remove(entityId);
@@ -24,7 +24,7 @@
 
 > 事务的控制必须抛出异常，否则无法生效。
 
->事务无效的写法
+> 事务处理的错误写法，异常被捕获，事务无法回滚。
 ```java
 @Override
     @Transactional
@@ -45,9 +45,9 @@
     }
 ```
 
-> 事务生效的写法
+> 事务生效的正确写法
 ```java
-@Override
+    @Override
     @Transactional
     public JsonStatus deleteEntity(long entityId) {
         JsonStatus jsonStatus = new JsonStatus();
@@ -69,10 +69,10 @@
 
 > 在 framework-parent\core-parent\framework-core-impl 的 KalixCamelHttpTransportServlet 中实现了对异常返回的封装
 ```java
-        if (exchange.getException() == null) {
-            consumer.getBinding().writeResponse(exchange, response);
-        } else {
-            response.setHeader("Content-Type", " text/html;charset=utf-8");
-            response.getWriter().write("{success:false,msg:'" + exchange.getException().getMessage() + "'}");
-        }
+    if (exchange.getException() == null) {
+        consumer.getBinding().writeResponse(exchange, response);
+    } else {
+        response.setHeader("Content-Type", " text/html;charset=utf-8");
+        response.getWriter().write("{success:false,msg:'" + exchange.getException().getMessage() + "'}");
+    }
 ```        

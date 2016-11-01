@@ -277,5 +277,4 @@ public interface IBundleService  extends IService {
      */
     Map getAppStatus(String appIds);//connect by '_'
 }
-
 ```

@@ -15,7 +15,7 @@
 $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex.git
 ```
 
-# install databse  
+# install database
 
 ```bash
  oc new-project database
@@ -130,6 +130,8 @@ docker tag apiman/on-wildfly10 172.30.97.105:5000/openshift/apiman
 docker push 172.30.97.105:5000/openshift/apiman
 oc new-app openshift/apiman
 ```
+
+[kong](https://hub.docker.com/r/littlebaydigital/kong/)
 
 # install karaf release
 
