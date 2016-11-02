@@ -11,7 +11,7 @@
     </blueprint>
 ```
 
-> 方法加入```@Transactional```即可
+> 在需要添加事务处理的方法中加入```@Transactional```即可
 ```java
     @Override
     @Transactional
@@ -22,9 +22,9 @@
     }
 ```
 
-> 事务的控制必须抛出异常，否则无法生效。
+> **事务的控制必须抛出异常，否则无法生效。**
 
-> 事务处理的错误写法，异常被捕获，事务无法回滚。
+> **示例：**事务处理的错误写法，异常被捕获，事务无法回滚。
 ```java
 @Override
     @Transactional
@@ -45,7 +45,7 @@
     }
 ```
 
-> 事务生效的正确写法
+> **示例：**事务生效的正确写法
 ```java
     @Override
     @Transactional
@@ -65,14 +65,3 @@
     }
 ```
 
-## 异常控制
-
-> 在 framework-parent\core-parent\framework-core-impl 的 KalixCamelHttpTransportServlet 中实现了对异常返回的封装
-```java
-    if (exchange.getException() == null) {
-        consumer.getBinding().writeResponse(exchange, response);
-    } else {
-        response.setHeader("Content-Type", " text/html;charset=utf-8");
-        response.getWriter().write("{success:false,msg:'" + exchange.getException().getMessage() + "'}");
-    }
-```        

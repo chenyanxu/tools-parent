@@ -76,3 +76,16 @@ public class TaskProcessException extends KalixRuntimeException {
     if (!bean.getCreateBy().equals(this.getShiroService().getCurrentUserRealName()))
                 throw new NotSameStarterException("");
 ```
+
+## 异常控制
+
+> 在 framework-parent\core-parent\framework-core-impl 的 KalixCamelHttpTransportServlet 中实现了
+对异常返回的统一封装
+```java
+    if (exchange.getException() == null) {
+        consumer.getBinding().writeResponse(exchange, response);
+    } else {
+        response.setHeader("Content-Type", " text/html;charset=utf-8");
+        response.getWriter().write("{success:false,msg:'" + exchange.getException().getMessage() + "'}");
+    }
+```
