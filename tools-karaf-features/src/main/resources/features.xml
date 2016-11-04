@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features-->
-<!--feature:install kalix-base-->
-<!--feature:install activiti-->
-<!--feature:install couchdb-->
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="kalix-1.0.0">
     <repository>mvn:org.apache.shiro/shiro-features/${shiro.version}/xml/features</repository>
     <!--<repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>-->
@@ -10,7 +6,8 @@
     <!--<repository>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</repository>-->
     <repository>mvn:org.ops4j.pax.cdi/pax-cdi-features/0.12.0/xml/features</repository>
     <repository>mvn:io.hawt/hawtio-karaf/2.0.0/xml/features</repository>
-    <repository>mvn:org.apache.karaf.decanter/apache-karaf-decanter/1.0.1/xml/features</repository>
+    <repository>mvn:org.apache.karaf.decanter/apache-karaf-decanter/1.2.0/xml/features</repository>
+    <repository>mvn:org.apache.karaf.cellar/apache-karaf-cellar/4.0.2/xml/features</repository>
 
     <feature name="bonecp" version="0.8.0.RELEASE">
         <bundle>mvn:com.jolbox/bonecp/0.8.0.RELEASE</bundle>
@@ -23,10 +20,6 @@
 
     <feature name="mssql-server-driver" version="4.0">
         <bundle>wrap:mvn:com.microsoft.sqlserver/sqljdbc4/4.0</bundle>
-    </feature>
-
-    <feature name="bonecp" version="0.8.0.RELEASE">
-        <bundle>mvn:com.jolbox/bonecp/0.8.0.RELEASE</bundle>
     </feature>
 
     <feature name="mysql-driver" version="5.1.18">
@@ -84,10 +77,10 @@
     </feature>
 
 
-
     <feature name="couchdb" version="1.0.0">
         <!-- 根据camel的couchdb feature生成 2.15.3-->
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/${lightcouch.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/${lightcouch.version}
+        </bundle>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
         <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.4.1</bundle>
@@ -130,8 +123,6 @@
         <bundle>mvn:commons-codec/commons-codec/1.7</bundle>
     </feature>
 
-
-
     <feature name="shiro-ehcache" version="1.0">
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ehcache/2.6.8_1</bundle>
         <!--备注：ehcache默认的版本是2.5.0.1，这里要用这个替换一下-->
@@ -144,8 +135,6 @@
         <bundle>mvn:org.apache.commons/commons-pool2/${commons-pool2.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jedis/${jedis.version}</bundle>
     </feature>
-
-
 
     <feature name="cometed">
         <bundle>mvn:org.cometd.java/bayeux-api/2.9.1</bundle>
@@ -279,7 +268,8 @@
         <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle dependency="true">mvn:commons-collections/commons-collections/3.2.2</bundle>
         <bundle dependency="true">mvn:commons-pool/commons-pool/1.6</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3
+        </bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/1.7.0_6</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/1.14.1_1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
@@ -288,18 +278,19 @@
     </feature>
 
     <feature name="framework-core" version="1.0">
-        <bundle>mvn:com.kalix.framework.core/framework-core-api/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-cache/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-delegate/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-util/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-api/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-cache/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-delegate/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/framework-core-etc/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-impl/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-mq/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-rest/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-impl/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-mq/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-rest/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/core-restfultest/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-security/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.framework.core/framework-core-security-authc/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-security/${parent.version}</bundle>
+        <bundle start-level="30">mvn:com.kalix.framework.core/framework-core-security-authc/${parent.version}</bundle>
         <!--<bundle>mvn:com.kalix.framework.core/framework-core-swagger/${parent.version}</bundle>-->
-        <bundle>mvn:com.kalix.framework.core/framework-core-util/${parent.version}</bundle>
+
         <bundle>mvn:com.kalix.framework.core/framework-core-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.framework.webapp/framework-webapp-main/${parent.version}</bundle>
     </feature>
@@ -492,12 +483,12 @@
         <feature>jndi</feature>
         <feature>eventadmin</feature>
         <feature version="${jpa.version}">jpa</feature>
-        <feature>mysql-driver</feature>
-        <feature>derby-driver</feature>
+        <feature dependency="true">mysql-driver</feature>
+        <feature dependency="true">derby-driver</feature>
+        <feature dependency="true">jsr303</feature>
         <feature>postgresql-driver</feature>
         <feature>pax-jdbc-config</feature>
         <feature>pax-jdbc-pool-dbcp2</feature>
-        <feature>jsr303</feature>
         <feature>camel-blueprint</feature>
         <!--<feature>camel-jetty</feature>-->
         <feature>camel-metrics</feature>
@@ -513,10 +504,10 @@
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:com.google.guava/guava/15.0</bundle>
         <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
-        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:org.apache.shiro/shiro-web/${shiro.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
-        <bundle dependency="true">mvn:org.flywaydb/flyway-core/4.0.3</bundle>
+        <bundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
+        <bundle>mvn:org.flywaydb/flyway-core/4.0.3</bundle>
     </feature>
 
 
