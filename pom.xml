@@ -12,6 +12,7 @@
     <name>Kalix Tools Parent</name>
     <packaging>pom</packaging>
 
+
     <modules>
         <!--<module>archetype</module>-->
         <module>tools-karaf-branding</module>
