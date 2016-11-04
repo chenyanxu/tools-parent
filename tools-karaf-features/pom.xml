@@ -141,4 +141,23 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>openshift-release</id>
+            <properties>
+                <openshift.couchdb.svcname>couchdb</openshift.couchdb.svcname>
+                <openshift.redis.svcname>redis</openshift.redis.svcname>
+                <openshift.postgresql.svcname>postgresql-db</openshift.postgresql.svcname>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>openshift-test</id>
+            <properties>
+                <openshift.couchdb.svcname>couchdb-test</openshift.couchdb.svcname>
+                <openshift.redis.svcname>redis-test</openshift.redis.svcname>
+                <openshift.postgresql.svcname>postgresql-db-test</openshift.postgresql.svcname>
+            </properties>
+        </profile>
+    </profiles>
 </project>
