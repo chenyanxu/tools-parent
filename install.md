@@ -1,17 +1,19 @@
-# kalix 安装文档
+# kalix 开发环境安装文档
+> 本文详细的描述了kalix项目的开发环境的搭建过程，如果在安装过程中出现任何问题，请联系QQ：1907310。
 
-- [说明](#说明)
+> 目标使用环境：windows。
+
 - [安装前提条件](#安装前提条件)
     - [新建工程目录](#新建工程目录)
     - [新建osgi运行目录](#新建osgi运行目录) 
 - [提前预装软件](#提前预装软件)
     - [jdk](#jdk)
-    - [Maven](#Maven)
-    - [Karaf](#Karaf)
-    - [PostgreSQL](#PostgreSQL)
-    - [Redis](#Redis)
-    - [Git](#Git)
-    - [CouchDB](#CouchDB)
+    - [Maven](#maven)
+    - [Karaf](#karaf)
+    - [PostgreSQL](#postgresql)
+    - [Redis](#redis)
+    - [Git](#git)
+    - [CouchDB](#couchdb)
 - [安装过程](#安装过程)
     - [下载工程文件](#下载工程文件)
     - [运行karaf](#运行karaf)
@@ -19,13 +21,6 @@
     - [发布工程文件到karaf](#发布工程文件到karaf)
     - [初始化数据](#初始化数据)
     - [访问kalix网站](#访问kalix网站)   
-
-
-## 说明
-
-> 本文详细的描述了kalix项目的开发环境的搭建过程，如果在安装过程中出现任何问题，请联系QQ：1907310。
-
-> 目标使用环境：windows。
 
 ## 安装前提条件
 
@@ -104,7 +99,7 @@
    install.bat
 ```
 
-> 此时单独将会自动下载工程文件，并进行构建。
+> 此时将会自动下载工程文件，并进行构建。
 
 ### 运行karaf
 
@@ -165,9 +160,14 @@ karaf@root()>
 
 ### 初始化数据
 
-* karaf命令提示符下，输入 kalix:init-db
-
-* 安装权限初始化数据,karaf命令提示符下，输入 kalix:permit
+> 初始化数据库的用户，权限以及组织机构
+```bash
+    karaf@root()> kalix:init-db
+```
+> 安装权限初始化数据
+```bash
+    karaf@root()> kalix:permit
+```
 
 ### 访问kalix网站
 
