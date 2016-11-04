@@ -20,3 +20,30 @@ SQL 脚本文件及Java 代码类名必须遵循以下命名规则：V<version>[
 
 * V2__init.sql
 * V2_1__add_person.sql
+
+## flyway的坑
+### 执行sql语句
+> 因为类路径的问题，必须把bundle设置为fragment方式，才可以运行db.migration下的sql文件，需要设置
+> osgi.bnd
+```bash
+#Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Bundle-Category: Kalix Karaf Tools
+Fragment-Host: org.flywaydb.core
+Import-Package:*
+```
+>需要使用blueprint方式初始化flyway。
+>但是该方法会导致karaf下全部的bundle重启，调试非常麻烦。
+
+### 执行java代码方式
+>注释掉blueprint，该方式无法执行sql脚本。
+> osgi.bnd
+```bash
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Bundle-Category: Kalix Karaf Tools
+#Fragment-Host: org.flywaydb.core
+Import-Package:*
+```
+
+
+
+

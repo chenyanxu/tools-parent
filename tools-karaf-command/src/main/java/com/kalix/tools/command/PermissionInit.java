@@ -29,8 +29,8 @@ public class PermissionInit {
             "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1');";
     private String funClearSql = "DELETE FROM public.sys_function;";
 
-    private String role_funClearSql = "DELETE FROM public.sys_role_function;";
-    private String app_funClearSql = "DELETE FROM public.sys_role_application;";
+    private String role_funClearSql = "DELETE FROM public.sys_role_function where roleid=1;";
+    private String app_funClearSql = "DELETE FROM public.sys_role_application where roleid=1;";
 
     private String role_funSql = "INSERT INTO public.sys_role_function " +
             "(id, createby, creationdate, updateby, updatedate, functionid, roleid, version_) " +

@@ -4,7 +4,7 @@
         default-activation="eager"
         xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
-    <bean id="flyway" class="org.flywaydb.core.Flyway">
+    <!--<bean id="flyway" class="org.flywaydb.core.Flyway">
     </bean>
 
     <reference id="datasource" interface="javax.sql.DataSource"
@@ -14,7 +14,7 @@
             class="com.kalix.tools.flyway.DbMigrationService" init-method="doMigration">
         <property name="datasource" ref="datasource"/>
         <property name="flyway" ref="flyway"/>
-    </bean>
+    </bean>-->
 
 
 </blueprint>

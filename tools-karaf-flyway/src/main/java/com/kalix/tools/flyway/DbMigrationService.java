@@ -14,6 +14,8 @@ public class DbMigrationService {
         getFlyway().setDataSource(datasource);
         getFlyway().setClassLoader(thisClassLoader);
         flyway.setBaselineOnMigrate(true);
+        //必须这样设置java代码才生效
+        flyway.setLocations("db.migration", "com.kalix.tools.flyway");
 //        flyway.setBaselineVersionAsString("0");
         getFlyway().migrate();
     }
