@@ -1,7 +1,8 @@
 # faq
 
 - [如何获得 osgi service](#如何获得-osgi-service)
-- [如何获得 bundleContext](如何获得-bundleContext)
+- [如何获得 bundleContext](#如何获得-bundleContext)
+- [debug karaf](#debug-karaf)
 
 ## 如何获得 osgi service
 
@@ -85,4 +86,13 @@ public class InitActivator implements BundleActivator {
         return context;
     }
 }
+```
+
+## debug karaf
+> 设置环境变量 ```set KARAF_DEBUG=true```
+>运行karaf，显示：
+```bash
+karaf.bat: Enabling Java debug options: -agentlib:jdwp=transport=dt_socket,serve
+r=y,suspend=n,address=5005
+Listening for transport dt_socket at address: 5005
 ```
