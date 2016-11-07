@@ -26,6 +26,7 @@
             <type>kar</type>
             <!--<scope>compile</scope>-->
         </dependency>
+
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
             <artifactId>framework</artifactId>
@@ -34,6 +35,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
             <artifactId>standard</artifactId>
@@ -41,6 +43,7 @@
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
+
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
             <artifactId>enterprise</artifactId>
@@ -49,10 +52,36 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.tools</groupId>
             <artifactId>tools-karaf-features</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>${project.tools.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kalix.framework</groupId>
+            <artifactId>karaf-features</artifactId>
+            <version>${project.framework.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.middleware</groupId>
+            <artifactId>karaf-features</artifactId>
+            <version>${project.middleware.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin</groupId>
+            <artifactId>karaf-features</artifactId>
+            <version>${project.admin.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
@@ -60,7 +89,7 @@
         <dependency>
             <groupId>com.kalix.oa</groupId>
             <artifactId>karaf-features</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>${project.oa.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
@@ -68,7 +97,7 @@
         <dependency>
             <groupId>com.kalix.common</groupId>
             <artifactId>karaf-features</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>${project.common.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
@@ -76,7 +105,7 @@
         <dependency>
             <groupId>com.kalix.schedule</groupId>
             <artifactId>karaf-features</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>${project.schedule.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
