@@ -3,6 +3,7 @@
 - [如何获得 osgi service](#如何获得-osgi-service)
 - [如何获得 bundleContext](#如何获得-bundleContext)
 - [debug karaf](#debug-karaf)
+- [减少redis占用空间](#减少redis占用空间)
 
 ## 如何获得 osgi service
 
@@ -96,3 +97,27 @@ karaf.bat: Enabling Java debug options: -agentlib:jdwp=transport=dt_socket,serve
 r=y,suspend=n,address=5005
 Listening for transport dt_socket at address: 5005
 ```
+
+## 减少redis占用空间
+
+> 默认情况下，redis会占用c盘大量的物理空间，通过以下方式可以减少占用；
+
+> 删除```C:\Windows\ServiceProfiles\NetworkService\AppData\Local\Redis```
+
+> 修改文件：```redis.windows-service.conf```
+
+```bash
+maxheap 1024000000
+
+# The heap memory mapped file must reside on a local path for heap sharing
+# between processes to work. A UNC path will not suffice here. For maximum
+# performance this should be located on the fastest local drive available.
+# This value defaults to the local application data folder(e.g.,
+# "%USERPROFILE%\AppData\Local"). Since this file can be very large, you
+# may wish to place this on a drive other than the one the operating system
+# is installed on.
+#
+# Note that you must specify a directory here, not a file name
+heapdir D:\tools\redis-data
+```
+
