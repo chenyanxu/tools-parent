@@ -4,6 +4,7 @@
 - [如何获得 bundleContext](#如何获得-bundleContext)
 - [debug karaf](#debug-karaf)
 - [减少redis占用空间](#减少redis占用空间)
+- [修改karaf默认端口](#修改karaf默认端口)
 
 ## 如何获得 osgi service
 
@@ -119,5 +120,19 @@ maxheap 1024000000
 #
 # Note that you must specify a directory here, not a file name
 heapdir D:\tools\redis-data
+```
+
+## 修改karaf默认端口
+> 配置文件位于```D:\java-develop\tools\apache-karaf-4.0.7\etc\org.ops4j.pax.web.cfg```
+```xml
+    javax.servlet.context.tempdir = D:\\java-develop\\tools\\apache-karaf-4.0.7\\data/pax-web-jsp
+    org.ops4j.pax.web.config.file = D:\\java-develop\\tools\\apache-karaf-4.0.7/etc/jetty.xml
+    org.osgi.service.http.port = 8181
+```
+
+## 启动karaf多实例
+```bash
+    karaf@root()> instance:create second
+    karaf@root()> instance:start second
 ```
 
