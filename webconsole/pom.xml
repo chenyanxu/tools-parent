@@ -6,13 +6,14 @@
     <parent>
         <groupId>cn.com.rexen.kalix</groupId>
         <artifactId>modules.tools</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <groupId>com.kalix.tools</groupId>
     <artifactId>tools-webconsole</artifactId>
     <name>Kalix :: Tools - Web Console</name>
     <description>Tools Web Console</description>
+    <version>${project.tools.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
@@ -22,9 +23,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.rexen.kalix.poms</groupId>
+                <groupId>com.kalix.framework.poms</groupId>
                 <artifactId>poms-dm</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.framework.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -32,10 +33,10 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.kalix.poms</groupId>
+            <groupId>com.kalix.framework.poms</groupId>
             <artifactId>poms-dm</artifactId>
             <type>pom</type>
-            <version>${globle.version}</version>
+            <version>${project.framework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -59,12 +60,6 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

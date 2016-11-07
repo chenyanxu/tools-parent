@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.kalix.tools</groupId>
         <artifactId>tools-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>tools-karaf-features</artifactId>
@@ -70,7 +70,7 @@
             <dependency>
                 <groupId>com.kalix.framework.poms</groupId>
                 <artifactId>framework-poms-dm</artifactId>
-                <version>${globle.version}</version>
+                <version>${project.framework.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -145,18 +145,27 @@
         <profile>
             <id>openshift-release</id>
             <properties>
-                <openshift.couchdb.svcname>couchdb</openshift.couchdb.svcname>
-                <openshift.redis.svcname>redis</openshift.redis.svcname>
-                <openshift.postgresql.svcname>postgresql-db</openshift.postgresql.svcname>
+                <openshift.couchdb.svcname>couchdb.database.svc.cluster.local</openshift.couchdb.svcname>
+                <openshift.redis.svcname>redis.database.svc.cluster.local</openshift.redis.svcname>
+                <openshift.postgresql.svcname>postgresql-db.database.svc.cluster.local</openshift.postgresql.svcname>
             </properties>
         </profile>
 
         <profile>
             <id>openshift-test</id>
             <properties>
-                <openshift.couchdb.svcname>couchdb-test</openshift.couchdb.svcname>
-                <openshift.redis.svcname>redis-test</openshift.redis.svcname>
-                <openshift.postgresql.svcname>postgresql-db-test</openshift.postgresql.svcname>
+                <openshift.couchdb.svcname>couchdb-test.database.svc.cluster.local</openshift.couchdb.svcname>
+                <openshift.redis.svcname>redis-test.database.svc.cluster.local</openshift.redis.svcname>
+                <openshift.postgresql.svcname>postgresql-db-test.database.svc.cluster.local</openshift.postgresql.svcname>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>openshift-develop</id>
+            <properties>
+                <openshift.couchdb.svcname>localhost</openshift.couchdb.svcname>
+                <openshift.redis.svcname>localhost</openshift.redis.svcname>
+                <openshift.postgresql.svcname>localhost</openshift.postgresql.svcname>
             </properties>
         </profile>
     </profiles>

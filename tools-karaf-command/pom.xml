@@ -7,11 +7,12 @@
     <parent>
         <groupId>com.kalix.tools</groupId>
         <artifactId>tools-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>tools-karaf-command</artifactId>
     <name>Kalix Tools Karaf Command</name>
+    <version>${project.tools.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
@@ -27,25 +28,25 @@
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-web</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.kalix.admin.core</groupId>
             <artifactId>admin-core-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.admin.version}</version>
         </dependency>
 
         <dependency>

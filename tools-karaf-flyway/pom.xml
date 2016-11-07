@@ -7,11 +7,12 @@
     <parent>
         <groupId>com.kalix.tools</groupId>
         <artifactId>tools-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
 
     <artifactId>tools-karaf-flyway</artifactId>
     <name>Kalix Tools Karaf Flyway</name>
+    <version>${project.tools.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
@@ -27,7 +28,7 @@
         <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.framework.version}</version>
         </dependency>
     </dependencies>
     <build>

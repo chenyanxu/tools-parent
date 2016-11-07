@@ -21,7 +21,6 @@
     <name>Urgent :: ${artifactId} - Core</name>
     <description>Urgent ${artifactId} Core Module</description>
 
-
     <packaging>bundle</packaging>
 
 
