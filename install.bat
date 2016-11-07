@@ -13,11 +13,6 @@ cd ..
 git clone https://github.com/chenyanxu/middleware-parent.git
 cd middleware-parent
 call mvn clean install
-cd ..
-
-git clone https://github.com/chenyanxu/middleware-parent.git
-cd middleware-parent
-call mvn clean install
 
 cd ..
 git clone https://github.com/chenyanxu/admin-parent.git

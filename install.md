@@ -46,7 +46,7 @@
   
 > 说明：简化和标准化项目建设过程。处理编译，分配，文档，团队协作和其他任务的无缝连接。
   
-> 备注：需要配置M2_HOME环境变量，并需要配置svn.exe文件到系统path环境变量中。
+> 备注：需要配置M2_HOME环境变量，并需要配置mvn.exe文件到系统path环境变量中。
   
 ### Karaf
 
@@ -93,8 +93,8 @@
 ```bash
    git clone https://github.com/chenyanxu/tools-parent.git
    cd tools-parent.git
-   cp install.bat D:\java-develop\project
-   cp build.bat D:\java-develop\project
+   copy install.bat D:\java-develop\project
+   copy build.bat D:\java-develop\project
    cd D:\java-develop\project
    install.bat
 ```
