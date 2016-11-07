@@ -10,8 +10,10 @@
     </parent>
 
     <artifactId>tools-karaf-features</artifactId>
+    <version>${project.tools.version}</version>
     <name>Kalix Tools Karaf Features</name>
     <packaging>pom</packaging>
+
     <properties>
         <org.osgi.core.version>6.0.0</org.osgi.core.version>
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>

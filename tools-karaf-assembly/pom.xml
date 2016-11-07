@@ -54,15 +54,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.kalix.tools</groupId>
-            <artifactId>tools-karaf-features</artifactId>
-            <version>${project.tools.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.kalix.framework</groupId>
             <artifactId>karaf-features</artifactId>
             <version>${project.framework.version}</version>
@@ -70,6 +61,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.middleware</groupId>
             <artifactId>karaf-features</artifactId>
@@ -78,6 +70,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.admin</groupId>
             <artifactId>karaf-features</artifactId>
@@ -86,6 +79,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.oa</groupId>
             <artifactId>karaf-features</artifactId>
@@ -94,6 +88,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.common</groupId>
             <artifactId>karaf-features</artifactId>
@@ -102,6 +97,7 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>com.kalix.schedule</groupId>
             <artifactId>karaf-features</artifactId>
@@ -110,6 +106,16 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.kalix.tools</groupId>
+            <artifactId>tools-karaf-features</artifactId>
+            <version>${project.tools.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.kalix.tools</groupId>
             <artifactId>tools-karaf-branding</artifactId>
@@ -141,6 +147,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
+                    <execution>
+                        <id>filter</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/target/assembly</outputDirectory>
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>copy-resources</id>
                         <phase>prepare-package</phase>
