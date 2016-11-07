@@ -6,7 +6,7 @@ IF %hasErrors%==0 cd kalix-parent & git pull origin master & call mvn clean inst
 IF %hasErrors%==1 echo 'An error occurred of kalix-parent' & pause & goto :EOF
 
 cd ..
-IF %hasErrors%==0 cd framework-parent & git pull origin master & call mvn -DskipTests=true clean install || set hasErrors=1
+IF %hasErrors%==0 cd framework-parent & git pull origin master & call mvn -DskipTests=true clean install  -P openshift-develop || set hasErrors=1
 IF %hasErrors%==1 echo 'An error occurred of framework-parent' & pause & goto :EOF
 
 cd ..
