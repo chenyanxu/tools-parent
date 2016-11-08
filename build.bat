@@ -1,4 +1,4 @@
-echo 'Start to build project'
+@echo 'Start to build project'
 @echo off
 set hasErrors=0
 
@@ -37,6 +37,6 @@ IF %hasErrors%==1 echo 'An error occurred of tools-parent' & pause & goto :EOF
 cd ..
 
 @echo on
-echo 'Build project successfully!'
+@echo 'Build project successfully!'
 
 cmd

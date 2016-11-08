@@ -1,5 +1,4 @@
-echo 'Start to check project status'
-@echo off
+@echo 'Start to check project status123'
 
 cd kalix-parent
 git status
@@ -36,4 +35,4 @@ git status
 cd ..
 
 @echo on
-echo 'Check project status successfully!'
+@echo 'Check project status successfully!'

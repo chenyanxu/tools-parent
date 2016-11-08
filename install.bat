@@ -1,4 +1,4 @@
-echo 'Start to build project'
+@echo 'Start to build project'
 @echo off
 git clone https://github.com/chenyanxu/kalix-parent.git
 cd kalix-parent
@@ -41,4 +41,4 @@ call mvn clean install
 cd ..
 
 @echo on
-echo 'Build project successfully!'
+@echo 'Build project successfully!'
