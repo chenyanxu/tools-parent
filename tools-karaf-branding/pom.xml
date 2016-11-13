@@ -7,12 +7,11 @@
     <parent>
         <groupId>com.kalix.tools</groupId>
         <artifactId>tools-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>tools-karaf-branding</artifactId>
     <name>Kalix Tools Karaf Branding</name>
-    <version>${project.tools.version}</version>
     <packaging>bundle</packaging>
 
     <build>
