@@ -183,7 +183,7 @@ public class ServicesServlet extends HttpServlet {
             this.bundle = bundle;
         }
 
-        public long getId() {
+        public Long getId() {
             return bundle.getBundleId();
         }
 

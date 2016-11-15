@@ -104,7 +104,7 @@ public class BrandPage extends BasePage {
         List<BrandBeanImpl> brandBeanList = brandService.getAllBrand();
         ListDataProvider<BrandBeanImpl> listDataProvider = new ListDataProvider<BrandBeanImpl>(brandBeanList);
         brandBeanDataView = new DataView<BrandBeanImpl>("brandRow", listDataProvider) {
-            private static final long serialVersionUID = 1L;
+            private static final Long serialVersionUID = 1L;
 
             @Override
             protected void populateItem(final Item<BrandBeanImpl> item) {
@@ -193,7 +193,7 @@ public class BrandPage extends BasePage {
                     }
                 });
                 item.add(AttributeModifier.replace("class", new AbstractReadOnlyModel<String>() {
-                    private static final long serialVersionUID = 1L;
+                    private static final Long serialVersionUID = 1L;
 
                     @Override
                     public String getObject() {
