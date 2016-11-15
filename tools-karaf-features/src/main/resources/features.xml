@@ -11,6 +11,8 @@
     <repository>mvn:com.kalix.framework/karaf-features/${project.framework.version}/xml/features</repository>
     <repository>mvn:com.kalix.middleware/karaf-features/${project.middleware.version}/xml/features</repository>
     <repository>mvn:com.kalix.admin/karaf-features/${project.admin.version}/xml/features</repository>
+    <repository>mvn:io.fabric8.kubernetes/kubernetes-karaf/1.4.20/xml/features</repository>
+    <repository>mvn:io.fabric8/fabric8-karaf-features/2.2.176/xml/features</repository>
 
 
     <feature name="bonecp" version="0.8.0.RELEASE">
