@@ -15,7 +15,7 @@
 ```java
     @Override
     @Transactional
-    public void doDelete(long entityId, JsonStatus jsonStatus) {
+    public void doDelete(Long entityId, JsonStatus jsonStatus) {
         dao.remove(entityId);
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("删除成功！");
@@ -28,7 +28,7 @@
 ```java
 @Override
     @Transactional
-    public JsonStatus deleteEntity(long entityId) {
+    public JsonStatus deleteEntity(Long entityId) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
             if (isDelete(entityId, jsonStatus)) {
@@ -49,7 +49,7 @@
 ```java
     @Override
     @Transactional
-    public JsonStatus deleteEntity(long entityId) {
+    public JsonStatus deleteEntity(Long entityId) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
             if (isDelete(entityId, jsonStatus)) {

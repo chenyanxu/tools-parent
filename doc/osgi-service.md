@@ -21,6 +21,72 @@
 
 ## [Apache Felix Preferences Service](http://felix.apache.org/documentation/subprojects/apache-felix-preferences-service.html)
 
+### 示例
+> 需要实现ManagedService接口
+
+```java
+public class CouchdbServiceImpl implements ICouchdbService, ManagedService {
+    public static final String CONFIG_COUCH_DB = "ConfigCouchdb";
+    private CouchDbClient dbClient;
+
+    private String db_name, protocol, ip, user, password;
+    private String url; //couchdb访问公网地址
+    private int port;
+
+    public CouchdbServiceImpl() {
+        initDbclient();
+    }
+
+    @Override
+    public void updated(Dictionary<String, ?> dictionary) throws ConfigurationException {
+        initDbclient();
+    }
+
+    private void readConfig() {
+        db_name = (String) ConfigUtil.getConfigProp("DB_NAME", CONFIG_COUCH_DB);
+        protocol = (String) ConfigUtil.getConfigProp("PROTOCOL", CONFIG_COUCH_DB);
+        ip = (String) ConfigUtil.getConfigProp("IP", CONFIG_COUCH_DB);
+        port = Integer.parseInt((String) ConfigUtil.getConfigProp("PORT", CONFIG_COUCH_DB));
+        user = (String) ConfigUtil.getConfigProp("USER", CONFIG_COUCH_DB);
+        password = (String) ConfigUtil.getConfigProp("PASSWORD", CONFIG_COUCH_DB);
+        url = (String) ConfigUtil.getConfigProp("COUCHDB_URL", CONFIG_COUCH_DB);
+    }
+
+    private void initDbclient() {
+        readConfig();
+        try {
+            dbClient = new CouchDbClient(db_name, true, protocol, ip, port, user, password);
+            SystemUtil.succeedPrintln("succeed connect to couchdb! IP address is " + ip);
+        } catch (Exception e) {
+            SystemUtil.errorPrintln("can not connect to couchdb address " + ip + "!");
+            e.printStackTrace();
+        }
+    }
+```
+
+> 注册 osgi service
+
+```java
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
+           http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <bean id="couchdbServiceImpl" class="com.kalix.middleware.couchdb.biz.CouchdbServiceImpl">
+    </bean>
+
+    <service id="couchdbService" interface="com.kalix.middleware.couchdb.api.biz.ICouchdbService" ref="couchdbServiceImpl"/>
+
+    <service id="attachmentService" interface="com.kalix.framework.core.api.system.IAttachmentService"
+             ref="couchdbServiceImpl"/>
+
+    <service interface="org.osgi.service.cm.ManagedService" ref="couchdbServiceImpl">
+        <service-properties>
+            <entry key="service.pid" value="ConfigCouchdb"/>
+        </service-properties>
+    </service>
+</blueprint>
+```
 ## [Apache Felix Event Admin](http://felix.apache.org/documentation/subprojects/apache-felix-event-admin.html)
 
 ## [Pax Logging Service](https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging)

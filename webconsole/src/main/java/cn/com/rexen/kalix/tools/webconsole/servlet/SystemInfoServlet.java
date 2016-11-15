@@ -33,15 +33,15 @@ public class SystemInfoServlet extends HttpServlet {
                     + System.getProperty("java.vm.info") + ")";
         }
 
-        public long getFreeMemory() {
+        public Long getFreeMemory() {
             return Runtime.getRuntime().freeMemory() / 1024;
         }
 
-        public long getTotalMemory() {
+        public Long getTotalMemory() {
             return Runtime.getRuntime().totalMemory() / 1024;
         }
 
-        public long getUsedMemory() {
+        public Long getUsedMemory() {
             return getTotalMemory() - getFreeMemory();
         }
 
