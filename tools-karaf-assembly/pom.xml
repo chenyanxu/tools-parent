@@ -54,6 +54,21 @@
         </dependency>
 
         <dependency>
+            <groupId>com.kalix.tools</groupId>
+            <artifactId>tools-karaf-features</artifactId>
+            <version>${project.tools.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.prefs</artifactId>
+            <version>1.0.6</version>
+        </dependency>-->
+
+        <!--<dependency>
             <groupId>com.kalix.framework</groupId>
             <artifactId>karaf-features</artifactId>
             <version>${project.framework.version}</version>
@@ -105,16 +120,7 @@
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.tools</groupId>
-            <artifactId>tools-karaf-features</artifactId>
-            <version>${project.tools.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.kalix.tools</groupId>
@@ -122,14 +128,14 @@
             <version>${project.tools.version}</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.karaf.cellar</groupId>
             <artifactId>apache-karaf-cellar</artifactId>
             <version>4.0.2</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
-        </dependency>
+        </dependency>-->
 
         <!--<dependency>
             <groupId>org.apache.shiro</groupId>
@@ -240,7 +246,7 @@
                         <feature>eventadmin</feature>
                     </startupFeatures>
                     <startupBundles>
-                        <Bundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</Bundle>
+                        <Bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</Bundle>
                     </startupBundles>
                     <!--<bootBundles>
                         <bootBundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bootBundle>
@@ -266,21 +272,24 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>cellar</feature>
                         <feature>kalix-base</feature>
-                        <feature>activiti</feature>
-                        <feature>couchdb</feature>
+                        <!--<feature>activiti</feature>
+                        <feature>couchdb</feature>-->
                         <feature>kalix-all</feature>
+                        <!--<feature>cellar</feature>-->
+                        <!--<feature>kalix-base</feature>
+
+                        <feature>framework-all</feature>
+                        <feature>admin-all</feature>
+                        <feature>middleware-all</feature>
+                        <feature>command-all</feature>
                         <feature>oa-all</feature>
                         <feature>common-all</feature>
-                        <feature>schedule-all</feature>
-                        <!--<feature>kalix-core</feature>-->
-                        <!--<feature>kalix-security</feature>-->
-                        <!--<feature>kalix-osgi</feature>-->
-                        <!--<feature>kalix-admin</feature>-->
-                        <!--<feature>kalix-web</feature>-->
-                        <!--<feature>kalix-app</feature>-->
+                        <feature>schedule-all</feature>-->
                     </bootFeatures>
+                    <!--<libraries>
+                        <library>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</library>
+                    </libraries>-->
                     <!--<karafDirectory>${assembly.directory}</karafDirectory>
                     <startSsh>true</startSsh>
                     <keepRunning>true</keepRunning>
