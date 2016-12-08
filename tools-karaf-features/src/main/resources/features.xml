@@ -326,6 +326,7 @@
         <feature>camel-dozer</feature>
         <feature>camel-swagger-java</feature>
         <feature>camel-shiro</feature>
+        <feature>camel-xmpp</feature>
         <feature>shiro-core</feature>
         <!--<feature>shiro-web</feature>-->
         <feature>jedis</feature>
