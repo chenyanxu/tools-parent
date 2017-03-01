@@ -35,10 +35,10 @@
         <jsr339.version>2.2.0</jsr339.version>
         <ognl.version>3.0.6_1</ognl.version>
         <javassist.version>3.12.1.GA_3</javassist.version>
-        <activiti.version>5.21.0</activiti.version>
+        <activiti.version>5.22.0</activiti.version>
         <cxf.version>3.1.1</cxf.version>
         <!--<camel.version>2.16.2</camel.version>-->
-        <camel.version>2.18.0</camel.version>
+        <camel.version>2.18.2</camel.version>
         <activemq.version>5.13.0</activemq.version>
         <guava.version>18.0</guava.version>
         <jedis.version>2.6.2_1</jedis.version>
