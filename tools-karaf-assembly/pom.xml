@@ -16,6 +16,7 @@
 
     <properties>
         <assembly.directory>${project.build.directory}/assembly</assembly.directory>
+        <karaf.version>4.1.0</karaf.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,15 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>enterprise</artifactId>
+            <classifier>features</classifier>
+            <version>${karaf.version}</version>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.kalix.tools</groupId>
             <artifactId>tools-karaf-features</artifactId>
             <version>${project.tools.version}</version>
@@ -61,66 +71,6 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.prefs</artifactId>
-            <version>1.0.6</version>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>com.kalix.framework</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.framework.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.middleware</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.middleware.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.admin</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.admin.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.oa</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.oa.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.common</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.common.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.kalix.schedule</groupId>
-            <artifactId>karaf-features</artifactId>
-            <version>${project.schedule.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>-->
 
         <dependency>
             <groupId>com.kalix.tools</groupId>
@@ -246,13 +196,12 @@
                         <feature>eventadmin</feature>
                     </startupFeatures>
                     <startupBundles>
-                        <Bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</Bundle>
+                        <Bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.1.0</Bundle>
                     </startupBundles>
                     <!--<bootBundles>
                         <bootBundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bootBundle>
                     </bootBundles>-->
                     <bootFeatures>
-                        <feature>framework</feature>
                         <feature>wrap</feature>
                         <feature>aries-blueprint</feature>
                         <feature>shell</feature>
@@ -273,19 +222,11 @@
                         <feature>service</feature>
                         <feature>system</feature>
                         <feature>kalix-base</feature>
-                        <!--<feature>activiti</feature>
-                        <feature>couchdb</feature>-->
+                        <!--<feature>framework-config</feature>-->
+
                         <feature>kalix-all</feature>
                         <!--<feature>cellar</feature>-->
-                        <!--<feature>kalix-base</feature>
 
-                        <feature>framework-all</feature>
-                        <feature>admin-all</feature>
-                        <feature>middleware-all</feature>
-                        <feature>command-all</feature>
-                        <feature>oa-all</feature>
-                        <feature>common-all</feature>
-                        <feature>schedule-all</feature>-->
                     </bootFeatures>
                     <!--<libraries>
                         <library>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</library>

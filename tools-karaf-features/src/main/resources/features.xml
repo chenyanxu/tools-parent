@@ -267,8 +267,8 @@
 
     <feature name="openjpa" description="Apache OpenJPA 2.4.x persistence engine support" version="${openjpa.version}">
         <details>Enable Apache OpenJPA as persistence engine.</details>
-        <feature prerequisite="false" dependency="false">jndi</feature>
-        <feature version="[1.2,1.3)" prerequisite="false" dependency="false">transaction-api</feature>
+        <feature>jndi</feature>
+        <feature version="[1.2,1.3)">transaction-api</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.0_spec/1.1.1</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_2.5_spec/1.2</bundle>
@@ -283,6 +283,9 @@
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/4.3</bundle>
         <bundle>mvn:org.apache.openjpa/openjpa/2.4.0.Release</bundle>
+        <capability>
+            osgi.service;effective:=active;objectClass=javax.persistence.spi.PersistenceProvider
+        </capability>
     </feature>
 
     <feature name="kalix-all" version="1.0.0">
@@ -304,15 +307,34 @@
         <bundle>mvn:com.kalix.tools/tools-karaf-flyway/${project.tools.version}</bundle>
     </feature>
 
-    <feature name="kalix-base" version="1.0.0">
+    <feature name="jpa" description="OSGi Persistence Container" version="2.4.1">
+        <details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine,
+            you have to install one by yourself (OpenJPA for instance)
+        </details>
+        <feature version="[1.1,2)">transaction-api</feature>
         <feature version="${openjpa.version}">openjpa</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.2</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jpa/1.0.0</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/1.0.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.5.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.5.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.5.0</bundle>
+        <conditional>
+            <condition>aries-blueprint</condition>
+            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.5.0</bundle>
+        </conditional>
+    </feature>
+
+    <feature name="kalix-base" version="1.0.0">
         <feature>transaction</feature>
         <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
+        <feature>jdbc</feature>
         <feature>eventadmin</feature>
-        <feature version="${jpa.version}">jpa</feature>
-        <feature dependency="true">mysql-driver</feature>
+        <feature version="2.4.1">jpa</feature>
+        <!--<feature dependency="true">mysql-driver</feature>-->
         <!--<feature dependency="true">derby-driver</feature>-->
         <!--<feature dependency="true">jsr303</feature>-->
         <feature>postgresql-driver</feature>

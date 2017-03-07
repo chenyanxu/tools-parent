@@ -17,7 +17,7 @@
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
         <derby.version>10.8.2.2</derby.version>
-        <jpa.version>2.3.0</jpa.version>
+        <jpa.version>2.5.0</jpa.version>
         <!--<openjpa.version>2.4.0.Release</openjpa.version>-->
         <geronimoJpaSpec.version>1.1</geronimoJpaSpec.version>
         <geronimoJtaSpec.version>1.1.1</geronimoJtaSpec.version>
@@ -81,7 +81,24 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.jdbc</groupId>
+            <artifactId>pax-jdbc</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.jdbc</groupId>
+            <artifactId>pax-jdbc-config</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.jdbc</groupId>
+            <artifactId>pax-jdbc-postgresql</artifactId>
+            <version>0.4.0</version>
+        </dependency>
     </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
