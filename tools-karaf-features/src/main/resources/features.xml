@@ -333,6 +333,7 @@
 
 
     <feature name="kalix-base" version="1.0.0">
+        <feature>hawtio-offline</feature>
         <feature>transaction</feature>
         <feature>war</feature>
         <feature>webconsole</feature>

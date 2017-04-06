@@ -55,15 +55,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>enterprise</artifactId>
-            <classifier>features</classifier>
-            <version>${karaf.version}</version>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.kalix.tools</groupId>
             <artifactId>tools-karaf-features</artifactId>
             <version>${project.tools.version}</version>
