@@ -1,4 +1,5 @@
 # kalix CDI 技术文档
+> refer doc: https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html/deploying_into_apache_karaf/paxcdi
 
 ## pom文件中增加对pax-cdi的依赖
 
@@ -11,6 +12,12 @@
     <groupId>org.ops4j.pax.cdi</groupId>
     <artifactId>pax-cdi-api</artifactId>
 </dependency>
+```
+
+# karaf 增加pax-cdi feature
+
+```batch
+karaf@root()> feature:install pax-cdi  pax-cdi-weld  
 ```
 
 ##  osgi.bnd 文件中增加如下内容：
