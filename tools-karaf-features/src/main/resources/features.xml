@@ -352,6 +352,7 @@
         <feature>postgresql-driver</feature>
         <feature>pax-jdbc-config</feature>
         <feature>pax-jdbc-pool-dbcp2</feature>
+        <feature>pax-cdi</feature>
         <feature>pax-cdi-weld</feature>
         <feature>camel-blueprint</feature>
         <!--<feature>camel-jetty</feature>-->
