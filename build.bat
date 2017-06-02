@@ -10,11 +10,11 @@ IF %hasErrors%==0 cd framework-parent & git pull origin master & call mvn -Dskip
 IF %hasErrors%==1 echo 'An error occurred of framework-parent' & pause & goto :EOF
 
 cd ..
-IF %hasErrors%==0  cd admin-parent & git pull origin master & call mvn clean install || set hasErrors=1
+IF %hasErrors%==0  cd admin-parent & git pull origin master & call mvn  -DskipTests=true clean install || set hasErrors=1
 IF %hasErrors%==1 echo 'An error occurred of admin-parent' & pause & goto :EOF
 
 cd ..
-IF %hasErrors%==0  cd middleware-parent & git pull origin master & call mvn clean install || set hasErrors=1
+IF %hasErrors%==0  cd middleware-parent & git pull origin master & call mvn  -DskipTests=true clean install || set hasErrors=1
 IF %hasErrors%==1 echo 'An error occurred of middleware-parent' & pause & goto :EOF
 
 cd ..
