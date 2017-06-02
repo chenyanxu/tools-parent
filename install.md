@@ -50,11 +50,11 @@
   
 ### Karaf
 
-> 版本： [apache-karaf-4.0.7](http://karaf.apache.org)
+> 版本： [apache-karaf-4.1.1](http://karaf.apache.org)
   
 > 说明：Karaf是一个基于OSGi的运行环境，Karaf提供了一个轻量级的OSGi容器，可以用于部署各种组件，应用程序。
   
-> 备注：需要解包到D:\java-develop\tools\apache-karaf-4.0.7。
+> 备注：需要解包到D:\java-develop\tools\apache-karaf-4.1.1。
   
 ### PostgreSQL
 
@@ -132,7 +132,7 @@ karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SN
 Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
 ```
 
-* karaf命令提示符下，输入 feature:install -v kalix-base activiti couchdb 
+* karaf命令提示符下，输入 feature:install -v kalix-base 
 
 * 安装完成后，输入 la
 
