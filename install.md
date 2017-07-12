@@ -128,8 +128,8 @@ karaf@root()>
 * karaf命令提示符下，输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.1-SNAPSHOT/xml/features
 
 ```bash
-karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
-Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.0-SNAPSHOT/xml/features
+karaf@root()> feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.1-SNAPSHOT/xml/features
+Adding feature url mvn:com.kalix.tools/tools-karaf-features/1.0.1-SNAPSHOT/xml/features
 ```
 
 * karaf命令提示符下，输入 feature:install -v kalix-base 
