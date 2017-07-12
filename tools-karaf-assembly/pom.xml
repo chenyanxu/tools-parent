@@ -16,7 +16,7 @@
 
     <properties>
         <assembly.directory>${project.build.directory}/assembly</assembly.directory>
-        <karaf.version>4.1.0</karaf.version>
+        <karaf.version>4.1.1</karaf.version>
     </properties>
 
     <dependencies>

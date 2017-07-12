@@ -88,7 +88,7 @@ public class CouchdbServiceImpl implements ICouchdbService, ManagedService {
 </blueprint>
 ```
 ## [Apache Felix Event Admin](http://felix.apache.org/documentation/subprojects/apache-felix-event-admin.html)
-
+  [osgi-event](https://github.com/chenyanxu/kalix-parent/blob/master/osgi-event.md)
 ## [Pax Logging Service](https://ops4j1.jira.com/wiki/display/paxlogging/Pax+Logging)
 > 特点：
 * Log4J driving the backend implementation.
