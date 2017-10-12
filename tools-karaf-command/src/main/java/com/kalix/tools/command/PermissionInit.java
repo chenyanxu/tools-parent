@@ -25,8 +25,8 @@ public class PermissionInit {
     private String appClearSql = "DELETE FROM public.sys_application;";
 
     private String funSql = "INSERT INTO public.sys_function " +
-            "(id, createby, creationdate, updateby, updatedate, applicationid, code, isleaf, name, parentid, permission, remark, version_) " +
-            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1');";
+            "(id, createby, creationdate, updateby, updatedate, applicationid, code, isleaf, name, parentid, permission, remark, version_, dataPermission, dataPermissionKey) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1', '%s', '%s');";
     private String funClearSql = "DELETE FROM public.sys_function;";
 
     private String role_funClearSql = "DELETE FROM public.sys_role_function where roleid=1;";
@@ -136,8 +136,10 @@ public class PermissionInit {
     private int insertMenu(int appId, int moduleId, int menuId, IMenu menu) {
 
         ++moduleId;
+        String str = menu.getId();
+        String dataPermission = str.substring(0, str.length() - 4).toLowerCase(); // 处理数据权限的字符串,去掉结尾的menu
         String menuStr = String.format(funSql, String.valueOf(moduleId), strNow, strNow, String.valueOf(appId),
-                menu.getId(), "0", menu.getText(), String.valueOf(menuId), menu.getPermission()); // 格式化字符串
+                menu.getId(), "0", menu.getText(), String.valueOf(menuId), menu.getPermission(), "1", dataPermission); // 格式化字符串
         StringReader reader = new StringReader(menuStr);
         try {
             System.out.println("insert menu data of " + menu.getId());
@@ -161,7 +163,7 @@ public class PermissionInit {
                 String strName = values[0];
                 String strKey = values[1];
                 String btnStr = String.format(funSql, String.valueOf(++moduleId), strNow, strNow, String.valueOf(appId),
-                        strKey, "1", strName, String.valueOf(btnParentId), menu.getPermission() + ":" + strKey); // 格式化字符串
+                        strKey, "1", strName, String.valueOf(btnParentId), menu.getPermission() + ":" + strKey, "0", ""); // 格式化字符串
                 build.append(btnStr);
             }
             StringReader btnReader = new StringReader(build.toString());
@@ -185,7 +187,7 @@ public class PermissionInit {
      */
     private void insertModule(int appId, int moduleId, IModule module) {
         String str = String.format(funSql, String.valueOf(moduleId), strNow, strNow, String.valueOf(appId),
-                module.getId(), "0", module.getText(), "-1", module.getPermission()); // 格式化字符串
+                module.getId(), "0", module.getText(), "-1", module.getPermission(), "0", ""); // 格式化字符串
         StringReader reader = new StringReader(str);
         try {
             System.out.println("insert module data of " + module.getId());
