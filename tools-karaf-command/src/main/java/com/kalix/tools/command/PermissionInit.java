@@ -25,7 +25,7 @@ public class PermissionInit {
     private String appClearSql = "DELETE FROM public.sys_application;";
 
     private String funSql = "INSERT INTO public.sys_function " +
-            "(id, createby, creationdate, updateby, updatedate, applicationid, code, isleaf, name, parentid, permission, remark, version_, isDataPermission, dataPermissionKey) " +
+            "(id, createby, creationdate, updateby, updatedate, applicationid, code, isleaf, name, parentid, permission, remark, version_, dataPermission, dataPermissionKey) " +
             "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '', '1', '%s', '%s');";
     private String funClearSql = "DELETE FROM public.sys_function;";
 
