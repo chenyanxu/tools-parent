@@ -6,4 +6,3 @@ admin_organization_user.sql
 admin_duty.sql
 admin_duty_user.sql
 oauth2.sql
-admin_data_duty.sql
