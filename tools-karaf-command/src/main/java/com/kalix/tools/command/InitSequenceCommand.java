@@ -66,7 +66,7 @@ public class InitSequenceCommand implements Action {
         //update the sequence table
         statement.execute("UPDATE openjpaseq set sequence_value="+idsSort[ids.size()-1].toString());
 
-        System.out.println("succeed to set openjpa sequence value to " + idsSort[ids.size() - 1].toString());
+        Util.outPrint("succeed to set openjpa sequence value to " + idsSort[ids.size() - 1].toString());
 
         return null;
     }

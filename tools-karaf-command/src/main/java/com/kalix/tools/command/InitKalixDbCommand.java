@@ -31,14 +31,14 @@ public class InitKalixDbCommand implements Action {
         return null;
     }
 
-    private void init(){
+    private void init() {
         DataSource dataSource = Util.getKalixDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, true);
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && !applicationList.isEmpty()) {
             for (IApplication application : applicationList) {
-                String listName=application.getId()+suffix;
-                System.out.println("begin init "+application.getId()+" database...");
+                String listName = application.getId() + suffix;
+                Util.outPrint("begin init " + application.getId() + " database...");
                 InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(listName);
                 BufferedReader br = null;
                 try {
@@ -48,8 +48,7 @@ public class InitKalixDbCommand implements Action {
                 }
                 String sql = null;
                 try {
-                    while((sql = br.readLine())!= null)
-                    {
+                    while ((sql = br.readLine()) != null) {
                         InputStream stream = this.getClass().getClassLoader().getResourceAsStream(sql);
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
                         scriptRunner.runScript(bufferedReader);
@@ -59,13 +58,14 @@ public class InitKalixDbCommand implements Action {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                System.out.println("finished init "+application.getId()+" database...");
+                Util.outPrint("finished init " + application.getId() + " database...");
             }
 
-        }
-        else {
-            System.out.println("error,there is no a running application！");
+        } else {
+            Util.outPrint("error,there is no a running application！");
         }
     }
 
+
 }
+

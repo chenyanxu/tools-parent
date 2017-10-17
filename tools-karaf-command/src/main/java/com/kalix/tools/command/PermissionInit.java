@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class PermissionInit {
     private String appSql = "INSERT INTO public.sys_application " +
-            "(id, createby, creationdate, updateby, updatedate, code, location, name ,iconCls ,remark, version_) " +
-            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '%s', '1');";
+            "(id, createby, creationdate, updateby, updatedate, code, location, name ,iconCls ,remark, version_, supportmobile) " +
+            "VALUES ('%s', '管理员', '%s', '管理员', '%s', '%s', '', '%s', '%s', '%s', '1', '%s');";
     private String appClearSql = "DELETE FROM public.sys_application;";
 
     private String funSql = "INSERT INTO public.sys_function " +
@@ -88,7 +88,7 @@ public class PermissionInit {
         }
         try {
             StringReader reader = new StringReader(builder.toString());
-            System.out.println("insert role application data ");
+            Util.outPrint("insert role application data ");
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -114,7 +114,7 @@ public class PermissionInit {
             scriptRunner.runScript(br);*/
 
             StringReader reader = new StringReader(builder.toString());
-            System.out.println("insert role function data ");
+            Util.outPrint("insert role function data ");
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -142,7 +142,7 @@ public class PermissionInit {
                 menu.getId(), "0", menu.getText(), String.valueOf(menuId), menu.getPermission(), "1", dataPermission); // 格式化字符串
         StringReader reader = new StringReader(menuStr);
         try {
-            System.out.println("insert menu data of " + menu.getId());
+            Util.outPrint("insert menu data of " + menu.getId());
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -168,7 +168,7 @@ public class PermissionInit {
             }
             StringReader btnReader = new StringReader(build.toString());
             try {
-                System.out.println("insert button data of " + menu.getId());
+                Util.outPrint("insert button data of " + menu.getId());
                 scriptRunner.runScript(btnReader);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -190,7 +190,7 @@ public class PermissionInit {
                 module.getId(), "0", module.getText(), "-1", module.getPermission(), "0", ""); // 格式化字符串
         StringReader reader = new StringReader(str);
         try {
-            System.out.println("insert module data of " + module.getId());
+            Util.outPrint("insert module data of " + module.getId());
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -206,10 +206,10 @@ public class PermissionInit {
      * @param application
      */
     private void insertApplication(int appId, IApplication application) {
-        String str = String.format(appSql, String.valueOf(appId), strNow, strNow, application.getId(), application.getText(), application.getIconCls(), application.getText()); // 格式化字符串
+        String str = String.format(appSql, String.valueOf(appId), strNow, strNow, application.getId(), application.getText(), application.getIconCls(), application.getText(), application.getSupportMobile()); // 格式化字符串
         StringReader reader = new StringReader(str);
         try {
-            System.out.println("insert application data of " + application.getId());
+            Util.outPrint("insert application data of " + application.getId());
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -224,7 +224,7 @@ public class PermissionInit {
     private void clearData() {
         StringReader reader = new StringReader(appClearSql + funClearSql + role_funClearSql + app_funClearSql);
         try {
-            System.out.println("clean application data!");
+            Util.outPrint("clean application data!");
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();

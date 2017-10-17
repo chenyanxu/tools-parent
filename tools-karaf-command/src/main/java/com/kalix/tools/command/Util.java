@@ -1,6 +1,7 @@
 package com.kalix.tools.command;
 
 import com.kalix.framework.core.util.JNDIHelper;
+import org.fusesource.jansi.AnsiConsole;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -8,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.fusesource.jansi.Ansi.Color.RED;
+import static org.fusesource.jansi.Ansi.ansi;
 
 /**
  * Created by Administrator on 2016-08-03.
@@ -39,5 +43,11 @@ public class Util {
         Date now=new Date();
         String nowString=myFmt.format(now);
         return nowString;
+    }
+
+    public static void outPrint(String str) {
+        AnsiConsole.systemInstall();
+        System.out.println(ansi().fg(RED).a(str).reset());
+        AnsiConsole.systemUninstall();
     }
 }
