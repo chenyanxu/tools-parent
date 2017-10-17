@@ -367,6 +367,7 @@
         <!--<feature>shiro-web</feature>-->
         <feature>jedis</feature>
         <bundle>mvn:org.fusesource.jansi/jansi/1.16</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json/20140107_1</bundle>
         <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:com.google.guava/guava/15.0</bundle>
