@@ -35,6 +35,10 @@ IF %hasErrors%==0  cd tools-parent & git pull origin master & call mvn clean ins
 IF %hasErrors%==1 echo 'An error occurred of tools-parent' & pause & goto :EOF
 
 cd ..
+IF %hasErrors%==0  cd research-parent & git pull origin master & call mvn clean install || set hasErrors=1
+IF %hasErrors%==1 echo 'An error occurred of research-parent' & pause & goto :EOF
+
+cd ..
 
 @echo on
 @echo 'Build project successfully!'
