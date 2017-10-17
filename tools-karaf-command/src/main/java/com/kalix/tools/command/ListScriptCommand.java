@@ -39,7 +39,7 @@ public class ListScriptCommand implements Action
             }
 
         } catch (Exception e) {
-            System.out.println("list script files error!");
+            Util.outPrint("list script files error!");
             e.printStackTrace();
         }
 
