@@ -53,7 +53,7 @@ public class PermissionInit {
         if (applicationList != null && !applicationList.isEmpty()) {
             int appId = 0;
             int moduleId = 1000;
-            clearData();//清空表数据
+            beforeClearData();//清空表数据
             for (IApplication application : applicationList) {
                 ++appId;
                 insertApplication(appId, application);
@@ -74,6 +74,7 @@ public class PermissionInit {
             }
             insertApplicationPermit(appId);
             insertFunctionPermit(moduleId);
+            afterClearData();
         }
     }
 
@@ -223,10 +224,25 @@ public class PermissionInit {
     /**
      * clear data of db
      */
-    private void clearData() {
-        StringReader reader = new StringReader(appClearSql + funClearSql + role_funClearSql + app_funClearSql + dataAuthClearSql);
+    private void beforeClearData() {
+        StringReader reader = new StringReader(appClearSql + funClearSql + role_funClearSql + app_funClearSql);
         try {
             Util.outPrint("clean application data!");
+            scriptRunner.runScript(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * after clear data of db
+     */
+    private void afterClearData() {
+        StringReader reader = new StringReader(dataAuthClearSql);
+        try {
+            Util.outPrint("after clean application data!");
             scriptRunner.runScript(reader);
         } catch (IOException e) {
             e.printStackTrace();
