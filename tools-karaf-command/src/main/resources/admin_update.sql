@@ -1,0 +1,1 @@
+update sys_function set datapermission=false where applicationid=1
