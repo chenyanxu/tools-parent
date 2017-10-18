@@ -38,6 +38,8 @@ public class PermissionInit {
     private String role_applicationsql = "INSERT INTO public.sys_role_application " +
             "(id, createby, creationdate, updateby, updatedate, applicationid, roleid, version_) " +
             "VALUES ('%s', '管理员', '%s', '管理员', '%s','%s', '1',  '1');";
+    // 数据授权清理脚本
+    private String dataAuthClearSql = "update sys_function set datapermission=false where applicationid=1;";
 
     String strNow = Util.getNowString();
 
@@ -222,7 +224,7 @@ public class PermissionInit {
      * clear data of db
      */
     private void clearData() {
-        StringReader reader = new StringReader(appClearSql + funClearSql + role_funClearSql + app_funClearSql);
+        StringReader reader = new StringReader(appClearSql + funClearSql + role_funClearSql + app_funClearSql + dataAuthClearSql);
         try {
             Util.outPrint("clean application data!");
             scriptRunner.runScript(reader);
