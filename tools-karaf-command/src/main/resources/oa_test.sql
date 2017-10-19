@@ -194,5 +194,13 @@ INSERT INTO public.sys_role_function (id, createby, createbyid, creationdate, up
 
 -- add 上级领导职务
 INSERT INTO public.sys_duty (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, comment, name, orgid, version_) VALUES (101214, '管理员', -1, '2017-10-19 09:08:59.987000', '管理员', -1, '2017-10-19 09:08:59.975000', '工作流审批', '上级领导', 42139, 1);
+
 -- add 赵明明 to 上级领导
 INSERT INTO public.sys_duty_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, dutyid, orgid, userid, version_) VALUES (101314, 'admin', null, null, 'admin', null, '2017-10-19 09:14:04.290000', 101214, 42139, 127, 1);
+
+-- add 赵明明 data auth
+
+INSERT INTO "public"."sys_data_auth" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "appid", "menuid", "remark", "type", "version_")
+VALUES ('5', '管理员', NULL, '2017-10-19 09:28:27', '管理员', NULL, '2017-10-19 09:28:30', 'oa', NULL, NULL, '1', '1');
+INSERT INTO "public"."sys_data_auth_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "dataauthid", "userid", "version_")
+VALUES ('3', '管理员', NULL, '2017-10-19 09:29:02', '管理员', NULL, '2017-10-19 09:29:06', '5', '127', '1');
