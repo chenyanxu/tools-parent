@@ -10,7 +10,7 @@ INSERT INTO public.sys_role_application (id, createby, createbyid, creationdate,
 
 --oa添加孟佳男和赵明明2个用户
 
-INSERT INTO public.sys_role_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, roleid, userid, version_) VALUES (101114, 'admin', null, null, 'admin', null, '2017-10-19 08:53:09.745000', 701, 39, 1);
+INSERT INTO public.sys_role_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, roleid, userid, version_) VALUES (101114, 'admin', null, null, 'admin', null, '2017-10-19 08:53:09.745000', 701, 151, 1);
 INSERT INTO public.sys_role_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, roleid, userid, version_) VALUES (101115, 'admin', null, null, 'admin', null, '2017-10-19 08:53:09.849000', 701, 146, 1);
 
 --OA角色function授权
