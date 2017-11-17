@@ -47,7 +47,7 @@ public class Util {
 
     public static void outPrint(String str) {
         AnsiConsole.systemInstall();
-        System.out.println(ansi().fg(RED).a(str).reset());
+        System.out.println(ansi().eraseScreen().fg(RED).a(str).reset());
         AnsiConsole.systemUninstall();
     }
 }
