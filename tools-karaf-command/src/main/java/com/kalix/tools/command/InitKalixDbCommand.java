@@ -53,17 +53,17 @@ public class InitKalixDbCommand implements Action {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
                         scriptRunner.runScript(bufferedReader);
                     }
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    Util.outPrint("脚本执行错误，运行中断！");
+                    return;
                 }
                 Util.outPrint("finished init " + application.getId() + " database...");
             }
-
         } else {
             Util.outPrint("error,there is no a running application！");
         }
+        Util.outPrint("脚本执行成功！");
     }
 
 
