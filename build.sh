@@ -19,11 +19,14 @@ cd ..
 cd schedule-parent && git pull origin master && mvn clean install
 cd ..
 
+cd research-parent && git pull origin master && mvn clean install
+cd ..
+
+cd art-parent && git pull origin master && mvn clean install
+cd ..
+
 cd tools-parent && git pull origin master && mvn clean install
 cd ..
 
-research-parent && git pull origin master && mvn clean install
-cd ..
 
-research-parent && git pull origin master && mvn clean install
-cd ..
+
