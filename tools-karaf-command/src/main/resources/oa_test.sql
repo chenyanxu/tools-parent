@@ -1,6 +1,6 @@
 -- 插入oa角色
 INSERT INTO public.sys_role (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, app, name, remark, version_)
-  VALUES (701, '管理员', -1, '2017-10-19 08:11:01.916000', '管理员', -1, '2017-10-19 08:11:01.812000', '办公自动化', '办公自动化', '办公自动化角色', 1);
+  VALUES (701, '管理员', -1, '2017-10-19 08:11:01.916000', '管理员', -1, '2017-10-19 08:11:01.812000', '办公自动化', '办公自动化角色', '办公自动化角色', 1);
 
 -- oa角色application授权
 INSERT INTO public.sys_role_application (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, applicationid, roleid, version_)
