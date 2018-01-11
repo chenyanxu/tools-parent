@@ -65,7 +65,7 @@ public class InitSequenceCommand implements Action {
             //sort the id list,the last one will at the end.
             Arrays.sort(idsSort);
             //update the sequence table
-            //statement.execute("UPDATE openjpaseq set sequence_value="+idsSort[ids.size()-1].toString());
+            // 由于空数据时update失效，先删除openjpaseq表数据，然后插入保证openjpaseq表数据正确
             statement.execute("DELETE from openjpaseq ");
             statement.execute("INSERT INTO openjpaseq values('0','" + idsSort[ids.size() - 1].toString() + "')");
             Util.outPrint("succeed to set openjpa sequence value to " + idsSort[ids.size() - 1].toString());
