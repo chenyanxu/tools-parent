@@ -256,6 +256,6 @@ INSERT INTO public.sys_duty_user (id, createby, createbyid, creationdate, update
 -- add 赵明明 data auth
 
 INSERT INTO "public"."sys_data_auth" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "appid", "menuid", "remark", "type", "version_")
-VALUES ('5', '管理员', NULL, '2017-10-19 09:28:27', '管理员', NULL, '2017-10-19 09:28:30', 'oa', redheadApplyMenu, NULL, '1', '1');
+VALUES ('5', '管理员', NULL, '2017-10-19 09:28:27', '管理员', NULL, '2017-10-19 09:28:30', 'oa', 'redheadApplyMenu', NULL, '1', '1');
 INSERT INTO "public"."sys_data_auth_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "dataauthid", "userid", "version_")
 VALUES ('3', '管理员', NULL, '2017-10-19 09:29:02', '管理员', NULL, '2017-10-19 09:29:06', '5', '146', '1');
