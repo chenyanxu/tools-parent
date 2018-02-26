@@ -36,7 +36,6 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
             vertical-align: baseline;
         }
 
-        *//* HTML5 display-role reset for older browsers *//*
         article, aside, details, figcaption, figure,
         footer, header, hgroup, menu, nav, section {
             display: block;
@@ -69,7 +68,6 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
             height: 100%;
         }
 
-        *//* 红头文件 *//*
         .rhf-container {
             width: 790px;
             margin: 0 auto;
@@ -168,12 +166,73 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
     </style>
 </head>
 <body>
-<div class="rhf-container"><div class="rhf-tt">${docCaption}</div><table class="MsoNormalTable mce-item-table" border="0" cellspacing="0" cellpadding="0" width="100%" style="width: 100.0%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm;" data-mce-style="width: 100.0%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm;"><tbody><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes; height: 19.85pt;" data-mce-style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes; height: 19.85pt;"><td style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt;" data-mce-style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">${docTypeName}</span></td><td style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt; text-align: right;" data-mce-style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt; text-align: right;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">签发人：<span class="issuer-name2">郑立国</span></span></td></tr></tbody></table><div class="rhf-bd" id="rhfDd"><div class="rhf-article" title="内容区" style="padding: 0 16px;" data-mce-style="padding: 0 16px;"><div data-v-0555a166="" style="margin: 40px auto 30px; font-size: 25px; font-weight: 800; text-align: center; line-height: 30px;" data-mce-style="margin: 40px auto 30px; font-size: 25px; font-weight: 800; text-align: center; line-height: 30px;">${title}</div>${a}${a}</div><div class="rhf-ft"><p class="MsoNormal" align="right" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt;" data-mce-style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">吉林动画学院</span></p><p class="MsoNormal" align="right" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt; font-family: 仿宋;" data-mce-style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt; font-family: 仿宋;">2017年 X月Ｘ日</p><table border="1" cellspacing="0" cellpadding="0" width="100%" style="width: 100.0%; border-collapse: collapse; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1536; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;" data-mce-style="width: 100.0%; border-collapse: collapse; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1536; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;"><tbody><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 1.0cm;" data-mce-style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 1.0cm;"><td width="50%" nowrap="nowrap" colspan="2" style="width: 50.0%; border-top: solid windowtext 1.5pt; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: none; mso-border-top-alt: solid windowtext 1.5pt; mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border-top: solid windowtext 1.5pt; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: none; mso-border-top-alt: solid windowtext 1.5pt; mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" align="right" style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">抄送：学校领导，学校各单位、部门</span></p></td></tr><tr style="mso-yfti-irow: 1; mso-yfti-lastrow: yes; page-break-inside: avoid; height: 1.0cm;" data-mce-style="mso-yfti-irow: 1; mso-yfti-lastrow: yes; page-break-inside: avoid; height: 1.0cm;"><td width="50%" nowrap="nowrap" style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: justify; text-justify: inter-ideograph; line-height: 12.0pt; mso-line-height-rule: exactly;">吉林动画学院校务部</p></td><td width="50%" nowrap="nowrap" style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" align="right" style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;">2017年 X月 X日印发</p></td></tr></tbody></table></div></div></div>
+<div class="rhf-container">
+    <div class="rhf-tt">${docCaption}</div>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+ style=''width:100.0%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0cm 0cm 0cm 0cm''>
+ <tr style=''mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:19.85pt''>
+  <td style=''border:none;border-bottom:solid red 1.5pt;padding:0cm 12.0pt 0cm 12.0pt;
+  height:19.85pt''><span
+  style=''font-family:仿宋''>${docTypeName}</span>
+  </td>
+  <td style=''border:none;border-bottom:solid red 1.5pt;padding:0cm 12.0pt 0cm 12.0pt;
+  height:19.85pt;text-align: right;''><span style=''font-family:仿宋''>签发人：<span
+  class=issuer-name2>郑立国</span></span>
+  </td>
+ </tr>
+</table>
+    <div class="rhf-bd" id="rhfDd">
+        <div class="rhf-article" title="内容区" style="padding: 0 16px;">
+            <div data-v-0555a166="" style="margin: 40px auto 30px;font-size: 25px;font-weight: 800;text-align: center;line-height: 30px;">${title}</div>
+            ${a}
+        </div>
+        <div class="rhf-ft">
+            <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:right;line-height:12.0pt''><span style=''font-family:仿宋''>吉林动画学院</span></p>
+    <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:right;line-height:12.0pt;font-family:
+仿宋''>2017年 X月Ｘ日</p>
+        <table border=1 cellspacing=0 cellpadding=0 width="100%"
+         style=''width:100.0%;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1536;mso-padding-alt:0cm 5.4pt 0cm 5.4pt''>
+ <tr style=''mso-yfti-irow:0;mso-yfti-firstrow:yes;height:1.0cm''>
+  <td width="50%" nowrap colspan=2 style=''width:50.0%;border-top:solid windowtext 1.5pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  mso-border-top-alt:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0cm 12pt 0cm 12pt;height:1.0cm''>
+  <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
+  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：学校领导，学校各单位、部门<span
+  lang=EN-US><o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style=''mso-yfti-irow:1;mso-yfti-lastrow:yes;page-break-inside:avoid;
+  height:1.0cm''>
+  <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
+  height:1.0cm''>
+  <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
+  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院校务部</p>
+  </td>
+  <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
+  height:1.0cm''>
+  <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
+  mso-line-height-rule:exactly''>2017年
+  X月 X日印发</p>
+  </td>
+ </tr>
+</table>
+</div>
+
+    </div>
+</div>
 </body>
 </html>', '102114', '1', 'WORD', '1');
 */
 /*
-INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "content", "templateid", "templatetype", "templatetypedesc", "version_") VALUES ('105315', NULL, NULL, '2018-02-26 11:06:41', NULL, NULL, '2018-02-26 11:11:21.707', '<!DOCTYPE html>
+INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "content", "templateid", "templatetype", "templatetypedesc", "version_") VALUES ('105315', NULL, NULL, '2018-02-26 13:59:33.856', NULL, NULL, '2018-02-26 13:59:33.852', '<!DOCTYPE html>
 <html>
 <head>
     <title>${docCaption}</title>
@@ -199,7 +258,6 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
             vertical-align: baseline;
         }
 
-        *//* HTML5 display-role reset for older browsers *//*
         article, aside, details, figcaption, figure,
         footer, header, hgroup, menu, nav, section {
             display: block;
@@ -232,7 +290,6 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
             height: 100%;
         }
 
-        *//* 红头文件 *//*
         .rhf-container {
             width: 790px;
             margin: 0 auto;
@@ -331,7 +388,68 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
     </style>
 </head>
 <body>
-<div class="rhf-container"><div class="rhf-tt">${docCaption}</div><table class="MsoNormalTable mce-item-table" border="0" cellspacing="0" cellpadding="0" width="100%" style="width: 100.0%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm;" data-mce-style="width: 100.0%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm;"><tbody><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes; height: 19.85pt;" data-mce-style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes; height: 19.85pt;"><td style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt;" data-mce-style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">${docTypeName}</span></td><td style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt; text-align: right;" data-mce-style="border: none; border-bottom: solid red 1.5pt; padding: 0cm 12.0pt 0cm 12.0pt; height: 19.85pt; text-align: right;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">签发人：<span class="issuer-name2">郑立国</span></span></td></tr></tbody></table><div class="rhf-bd" id="rhfDd"><div class="rhf-article" title="内容区" style="padding: 0 16px;" data-mce-style="padding: 0 16px;"><div data-v-0555a166="" style="margin: 40px auto 30px; font-size: 25px; font-weight: 800; text-align: center; line-height: 30px;" data-mce-style="margin: 40px auto 30px; font-size: 25px; font-weight: 800; text-align: center; line-height: 30px;">${title}</div>${a}${a}</div><div class="rhf-ft"><p class="MsoNormal" align="right" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt;" data-mce-style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">吉林动画学院</span></p><p class="MsoNormal" align="right" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt; font-family: 仿宋;" data-mce-style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: right; line-height: 12.0pt; font-family: 仿宋;">2017年 X月Ｘ日</p><table border="1" cellspacing="0" cellpadding="0" width="100%" style="width: 100.0%; border-collapse: collapse; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1536; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;" data-mce-style="width: 100.0%; border-collapse: collapse; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1536; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;"><tbody><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 1.0cm;" data-mce-style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 1.0cm;"><td width="50%" nowrap="nowrap" colspan="2" style="width: 50.0%; border-top: solid windowtext 1.5pt; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: none; mso-border-top-alt: solid windowtext 1.5pt; mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border-top: solid windowtext 1.5pt; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: none; mso-border-top-alt: solid windowtext 1.5pt; mso-border-bottom-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" align="right" style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;"><span style="font-family: 仿宋;" data-mce-style="font-family: 仿宋;">抄送：学校领导，学校各单位、部门</span></p></td></tr><tr style="mso-yfti-irow: 1; mso-yfti-lastrow: yes; page-break-inside: avoid; height: 1.0cm;" data-mce-style="mso-yfti-irow: 1; mso-yfti-lastrow: yes; page-break-inside: avoid; height: 1.0cm;"><td width="50%" nowrap="nowrap" style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: justify; text-justify: inter-ideograph; line-height: 12.0pt; mso-line-height-rule: exactly;">吉林动画学院校务部</p></td><td width="50%" nowrap="nowrap" style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;" data-mce-style="width: 50.0%; border: none; border-bottom: solid windowtext 1.5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0cm 12pt 0cm 12pt; height: 1.0cm;"><p class="MsoNormal" align="right" style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;" data-mce-style="text-align: right; line-height: 12.0pt; mso-line-height-rule: exactly;">2017年 X月 X日印发</p></td></tr></tbody></table></div></div></div>
+<div class="rhf-container">
+    <div class="rhf-tt">${docCaption}</div>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+ style=''width:100.0%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0cm 0cm 0cm 0cm''>
+ <tr style=''mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:19.85pt''>
+  <td style=''border:none;border-bottom:solid red 1.5pt;padding:0cm 12.0pt 0cm 12.0pt;
+  height:19.85pt''><span
+  style=''font-family:仿宋''>${docTypeName}</span>
+  </td>
+  <td style=''border:none;border-bottom:solid red 1.5pt;padding:0cm 12.0pt 0cm 12.0pt;
+  height:19.85pt;text-align: right;''><span style=''font-family:仿宋''>签发人：<span
+  class=issuer-name2>郑立国</span></span>
+  </td>
+ </tr>
+</table>
+    <div class="rhf-bd" id="rhfDd">
+        <div class="rhf-article" title="内容区" style="padding: 0 16px;">
+            <div data-v-0555a166="" style="margin: 40px auto 30px;font-size: 25px;font-weight: 800;text-align: center;line-height: 30px;">${title}</div>
+            ${a}
+        </div>
+        <div class="rhf-ft">
+            <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:right;line-height:12.0pt''><span style=''font-family:仿宋''>吉林动画学院</span></p>
+    <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:right;line-height:12.0pt;font-family:
+仿宋''>2017年 X月Ｘ日</p>
+        <table border=1 cellspacing=0 cellpadding=0 width="100%"
+         style=''width:100.0%;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:1536;mso-padding-alt:0cm 5.4pt 0cm 5.4pt''>
+ <tr style=''mso-yfti-irow:0;mso-yfti-firstrow:yes;height:1.0cm''>
+  <td width="50%" nowrap colspan=2 style=''width:50.0%;border-top:solid windowtext 1.5pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  mso-border-top-alt:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0cm 12pt 0cm 12pt;height:1.0cm''>
+  <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
+  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：学校领导，学校各单位、部门<span
+  lang=EN-US><o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style=''mso-yfti-irow:1;mso-yfti-lastrow:yes;page-break-inside:avoid;
+  height:1.0cm''>
+  <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
+  height:1.0cm''>
+  <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
+  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院校务部</p>
+  </td>
+  <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
+  height:1.0cm''>
+  <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
+  mso-line-height-rule:exactly''>2017年
+  X月 X日印发</p>
+  </td>
+ </tr>
+</table>
+</div>
+
+    </div>
+</div>
 </body>
-</html>', '102114', '1', 'HTML', '1');
+</html>', '102114', '0', 'HTML', '1');
 */
