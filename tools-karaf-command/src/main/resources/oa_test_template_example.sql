@@ -202,7 +202,7 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
-  line-height:12.0pt;mso-line-height-rule:exactly''>${docDept}</p>
+  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院${docDept}</p>
   </td>
   <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
@@ -422,7 +422,7 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
-  line-height:12.0pt;mso-line-height-rule:exactly''>${docDept}</p>
+  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院${docDept}</p>
   </td>
   <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
