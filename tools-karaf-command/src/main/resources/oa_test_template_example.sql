@@ -175,14 +175,14 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
     <div class="rhf-bd" id="rhfDd">
         <div class="rhf-article" title="内容区" style="padding: 0 16px;">
             <div data-v-0555a166="" style="margin: 40px auto 30px;font-size: 25px;font-weight: 800;text-align: center;line-height: 30px;">${title}</div>
-            ${a}
+            ${content}
         </div>
         <div class="rhf-ft">
             <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
 auto;text-align:right;line-height:12.0pt''><span style=''font-family:仿宋''>吉林动画学院</span></p>
     <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
 auto;text-align:right;line-height:12.0pt;font-family:
-仿宋''>2017年 X月Ｘ日</p>
+仿宋''>${docDate}</p>
         <table border=1 cellspacing=0 cellpadding=0 width="100%"
          style=''width:100.0%;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
  mso-yfti-tbllook:1536;mso-padding-alt:0cm 5.4pt 0cm 5.4pt''>
@@ -192,7 +192,7 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0cm 12pt 0cm 12pt;height:1.0cm''>
   <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
-  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：学校领导，学校各单位、部门<span
+  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：${other}<span
   lang=EN-US><o:p></o:p></span></span></p>
   </td>
  </tr>
@@ -202,14 +202,13 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
-  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院校务部</p>
+  line-height:12.0pt;mso-line-height-rule:exactly''>${docDept}</p>
   </td>
   <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
-  mso-line-height-rule:exactly''>2017年
-  X月 X日印发</p>
+  mso-line-height-rule:exactly''>${docDate}印发</p>
   </td>
  </tr>
 </table>
@@ -396,14 +395,14 @@ INSERT INTO "public"."sys_templatecontent" ("id", "createby", "createbyid", "cre
     <div class="rhf-bd" id="rhfDd">
         <div class="rhf-article" title="内容区" style="padding: 0 16px;">
             <div data-v-0555a166="" style="margin: 40px auto 30px;font-size: 25px;font-weight: 800;text-align: center;line-height: 30px;">${title}</div>
-            ${a}
+            ${content}
         </div>
         <div class="rhf-ft">
             <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
 auto;text-align:right;line-height:12.0pt''><span style=''font-family:仿宋''>吉林动画学院</span></p>
     <p class=MsoNormal align=right style=''mso-margin-top-alt:auto;mso-margin-bottom-alt:
 auto;text-align:right;line-height:12.0pt;font-family:
-仿宋''>2017年 X月Ｘ日</p>
+仿宋''>${docDate}</p>
         <table border=1 cellspacing=0 cellpadding=0 width="100%"
          style=''width:100.0%;border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
  mso-yfti-tbllook:1536;mso-padding-alt:0cm 5.4pt 0cm 5.4pt''>
@@ -413,7 +412,7 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext .5pt;
   padding:0cm 12pt 0cm 12pt;height:1.0cm''>
   <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
-  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：学校领导，学校各单位、部门<span
+  mso-line-height-rule:exactly''><span style=''font-family:仿宋''>抄送：${other}<span
   lang=EN-US><o:p></o:p></span></span></p>
   </td>
  </tr>
@@ -423,14 +422,13 @@ auto;text-align:right;line-height:12.0pt;font-family:
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal style=''text-align:justify;text-justify:inter-ideograph;
-  line-height:12.0pt;mso-line-height-rule:exactly''>吉林动画学院校务部</p>
+  line-height:12.0pt;mso-line-height-rule:exactly''>${docDept}</p>
   </td>
   <td width="50%" nowrap style=''width:50.0%;border:none;border-bottom:solid windowtext 1.5pt;
   mso-border-top-alt:solid windowtext .5pt;padding:0cm 12pt 0cm 12pt;
   height:1.0cm''>
   <p class=MsoNormal align=right style=''text-align:right;line-height:12.0pt;
-  mso-line-height-rule:exactly''>2017年
-  X月 X日印发</p>
+  mso-line-height-rule:exactly''>${docDate}印发</p>
   </td>
  </tr>
 </table>
