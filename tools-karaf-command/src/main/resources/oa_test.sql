@@ -13,6 +13,14 @@ INSERT INTO public.sys_role_application (id, createby, createbyid, creationdate,
 INSERT INTO public.sys_role_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, roleid, userid, version_) VALUES (101114, 'admin', null, null, 'admin', null, '2017-10-19 08:53:09.745000', 701, 151, 1);
 INSERT INTO public.sys_role_user (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, roleid, userid, version_) VALUES (101115, 'admin', null, null, 'admin', null, '2017-10-19 08:53:09.849000', 701, 146, 1);
 
+--oa再添加校领导刘欣、胡维革、罗江林3个用户，董事长郑立国1个用户，校务部李佳1个用户
+INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105158', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.848', '701', '3', '1');
+INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105159', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.849', '701', '4', '1');
+INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105160', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.849', '701', '5', '1');
+INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105161', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.85', '701', '1', '1');
+INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105162', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.852', '701', '539', '1');
+--INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "roleid", "userid", "version_") VALUES ('105163', 'admin', NULL, NULL, 'admin', NULL, '2018-02-27 15:55:41.853', '701', '98', '1');
+
 --OA角色function授权
 
 INSERT INTO "public"."sys_role_function" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "functionid", "roleid", "version_") VALUES ('104624', 'admin', null, null, 'admin', null, '2018-01-08 11:35:38.85', '1090', '701', '1');
