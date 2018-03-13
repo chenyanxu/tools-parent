@@ -2,4 +2,6 @@ DELETE FROM public.common_dict;
 INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3701, '管理员', '2016-08-19 10:47:12.704000', '管理员', '2016-08-19 10:47:12.704000', '系统发送的消息', '系统消息', '消息类别', 0, 1);
 INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3702, '管理员', '2016-08-19 10:47:34.227000', '管理员', '2016-08-19 10:47:34.227000', '工作流流程中产生的消息通知', '流程消息', '消息类别', 1, 1);
 INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3703, '管理员', '2016-08-19 10:47:51.806000', '管理员', '2016-08-19 10:47:51.806000', '个人发送的消息', '个人消息', '消息类别', 2, 1);
-INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3704, '管理员', '2016-08-19 10:56:47.751000', '管理员', '2016-08-19 10:56:47.751000', '计划任务模块产生的消息', '计划任务消息', '消息类别', 3, 1);
+--暂时没有，先注掉
+--INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3704, '管理员', '2016-08-19 10:56:47.751000', '管理员', '2016-08-19 10:56:47.751000', '计划任务模块产生的消息', '计划任务消息', '消息类别', 3, 1);
+INSERT INTO public.common_dict (id, createby, creationdate, updateby, updatedate, description, label, type, value, version_) VALUES (3704, '管理员', '2018-03-12 15:00:47.751000', '管理员', '2018-03-12 15:00:47.751000', '通讯录添加好友发送的消息', '即时通讯消息', '消息类别', 3, 1);
