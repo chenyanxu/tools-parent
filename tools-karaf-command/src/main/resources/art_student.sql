@@ -1072,14 +1072,7 @@ INSERT INTO "public"."sys_role_user" ("id", "createby", "createbyid", "creationd
 
 
 
--- add 组织机构（动画专业）
-INSERT INTO "public"."sys_organization" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "areaid", "centercode", "code", "dept", "isleaf", "name", "parentid", "version_")
-  VALUES ('5341', 'admin', NULL, '2018-03-13 07:55:51.133', 'admin', NULL, '2018-03-13 07:55:51.104', NULL, NULL, '001029001006', NULL, '1', '动画专业', '22602', '1');
-
-
-
 -- add 学生详细信息
-DELETE FROM public.research_person_student;
 INSERT INTO "public"."research_person_student" ("id", "address", "birthday", "entranceyear", "instructor", "majorid", "nation", "period", "placeoforigin", "politicalstatus", "postalcode", "province", "traininglevel", "userid", "version_", "classname") VALUES ('800','北京市瀛海镇四海三村北十条8号院','1994-08-10','2012/1/1 0:00','刘微','5341','汉族','4年','北京市','共青团员','100176','11','本科','800','1','2014级三维特效2班');
 INSERT INTO "public"."research_person_student" ("id", "address", "birthday", "entranceyear", "instructor", "majorid", "nation", "period", "placeoforigin", "politicalstatus", "postalcode", "province", "traininglevel", "userid", "version_", "classname") VALUES ('801','北京市昌平区南口镇雪山村','1993-02-02','2012/1/1 0:00','刘微','5341','汉族','4年','北京市昌平区','共青团员','','11','本科','801','1','2014级三维动画绑定2班');
 INSERT INTO "public"."research_person_student" ("id", "address", "birthday", "entranceyear", "instructor", "majorid", "nation", "period", "placeoforigin", "politicalstatus", "postalcode", "province", "traininglevel", "userid", "version_", "classname") VALUES ('802','上海市青浦区淀山湖大道199弄60号402室','1994-03-29','2012/1/1 0:00','刘微','5341','汉族','4年','上海市青浦区','共青团员','201700','31','本科','802','1','动画班');
