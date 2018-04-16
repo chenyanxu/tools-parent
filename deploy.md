@@ -140,7 +140,7 @@ git clone https://github.com/chenyanxu/tools-parent.git
     --zone #作用域
     --add-port=80/tcp 添加端口，格式为：端口/通讯协议
     --permanent 永久生效，没有此参数重启后失效
-    systemctl restart firewalld 
+        systemctl restart firewalld 
 
 ###  install nodejs
 
@@ -171,7 +171,7 @@ vim config/index.js
 change host: 'localhost', to host: '192.168.88.235'
 
 ```batch
-vim kalix-vue-project\src\config\global.toml
+vim src/config/global.toml
 ```
 
 change baseURL = "http://localhost:8181"

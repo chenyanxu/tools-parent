@@ -20,8 +20,10 @@ INSERT INTO public.sys_workgroup_user (id, createby, creationdate, updateby, upd
 
 DELETE FROM public.sys_workgroup_role;
 INSERT INTO public.sys_workgroup_role (id, createby, creationdate, updateby, updatedate, groupid, roleid, version_) VALUES (1, '管理员', '2016-08-09 15:13:38.028000', '管理员', '2016-08-09 15:13:38.028000', 1, 1, 1);
-DELETE FROM public.sys_role_application;
-DELETE FROM public.sys_role_function;
+
+--DELETE FROM public.sys_role_application;
+--DELETE FROM public.sys_role_function;
+
 --INSERT INTO public.sys_role_application VALUES ('1', '管理员', '2015-11-17 00:11:36.699', '管理员', '2015-11-17 00:11:36.699', '0', '1', '1');
 --INSERT INTO public.sys_role_application VALUES ('2', '管理员', '2016-06-03 16:28:40.754', '管理员', '2016-06-03 16:28:40.754', '0', '2', '1');
 --INSERT INTO public.sys_role_application VALUES ('3', '管理员', '2016-06-03 16:28:40.754', '管理员', '2016-06-03 16:28:40.754', '0', '3', '1');
