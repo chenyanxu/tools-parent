@@ -1,0 +1,482 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: kong-template
+objects:
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    generation: 1
+    labels:
+      app: kong
+    name: kong
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: kong
+      deploymentconfig: kong
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: kong
+          deploymentconfig: kong
+      spec:
+        containers:
+        - env:
+          - name: KONG_ADMIN_ACCESS_LOG
+            value: /dev/stdout
+          - name: KONG_ADMIN_ERROR_LOG
+            value: /dev/stderr
+          - name: KONG_ADMIN_LISTEN
+            value: 0.0.0.0:8001
+          - name: KONG_ADMIN_LISTEN_SSL
+            value: 0.0.0.0:8444
+          - name: KONG_DATABASE
+            value: postgres
+          - name: KONG_PG_HOST
+            value: ' kong-database.gateway.svc.cluster.local'
+          - name: KONG_PROXY_ACCESS_LOG
+            value: /dev/stdout
+          - name: KONG_PROXY_ERROR_LOG
+            value: /dev/stderr
+          - name: KONG_PG_DATABASE
+            value: kong
+          - name: KONG_PG_USER
+            value: kong
+          - name: KONG_PG_PASSWORD
+            value: kong
+          image: docker-registry.default.svc:5000/gateway/kong@sha256:c6a50deb441727071876c3e02ac0c643c564dbbd2f32b76cc52023b2f9899728
+          imagePullPolicy: IfNotPresent
+          name: kong
+          ports:
+          - containerPort: 8001
+            protocol: TCP
+          - containerPort: 8443
+            protocol: TCP
+          - containerPort: 8444
+            protocol: TCP
+          - containerPort: 8000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - kong
+        from:
+          kind: ImageStreamTag
+          name: kong:latest
+          namespace: gateway
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 0
+    latestVersion: 0
+    observedGeneration: 0
+    replicas: 0
+    unavailableReplicas: 0
+    updatedReplicas: 0
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    generation: 1
+    labels:
+      app: kong-database
+    name: kong-database
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: kong-database
+      deploymentconfig: kong-database
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: kong-database
+          deploymentconfig: kong-database
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_DATABASE
+            value: kong
+          - name: POSTGRESQL_PASSWORD
+            value: kong
+          - name: POSTGRESQL_USER
+            value: kong
+          image: docker.io/centos/postgresql-95-centos7@sha256:c51672701ac676bfcb54ec3f4aa7c58aa7e03a34d0cdc9f23235ce56ec02a3f3
+          imagePullPolicy: IfNotPresent
+          name: kong-database
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/pgsql/data
+            name: kong-database-volume-1
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir: {}
+          name: kong-database-volume-1
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - kong-database
+        from:
+          kind: ImageStreamTag
+          name: postgresql:9.5
+          namespace: openshift
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 0
+    latestVersion: 0
+    observedGeneration: 0
+    replicas: 0
+    unavailableReplicas: 0
+    updatedReplicas: 0
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    generation: 1
+    labels:
+      app: konga
+    name: konga
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: konga
+      deploymentconfig: konga
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: konga
+          deploymentconfig: konga
+      spec:
+        containers:
+        - env:
+          - name: DB_ADAPTER
+            value: postgres
+          - name: DB_DATABASE
+            value: kong
+          - name: DB_HOST
+            value: kong-database.gateway.svc.cluster.local
+          - name: DB_PASSWORD
+            value: kong
+          - name: DB_USER
+            value: kong
+          image: docker-registry.default.svc:5000/gateway/konga@sha256:222703ca3ec7430999d2b9cb5f9c660111c024e811f938e7bfacea7ee90dec4b
+          imagePullPolicy: Always
+          name: konga
+          ports:
+          - containerPort: 1337
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /app/kongadata
+            name: konga-volume-1
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir: {}
+          name: konga-volume-1
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - konga
+        from:
+          kind: ImageStreamTag
+          name: konga:latest
+          namespace: gateway
+      type: ImageChange
+  status:
+    availableReplicas: 0
+    latestVersion: 0
+    observedGeneration: 0
+    replicas: 0
+    unavailableReplicas: 0
+    updatedReplicas: 0
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: kong
+    name: kong
+  spec:
+    ports:
+    - name: 8000-tcp
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+    - name: 8001-tcp
+      port: 8001
+      protocol: TCP
+      targetPort: 8001
+    - name: 8443-tcp
+      port: 8443
+      protocol: TCP
+      targetPort: 8443
+    - name: 8444-tcp
+      port: 8444
+      protocol: TCP
+      targetPort: 8444
+    selector:
+      app: kong
+      deploymentconfig: kong
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: kong-database
+    name: kong-database
+  spec:
+    ports:
+    - name: 5432-tcp
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector:
+      app: kong-database
+      deploymentconfig: kong-database
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: konga
+    name: konga
+  spec:
+    ports:
+    - name: 1337-tcp
+      port: 1337
+      protocol: TCP
+      targetPort: 1337
+    selector:
+      app: konga
+      deploymentconfig: konga
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/image.dockerRepositoryCheck: 2018-04-20T07:24:54Z
+    creationTimestamp: null
+    generation: 1
+    name: kong
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: docker-registry.default.svc:5000/gateway/kong:latest
+      generation: null
+      importPolicy: {}
+      name: latest
+      referencePolicy:
+        type: ""
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/image.dockerRepositoryCheck: 2018-04-20T07:06:32Z
+    creationTimestamp: null
+    generation: 2
+    name: kong-database
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    creationTimestamp: null
+    generation: 1
+    name: konga
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations: null
+      from:
+        kind: DockerImage
+        name: docker-registry.default.svc:5000/gateway/konga:latest
+      generation: null
+      importPolicy: {}
+      name: latest
+      referencePolicy:
+        type: ""
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: Route
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: kong
+    name: kong
+  spec:
+    host: kong.apps.node2.com
+    port:
+      targetPort: 8000-tcp
+    to:
+      kind: Service
+      name: kong
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2018-04-20T07:38:32Z
+        status: "True"
+        type: Admitted
+      host: kong.apps.node2.com
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: konga
+    name: konga
+  spec:
+    host: konga.apps.node2.com
+    port:
+      targetPort: 1337-tcp
+    to:
+      kind: Service
+      name: konga
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2018-04-20T07:53:39Z
+        status: "True"
+        type: Admitted
+      host: konga.apps.node2.com
+      routerName: router
+      wildcardPolicy: None
+- apiVersion: v1
+  kind: Route
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: kong
+    name: kongadmin
+  spec:
+    host: kongadmin.apps.node2.com
+    port:
+      targetPort: 8001-tcp
+    to:
+      kind: Service
+      name: kong
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2018-04-20T07:40:18Z
+        status: "True"
+        type: Admitted
+      host: kongadmin.apps.node2.com
+      routerName: router
+      wildcardPolicy: None
