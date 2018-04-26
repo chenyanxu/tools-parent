@@ -83,6 +83,7 @@ https://github.com/siamaksade/coolstore-microservice
 https://github.com/OpenShiftDemos/nexus-openshift-docker
 https://github.com/OpenShiftDemos/openshift-cd-demo
 https://ipaas.com.cn/blog/post/seanzhau/3ada17a7b2b8 
+https://blog.openshift.com/openshift-pipelines-jenkins-blue-ocean/
 ```
 
 ## 导出模板 
