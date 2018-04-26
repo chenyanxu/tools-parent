@@ -82,8 +82,31 @@ https://github.com/siamaksade/coolstore-microservice
 https://github.com/OpenShiftDemos/nexus-openshift-docker
 https://github.com/OpenShiftDemos/openshift-cd-demo
 https://ipaas.com.cn/blog/post/seanzhau/3ada17a7b2b8 
+https://blog.openshift.com/openshift-pipelines-jenkins-blue-ocean/
 ```
 
 ## 导出模板 
  oc export all -o yaml --as-template=kong-template > ./kong-template.yaml
 
+## fabric8
+``` 
+Please make sure your github OAuth Application Client ID: 07432c6a00821cf3dfda points to the
+Authorization callback URL: http://keycloak-fabric.apps.bogon.com/auth/realms/fabric8/broker/github/endpoint
+
+
+
+Please can you invoke the following commands as a cluster admin
+
+oc create --as system:admin -f oauthclient.yaml
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:fabric:init-tenant
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:fabric:exposecontroller
+```
+
+## jenkins
+```bash
+[root@bogon project]# oc set env bc/kalix-parent MAVEN_MIRROR_URL=http://nexus/nexus/content/groups/public/
+buildconfig "kalix-parent" updated
+[root@bogon project]# oc set env bc/kalix-parent --list
+# buildconfigs kalix-parent
+MAVEN_MIRROR_URL=http://nexus/nexus/content/groups/public/
+```
