@@ -110,3 +110,6 @@ buildconfig "kalix-parent" updated
 # buildconfigs kalix-parent
 MAVEN_MIRROR_URL=http://nexus/nexus/content/groups/public/
 ```
+
+### slave jinekins maven
+https://github.com/openshift/jenkins
