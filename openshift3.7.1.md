@@ -37,6 +37,7 @@ curl https://raw.githubusercontent.com/openshift/origin/v3.9.0/examples/image-st
  172.30.254.72 是docker-registry的service的ip
  ```batch
 [root@node1 ~]# docker login -u admin -p $(oc whoami -t) 172.30.254.72:5000
+[root@node1 ~]# docker login -u admin -p $(oc whoami -t)  docker-registry.default.svc:5000
 Login Succeeded
 [root@node1 ~]# docker pull docker.io/busybox
 Using default tag: latest
@@ -86,4 +87,16 @@ https://ipaas.com.cn/blog/post/seanzhau/3ada17a7b2b8
 
 ## 导出模板 
  oc export all -o yaml --as-template=kong-template > ./kong-template.yaml
+## 调整linux磁盘空间
+https://themacwrangler.wordpress.com/2015/01/16/re-sizing-partitions-in-centos7/
 
+## 无法连接docker的问题
+
+```
+vim /etc/docker/daemon.json
+{"registry-mirrors": [
+        "https://registry.docker-cn.com",
+        "https://kuamavit.mirror.aliyuncs.com",
+        "https://docker.mirrors.ustc.edu.cn"
+    ]}
+```
