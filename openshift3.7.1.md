@@ -104,3 +104,5 @@ vim /etc/docker/daemon.json
 
 ## jenkins
 https://github.com/siamaksade/cart-service/blob/jenkinsfiles/Jenkinsfile
+
+https://blog.openshift.com/improving-build-time-java-builds-openshift/
