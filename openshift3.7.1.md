@@ -106,3 +106,4 @@ vim /etc/docker/daemon.json
 https://github.com/siamaksade/cart-service/blob/jenkinsfiles/Jenkinsfile
 
 https://blog.openshift.com/improving-build-time-java-builds-openshift/
+https://blog.openshift.com/decrease-maven-build-times-openshift-pipelines-using-persistent-volume-claim/
