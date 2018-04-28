@@ -47,6 +47,7 @@ f70adabe43c0: Pull complete
 Digest: sha256:186694df7e479d2b8bf075d9e1b1d7a884c6de60470006d572350573bfa6dcd2
 Status: Downloaded newer image for docker.io/busybox:latest
 [root@node1 ~]# docker tag docker.io/busybox 172.30.254.72:5000/openshift/busybox
+[root@node1 ~]# docker tag docker.io/busybox docker-registry.default.svc:5000/openshift/busybox
 [root@node1 ~]# docker push 172.30.254.72:5000/openshift/busybox
 The push refers to a repository [172.30.254.72:5000/openshift/busybox]
 0314be9edf00: Pushed
