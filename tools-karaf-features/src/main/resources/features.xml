@@ -13,7 +13,7 @@
     <repository>mvn:com.kalix.admin/karaf-features/${project.admin.version}/xml/features</repository>
     <repository>mvn:com.kalix.common/karaf-features/${project.common.version}/xml/features</repository>
     <repository>mvn:com.kalix.oa/karaf-features/${project.oa.version}/xml/features</repository>
-    <repository>mvn:com.kalix.schedule/karaf-features/${project.schedule.version}/xml/features</repository>
+    <!--<repository>mvn:com.kalix.schedule/karaf-features/${project.schedule.version}/xml/features</repository>-->
     <repository>mvn:io.fabric8.kubernetes/kubernetes-karaf/1.4.20/xml/features</repository>
     <repository>mvn:io.fabric8/fabric8-karaf-features/2.2.176/xml/features</repository>
 
@@ -302,7 +302,7 @@
         <feature>middleware-all</feature>
         <feature>common-all</feature>
         <feature>oa-all</feature>
-        <feature>schedule-all</feature>
+        <!--<feature>schedule-all</feature>-->
         <bundle>mvn:com.kalix.tools/tools-karaf-command/${project.tools.version}</bundle>
         <bundle>mvn:com.kalix.tools/tools-karaf-flyway/${project.tools.version}</bundle>
     </feature>
