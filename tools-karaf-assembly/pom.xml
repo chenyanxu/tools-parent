@@ -54,14 +54,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.kalix.tools</groupId>
-            <artifactId>tools-karaf-features</artifactId>
-            <version>${project.tools.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.kalix.tools</groupId>-->
+            <!--<artifactId>tools-karaf-features</artifactId>-->
+            <!--<version>${project.tools.version}</version>-->
+            <!--<classifier>features</classifier>-->
+            <!--<type>xml</type>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.kalix.tools</groupId>
@@ -212,10 +212,10 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>kalix-base</feature>
+                        <!--<feature>kalix-base</feature>-->
                         <!--<feature>framework-config</feature>-->
 
-                        <feature>kalix-all</feature>
+                        <!--<feature>kalix-all</feature>-->
                         <!--<feature>cellar</feature>-->
 
                     </bootFeatures>

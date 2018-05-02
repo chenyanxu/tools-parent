@@ -55,36 +55,12 @@
      | server for that repository.
      |-->
     <mirrors>
-        <!-- mirror
-         | Specifies a repository mirror site to use instead of a given repository. The repository that
-         | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
-         | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
-         |
-        <mirror>
-          <id>mirrorId</id>
-          <mirrorOf>repositoryId</mirrorOf>
-          <name>Human Readable Name for this Mirror.</name>
-          <url>http://my.repository.com/repo/path</url>
-        </mirror>
-         -->
         <!--<mirror>-->
-        <!--<id>nexus3-kalix-com</id>-->
-        <!--<mirrorOf>*</mirrorOf>-->
-        <!--<name>Nexus Mirror Remote</name>-->
-        <!--<url>http://nexus3.kalix.com/repository/maven-public/</url>-->
+            <!--<id>nexus2-remote</id>-->
+            <!--<mirrorOf>*</mirrorOf>-->
+            <!--<name>Nexus Mirror Remote</name>-->
+            <!--<url>http://nexus.apps.bogon.com/nexus/content/groups/public/</url>-->
         <!--</mirror>-->
-        <!--<mirror>-->
-        <!--<id>nexus2-local</id>-->
-        <!--<mirrorOf>*</mirrorOf>-->
-        <!--<name>Nexus Mirror Local</name>-->
-        <!--<url>http://localhost:8081/nexus/content/groups/public/</url>-->
-        <!--</mirror>-->
-        <mirror>
-            <id>nexus2-remote</id>
-            <mirrorOf>*</mirrorOf>
-            <name>Nexus Mirror Remote</name>
-            <url>http://nexus:8081/nexus/content/groups/public/</url>
-        </mirror>
     </mirrors>
     <profiles>
         <!-- profile
@@ -182,7 +158,7 @@
         <!--</pluginRepositories>-->
         <!--</profile>-->
         <profile>
-            <id>nexus-remote</id>
+            <id>nexus-releases</id>
             <repositories>
                 <repository>
                     <id>remote-nexus</id>
@@ -191,10 +167,21 @@
                         <enabled>true</enabled>
                     </releases>
                     <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>snapshot-nexus</id>
+                    <url>http://nexus:8081/nexus/content/repositories/snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
                         <enabled>true</enabled>
                         <updatePolicy>always</updatePolicy>
                     </snapshots>
                 </repository>
+
             </repositories>
             <!--
             <pluginRepositories>
@@ -272,7 +259,7 @@
         <!--</profile>-->
     </profiles>
     <activeProfiles>
-        <activeProfile>nexus-remote</activeProfile>
+        <activeProfile>nexus-releases</activeProfile>
         <!--<activeProfile>production-postgresql</activeProfile>-->
     </activeProfiles>
 </settings>
