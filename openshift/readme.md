@@ -21,3 +21,7 @@ oc volume dc/nexus --add --name=nexus-storage -t pvc \
 kong
 ## pipeline.yaml
 pipeline for kalix project
+
+## add volume to jenkins-maven-slave
+
+> ref to https://blog.openshift.com/decrease-maven-build-times-openshift-pipelines-using-persistent-volume-claim/

@@ -85,6 +85,7 @@ https://github.com/OpenShiftDemos/nexus-openshift-docker
 https://github.com/OpenShiftDemos/openshift-cd-demo
 https://ipaas.com.cn/blog/post/seanzhau/3ada17a7b2b8 
 https://blog.openshift.com/openshift-pipelines-jenkins-blue-ocean/
+https://blog.openshift.com/part-2-creating-a-template-a-technical-walkthrough/
 ```
 
 ## 导出模板 
