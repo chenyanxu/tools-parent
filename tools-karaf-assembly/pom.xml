@@ -212,7 +212,7 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>kalix-base</feature>
+                        <!--<feature>kalix-base</feature>-->
                         <!--<feature>framework-config</feature>-->
                         <!--<feature>kalix-all</feature>-->
                         <!--<feature>cellar</feature>-->
