@@ -85,6 +85,7 @@ https://github.com/OpenShiftDemos/nexus-openshift-docker
 https://github.com/OpenShiftDemos/openshift-cd-demo
 https://ipaas.com.cn/blog/post/seanzhau/3ada17a7b2b8 
 https://blog.openshift.com/openshift-pipelines-jenkins-blue-ocean/
+https://blog.openshift.com/part-2-creating-a-template-a-technical-walkthrough/
 ```
 
 ## 导出模板 
@@ -108,3 +109,25 @@ https://github.com/siamaksade/cart-service/blob/jenkinsfiles/Jenkinsfile
 
 https://blog.openshift.com/improving-build-time-java-builds-openshift/
 https://blog.openshift.com/decrease-maven-build-times-openshift-pipelines-using-persistent-volume-claim/
+
+##  安装基本设置
+```batch
+#关闭firewall，启用iptables和NetworkManager
+[root@node1 ~]# ansible all -m shell -a 'systemctl disable firewalld && systemctl stop firewalld'
+[root@node1 ~]# ansible all -m shell -a 'systemctl enable iptables && systemctl start iptables'
+[root@node1 ~]# ansible all -m shell -a 'systemctl enable NetworkManager && systemctl start NetworkManager'
+#关闭selinux
+[root@node1 ~]# ansible all -m shell -a 'sed -i "/^SELINUX=/c\SELINUX=disabled" /etc/sysconfig/selinux'
+#配置iptables
+[root@node1 ~]# ansible all -m shell -a 'iptables -A INPUT -s 192.168.100.0/24 -p udp -m state --state NEW -m udp -j ACCEPT'
+[root@node1 ~]# ansible all -m shell -a 'iptables -A INPUT -s 192.168.100.0/24 -p tcp -m state --state NEW -m tcp -j ACCEPT'
+[root@node1 ~]# ansible all -m shell -a 'iptables-save > /etc/sysconfig/iptables'
+[root@node1 ~]# ansible all -m shell -a 'sed -i "/icmp-host-prohibited/d" /etc/sysconfig/iptables'
+#安装dnsmasq，如果直接配置了公网域名解析请忽略。（建议单独使用一台低配置服务器部署，不在openshift-ansible安装范围内）
+[root@node1 ~]# yum install dnsmasq -y
+[root@node1 ~]# vim /etc/dnsmasq.d/node-dnsmasq.conf
+server=/in-addr.arpa/127.0.0.1
+server=/cluster.local/127.0.0.1
+address=/.ipaas.seanzhau.com/192.168.100.101
+address=/www.ipaas.seanzhau.com/192.168.100.101
+```

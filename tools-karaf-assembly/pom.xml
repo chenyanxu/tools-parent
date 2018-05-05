@@ -54,14 +54,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.kalix.tools</groupId>-->
-            <!--<artifactId>tools-karaf-features</artifactId>-->
-            <!--<version>${project.tools.version}</version>-->
-            <!--<classifier>features</classifier>-->
-            <!--<type>xml</type>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.kalix.tools</groupId>
+            <artifactId>tools-karaf-features</artifactId>
+            <version>${project.tools.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.kalix.tools</groupId>
@@ -182,6 +182,8 @@
                     -->
                     <installedFeatures>
                         <feature>wrapper</feature>
+                        <feature>aries-blueprint</feature>
+                        <feature>shell-compat</feature>
                     </installedFeatures>
                     <startupFeatures>
                         <feature>eventadmin</feature>
@@ -189,14 +191,12 @@
                     <startupBundles>
                         <Bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.1.0</Bundle>
                     </startupBundles>
-                    <!--<bootBundles>
+                    <bootBundles>
                         <bootBundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bootBundle>
-                    </bootBundles>-->
+                    </bootBundles>
                     <bootFeatures>
                         <feature>wrap</feature>
-                        <feature>aries-blueprint</feature>
                         <feature>shell</feature>
-                        <feature>shell-compat</feature>
                         <feature>feature</feature>
                         <feature>jaas</feature>
                         <feature>ssh</feature>
@@ -214,7 +214,6 @@
                         <feature>system</feature>
                         <!--<feature>kalix-base</feature>-->
                         <!--<feature>framework-config</feature>-->
-
                         <!--<feature>kalix-all</feature>-->
                         <!--<feature>cellar</feature>-->
 
