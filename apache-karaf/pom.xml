@@ -33,7 +33,7 @@
 
     <properties>
         <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
-        <karaf.version>4.0.8</karaf.version>
+        <karaf.version>4.1.2</karaf.version>
     </properties>
 
     <dependencies>
