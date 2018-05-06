@@ -202,10 +202,10 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>kalix-base</feature>
+                        <!--<feature>kalix-base</feature>-->
                         <!--<feature>kalix-all</feature>-->
-                        <feature>framework-all</feature>
-                        <feature>admin-all</feature>
+                        <!--<feature>framework-all</feature>-->
+                        <!--<feature>admin-all</feature>-->
                     </bootFeatures>
                     <libraries>
                     </libraries>
