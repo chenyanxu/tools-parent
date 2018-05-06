@@ -33,7 +33,7 @@
 
     <properties>
         <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
-        <karaf.version>4.1.2</karaf.version>
+        <karaf.version>4.0.8</karaf.version>
     </properties>
 
     <dependencies>
@@ -202,10 +202,10 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <!--<feature>kalix-base</feature>-->
+                        <feature>kalix-base</feature>
                         <!--<feature>kalix-all</feature>-->
-                        <!--<feature>framework-all</feature>-->
-                        <!--<feature>admin-all</feature>-->
+                        <feature>framework-all</feature>
+                        <feature>admin-all</feature>
                     </bootFeatures>
                     <libraries>
                     </libraries>
