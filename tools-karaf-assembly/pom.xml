@@ -191,9 +191,6 @@
                     <startupBundles>
                         <Bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.1.0</Bundle>
                     </startupBundles>
-                    <bootBundles>
-                        <bootBundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bootBundle>
-                    </bootBundles>
                     <bootFeatures>
                         <feature>wrap</feature>
                         <feature>shell</feature>
@@ -212,7 +209,7 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <!--<feature>kalix-base</feature>-->
+                        <feature>kalix-base</feature>
                         <!--<feature>framework-config</feature>-->
                         <!--<feature>kalix-all</feature>-->
                         <!--<feature>cellar</feature>-->
