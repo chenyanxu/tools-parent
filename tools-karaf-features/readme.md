@@ -52,3 +52,22 @@ add following maven:
     *** See Application#getConfigurationType() for more information. ***
     ********************************************************************
 5.先install core，然后是install Component,然后install admin,再然后install Enterprise,最后install 一遍所有的。
+
+## upgrade 
+ camel 2.21.1
+ pax-jdbc 1.3.0
+
+## freemarker
+ ```bash
+karaf@root()> feature:info camel-freemarker
+Feature camel-freemarker 2.21.1
+Feature has no configuration
+Feature has no configuration files
+Feature depends on:
+  camel-core 2.21.1
+Feature contains followed bundles:
+  mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.freemarker/2.3
+.23_1
+  mvn:org.apache.camel/camel-freemarker/2.21.1
+Feature has no conditionals.
+```
