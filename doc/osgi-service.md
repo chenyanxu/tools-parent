@@ -116,10 +116,11 @@ public class CouchdbServiceImpl implements ICouchdbService, ManagedService {
 ### install
 
 ```bash
-    karaf@root()> feature:repo-add mvn:org.ops4j.pax.jdbc/pax-jdbc-features/0.9.0/xml/features
-    karaf@root()> feature:install pax-jdbc-postgresql pax-jdbc-config
+    karaf@root()> feature:repo-add mvn:org.ops4j.pax.jdbc/pax-jdbc-features/1.3.0/xml/features
+    karaf@root()> feature:install jdbc transaction pax-jdbc-postgresql pax-jdbc-config pax-jdbc-pool-dbcp2
+    karaf@root()> install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
 ```
-
+eatu
 ### postgresql datasource
 > 数据源配置文件：org.ops4j.datasource-kalix.cfg,文件位于：
 D:\java-develop\project\tools-parent\tools-karaf-features\src\main\resources\org.ops4j.datasource-kalix.cfg，
