@@ -204,13 +204,34 @@
                         <feature>system</feature>
                         <feature>kalix-base</feature>
                         <!--<feature>kalix-all</feature>-->
-                        <!--<feature>framework-all</feature>-->
-                        <!--<feature>admin-all</feature>-->
+                        <feature>framework-all</feature>
+                        <feature>admin-all</feature>
                     </bootFeatures>
                     <libraries>
                     </libraries>
                     <javase>1.8</javase>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fabric8.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-resource</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resource</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

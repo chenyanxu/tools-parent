@@ -29,4 +29,6 @@ pipeline for kalix project
 ## kalix-release
 
    oc new-app --strategy=source openshift/kalix-s2i~https://github.com/chenyanxu/tools-parent.git --context-dir=tools-karaf-assembly -e 'MAVEN_ARGS=mvn clean install karaf:assembly karaf:archive' --name=karaf-release
+## postgresql
    
+   oc new-app sameersbn/postgresql -e 'PG_PASSWORD=1234' -e 'DB_NAME=kalix'
