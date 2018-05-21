@@ -6,4 +6,5 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Bundle-Category: Kalix Karaf Tools
 Karaf-Commands: *
 Import-Package:*
+DynamicImport-Package: *
 #Require-Capability:org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",osgi.extender; filter:="(osgi.extender=pax.cdi)"

@@ -8,6 +8,9 @@ import org.apache.karaf.shell.api.action.Argument;
 import org.apache.karaf.shell.api.action.Command;
 import org.apache.karaf.shell.api.action.Completion;
 import org.apache.karaf.shell.api.action.lifecycle.Service;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.wiring.BundleWiring;
 
 import javax.sql.DataSource;
 import java.io.*;
@@ -23,7 +26,7 @@ import java.util.List;
 public class InitKalixDbCommand implements Action {
     @Argument(index = 0, name = "arg", description = "The command argument", required = false, multiValued = false)
     @Completion(MyCompleter.class)
-    String suffix = ".list";
+    String application_suffix = ".list";
 
     @Override
     public Object execute() throws Exception {
@@ -34,12 +37,14 @@ public class InitKalixDbCommand implements Action {
     private void init() {
         DataSource dataSource = Util.getKalixDataSource();
         ScriptRunner scriptRunner = new ScriptRunner(dataSource, false, true);
+        //获得全部app列表
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && !applicationList.isEmpty()) {
             for (IApplication application : applicationList) {
-                String listName = application.getId() + suffix;
+                ClassLoader loader = getApplicationBundle(application.getId());
+                String listName = application.getId() + application_suffix;
                 Util.outPrint("begin init " + application.getId() + " database...");
-                InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(listName);
+                InputStream inputStream = loader.getResourceAsStream(listName);
                 BufferedReader br = null;
                 try {
                     br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
@@ -49,7 +54,7 @@ public class InitKalixDbCommand implements Action {
                 String sql = null;
                 try {
                     while ((sql = br.readLine()) != null) {
-                        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(sql);
+                        InputStream stream = loader.getResourceAsStream(sql);
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
                         scriptRunner.runScript(bufferedReader);
                     }
@@ -64,6 +69,27 @@ public class InitKalixDbCommand implements Action {
             Util.outPrint("error,there is no a running application！");
         }
         Util.outPrint("脚本执行成功！");
+    }
+
+    /**
+     * 通过类名获得相应的bundle的类加载器
+     *
+     * @param applicationId
+     * @return
+     */
+    private ClassLoader getApplicationBundle(String applicationId) {
+        String clsName = "com.kalix.%s.core.etc.internal.InitActivator";
+        Class my = null;
+        try {
+            my = Class.forName(String.format(clsName, applicationId));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Bundle bundle = FrameworkUtil.getBundle(my);
+        System.out.println("now we get bundle " + bundle.getLocation());
+        BundleWiring w = bundle.adapt(org.osgi.framework.wiring.BundleWiring.class);
+        ClassLoader loader = w.getClassLoader();
+        return loader;
     }
 
 
