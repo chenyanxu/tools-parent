@@ -12,3 +12,6 @@ karaf自定义命令,refer to its readme
 kalix项目的feature文件，tools-karaf-assembly使用该文件build karaf。
 ## osgi demo
 https://github.com/juezhan/osgidemo
+
+### upgrade log
+http://karaf.922171.n3.nabble.com/OpenJPA-with-AriesJPA-Java-peristence-td4053032.html
