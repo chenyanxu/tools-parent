@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -29,7 +29,7 @@
         <geronimo.inject.version>1.2</geronimo.inject.version>
         <ops4j.base.version>1.4.0</ops4j.base.version>
         <!--<cglib.version>2.2.2_1</cglib.version>-->
-        <cglib.version>3.2.1_1</cglib.version>
+        <cglib.version>3.2.4_1</cglib.version>
         <aopalliance.version>1.0_6</aopalliance.version>
         <shiro.version>1.3.2</shiro.version>
         <jsr339.version>2.2.0</jsr339.version>
@@ -38,18 +38,17 @@
         <activiti.version>5.22.0</activiti.version>
         <cxf.version>3.1.1</cxf.version>
         <!--<camel.version>2.16.2</camel.version>-->
-        <camel.version>2.18.2</camel.version>
+        <camel.version>2.21.1</camel.version>
         <activemq.version>5.13.0</activemq.version>
         <guava.version>18.0</guava.version>
-        <jedis.version>2.6.2_1</jedis.version>
-        <org.apache.servicemix.bundles.jedis.version>2.6.2_1</org.apache.servicemix.bundles.jedis.version>
+        <jedis.version>2.9.0_1</jedis.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
-        <gson.version>2.4</gson.version>
+        <gson.version>2.8.2</gson.version>
         <jackson.version>1.9.12</jackson.version>
         <pax-cdi-api.version>0.11.0</pax-cdi-api.version>
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
         <!--<jackson2-version>2.6.3</jackson2-version>-->
-        <jackson2-version>2.8.3</jackson2-version>
+        <jackson2-version>2.8.10</jackson2-version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <hibernate.jpa21.version>1.0.0.Final</hibernate.jpa21.version>
         <hibernate.jpamodelgen.version>1.3.0.Final</hibernate.jpamodelgen.version>
@@ -64,6 +63,7 @@
         <org.apache.poi.version>3.13</org.apache.poi.version>
         <java.object.diff>0.92.1</java.object.diff>
         <org.apache.xmlbeans.version>2.6.0</org.apache.xmlbeans.version>
+        <aries.jpa.version>2.6.1</aries.jpa.version>
     </properties>
     <dependencyManagement>
         <dependencies>

@@ -313,48 +313,80 @@
         <bundle>mvn:com.kalix.tools/tools-karaf-flyway/${project.tools.version}</bundle>
     </feature>
 
-    <feature name="jpa" description="OSGi Persistence Container" version="2.4.1">
-        <details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine,
-            you have to install one by yourself (OpenJPA for instance)
-        </details>
-        <feature version="[1.1,2)">transaction-api</feature>
-        <feature version="${openjpa.version}">openjpa</feature>
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
-        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.2</bundle>
-        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jpa/1.0.0</bundle>
-        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/1.0.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.5.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.5.0</bundle>
-        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.5.0</bundle>
-        <conditional>
-            <condition>aries-blueprint</condition>
-            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.5.0</bundle>
-        </conditional>
-    </feature>
+    <!--<feature name="jpa" description="OSGi Persistence Container" version="2.4.1">-->
+    <!--<details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine,-->
+    <!--you have to install one by yourself (OpenJPA for instance)-->
+    <!--</details>-->
+    <!--<feature version="[1.1,2)">transaction-api</feature>-->
+    <!--<feature version="${openjpa.version}">openjpa</feature>-->
+    <!--<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>-->
+    <!--<bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.2</bundle>-->
+    <!--<bundle dependency="true">mvn:org.osgi/org.osgi.service.jpa/1.0.0</bundle>-->
+    <!--<bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/1.0.0</bundle>-->
+    <!--<bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.5.0</bundle>-->
+    <!--<bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.5.0</bundle>-->
+    <!--<bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.5.0</bundle>-->
+    <!--<conditional>-->
+    <!--<condition>aries-blueprint</condition>-->
+    <!--<bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.5.0</bundle>-->
+    <!--</conditional>-->
+    <!--</feature>-->
 
     <feature name="apache-oltu" version="1.0.0">
         <bundle>mvn:org.apache.oltu.oauth2/org.apache.oltu.oauth2.common/1.0.0</bundle>
         <bundle>mvn:org.apache.oltu.oauth2/org.apache.oltu.oauth2.authzserver/1.0.0</bundle>
         <bundle>mvn:org.apache.oltu.oauth2/org.apache.oltu.oauth2.resourceserver/1.0.0</bundle>
     </feature>
+    <feature name="aries-jpa2">
+        <capability>
+            osgi.service;effective:=active;objectClass=javax.persistence.spi.PersistenceProvider
+        </capability>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/1.0.0</bundle>
+        <bundle dependency="true" start-level="30">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.2</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/${aries.jpa.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/${aries.jpa.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/${aries.jpa.version}</bundle>
+        <conditional>
+            <condition>aries-blueprint</condition>
+            <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/${aries.jpa.version}
+            </bundle>
+        </conditional>
+    </feature>
+
+    <feature name="kalix-test">
+        <feature>aries-blueprint</feature>
+        <feature>jndi</feature>
+        <feature>jdbc</feature>
+        <feature>transaction</feature>
+        <feature>aries-jpa2</feature>
+        <feature version="${openjpa.version}">openjpa</feature>
+        <feature>postgresql-driver</feature>
+        <feature>pax-jdbc-config</feature>
+        <feature>pax-jdbc-pool-dbcp2</feature>
+        <feature>camel-jackson</feature>
+    </feature>
 
     <feature name="kalix-base" version="1.0.0">
         <!--<feature>hawtio-offline</feature>-->
+        <feature>aries-blueprint</feature>
         <feature>transaction</feature>
         <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
         <feature>jdbc</feature>
         <feature>eventadmin</feature>
-        <feature version="2.4.1">jpa</feature>
+        <feature>aries-jpa2</feature>
+        <feature version="${openjpa.version}">openjpa</feature>
         <!--<feature dependency="true">mysql-driver</feature>-->
         <!--<feature dependency="true">derby-driver</feature>-->
         <!--<feature dependency="true">jsr303</feature>-->
         <feature>postgresql-driver</feature>
         <feature>pax-jdbc-config</feature>
         <feature>pax-jdbc-pool-dbcp2</feature>
-        <feature>pax-cdi</feature>
-        <feature>pax-cdi-weld</feature>
+        <!--<feature>pax-cdi</feature>-->
+        <!--<feature>pax-cdi-weld</feature>-->
         <feature>camel-blueprint</feature>
         <!--<feature>camel-jetty</feature>-->
         <feature>camel-metrics</feature>
@@ -363,7 +395,7 @@
         <feature>camel-dozer</feature>
         <feature>camel-swagger-java</feature>
         <feature>camel-shiro</feature>
-        <feature>camel-xmpp</feature>
+        <!--<feature>camel-xmpp</feature>-->
         <feature>shiro-core</feature>
         <!--<feature>shiro-web</feature>-->
         <feature>jedis</feature>
