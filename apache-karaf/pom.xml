@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
 
@@ -33,7 +34,7 @@
 
     <properties>
         <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
-        <karaf.version>4.1.2</karaf.version>
+        <karaf.version>4.2.0</karaf.version>
     </properties>
 
     <dependencies>
@@ -202,10 +203,10 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>kalix-base</feature>
+                        <!--<feature>kalix-base</feature>-->
                         <!--<feature>kalix-all</feature>-->
-                        <feature>framework-all</feature>
-                        <feature>admin-all</feature>
+                        <!--<feature>framework-all</feature>-->
+                        <!--<feature>admin-all</feature>-->
                     </bootFeatures>
                     <libraries>
                     </libraries>
