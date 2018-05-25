@@ -53,7 +53,7 @@
         <hibernate.version>4.3.6.Final</hibernate.version>
         <hibernate.jpa21.version>1.0.0.Final</hibernate.jpa21.version>
         <hibernate.jpamodelgen.version>1.3.0.Final</hibernate.jpamodelgen.version>
-        <lightcouch.version>0.1.8_1</lightcouch.version>
+        <lightcouch.version>0.2.0_1</lightcouch.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-codec.version>1.10</commons-codec.version>
         <junit.version>4.12</junit.version>
