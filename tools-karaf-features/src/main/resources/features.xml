@@ -417,6 +417,12 @@
         <feature>apache-oltu</feature>
     </feature>
 
+    <feature name="retrofit">
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okio/1.14.0_1</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.okhttp/3.10.0_2</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.retrofit/2.4.0_1</bundle>
+    </feature>
+
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
     <!-- feature:repo-add mvn:com.kalix.poms/tools-karaf-features/1.0.0-SNAPSHOT/xml/features-->
