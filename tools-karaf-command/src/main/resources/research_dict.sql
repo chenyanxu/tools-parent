@@ -34,6 +34,9 @@ INSERT INTO "public"."research_dict" ("id", "createby", "createbyid", "creationd
 INSERT INTO "public"."research_dict" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "description", "label", "type", "value", "version_") VALUES ('33', '管理员', '-1', '2017-11-27 10:13:16.899', '管理员', '-1', '2017-11-27 10:13:16.866', '香港特别行政区', '香港特别行政区', '省份', '81', '1');
 INSERT INTO "public"."research_dict" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "description", "label", "type", "value", "version_") VALUES ('34', '管理员', '-1', '2017-11-27 10:13:16.899', '管理员', '-1', '2017-11-27 10:13:16.866', '澳门特别行政区', '澳门特别行政区', '省份', '82', '1');
 
+INSERT INTO "public"."research_dict" VALUES ('35', '管理员', '-1', '2017-09-11 14:24:57.42', '管理员', '-1', '2017-09-11 14:24:57.348', '男', '男', '性别', '1', '1');
+INSERT INTO "public"."research_dict" VALUES ('36', '管理员', '-1', '2017-09-11 14:25:12.489', '管理员', '-1', '2017-09-11 14:25:12.431', '女', '女', '性别', '2', '1');
+
 INSERT INTO "public"."research_dict" VALUES ('37901', '管理员', '-1', '2017-09-11 14:24:57.42', '管理员', '-1', '2017-09-11 14:24:57.348', '动画类', '动画类', '展赛类别', '0', '1');
 INSERT INTO "public"."research_dict" VALUES ('37902', '管理员', '-1', '2017-09-11 14:25:12.489', '管理员', '-1', '2017-09-11 14:25:12.431', '漫画类', '漫画类', '展赛类别', '1', '1');
 INSERT INTO "public"."research_dict" VALUES ('37903', '管理员', '-1', '2017-09-11 14:25:26.146', '管理员', '-1', '2017-09-11 14:25:26.094', '动画电影', '动画电影', '展赛类别', '2', '1');
