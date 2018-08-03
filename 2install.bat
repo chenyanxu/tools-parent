@@ -10,6 +10,10 @@ IF %hasErrors%==0 cd framework-parent & call mvn -DskipTests=true clean install 
 IF %hasErrors%==1 echo 'An error occurred of framework-parent' & pause & goto :EOF
 
 cd ..
+IF %hasErrors%==0  cd general-parent & call mvn  -DskipTests=true clean install || set hasErrors=1
+IF %hasErrors%==1 echo 'An error occurred of general-parent' & pause & goto :EOF
+
+cd ..
 IF %hasErrors%==0  cd admin-parent & call mvn  -DskipTests=true clean install || set hasErrors=1
 IF %hasErrors%==1 echo 'An error occurred of admin-parent' & pause & goto :EOF
 
@@ -29,10 +33,6 @@ IF %hasErrors%==1 echo 'An error occurred of common-parent' & pause & goto :EOF
 cd ..
 IF %hasErrors%==0  cd schedule-parent & call mvn clean install || set hasErrors=1
 IF %hasErrors%==1 echo 'An error occurred of schedule-parent' & pause & goto :EOF
-
-cd ..
-IF %hasErrors%==0  cd general-parent & call mvn  -DskipTests=true clean install || set hasErrors=1
-IF %hasErrors%==1 echo 'An error occurred of general-parent' & pause & goto :EOF
 
 
 cd ..
