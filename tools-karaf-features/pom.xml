@@ -64,7 +64,7 @@
         <org.apache.poi.version>3.13</org.apache.poi.version>
         <java.object.diff>0.92.1</java.object.diff>
         <org.apache.xmlbeans.version>2.6.0</org.apache.xmlbeans.version>
-        <aries.jpa.version>2.6.1</aries.jpa.version>
+        <aries.jpa.version>2.7.0</aries.jpa.version>
     </properties>
     <dependencyManagement>
         <dependencies>

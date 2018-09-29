@@ -13,7 +13,7 @@ vim /etc/profile
 ```
 ```batch
 #set java environment  
-JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75.x86_64 
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.171-8.b10.el7_5.x86_64
 JRE_HOME=$JAVA_HOME/jre  
 CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib 
 PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin 
@@ -33,7 +33,15 @@ yum install git
 ###  安装maven
 ```batch
 wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-yum install maven
+Downlaod the file at /opt/Maven/apache-maven-3.0.5-bin.tar.gz
+Extract the file in same location "tar xvf apache-maven-3.0.5-bin.tar.gz" and Run.
+Open "vi /etc/profile"
+Paste these line:
+export M2_HOME=/root/java-develop/tools/apache-maven-3.5.3
+export PATH=$PATH:$M2_HOME/bin
+Save the file.
+Run "source /etc/profile" 使环境变量生效
+Finally Run "mvn -version " and you will get the maven version
 ```
 #### install openjpa
 ```batch
@@ -92,13 +100,6 @@ pg_hba.conf should be :
 local   all              postgres                               trust
 # IPv4 local connections:
 host    all             all             127.0.0.1/32            trust
-# IPv6 local connections:
-#host    all             all             ::1/128                 ident
-# Allow replication connections from localhost, by a user with the
-# replication privilege.
-#local   replication     postgres                                peer
-#host    replication     postgres        127.0.0.1/32            md5
-#host    replication     postgres        ::1/128                 ident
 host    all             all         0.0.0.0/0               trust
 ```
 
@@ -113,6 +114,14 @@ baseurl=http://apache.bintray.com/couchdb-rpm/el$releasever/$basearch/
 gpgcheck=0
 repo_gpgcheck=0
 enabled=1
+```
+
+```
+vim /opt/couchdb/etc/local.ini
+[chttpd]
+port = 5984
+bind_address = 192.168.10.30
+
 ```
 
 ### install
