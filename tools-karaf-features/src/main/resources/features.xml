@@ -416,6 +416,7 @@
         <feature>activiti</feature>
         <feature>couchdb</feature>
         <feature>apache-oltu</feature>
+        <feature>retrofit</feature>
     </feature>
 
     <feature name="retrofit">

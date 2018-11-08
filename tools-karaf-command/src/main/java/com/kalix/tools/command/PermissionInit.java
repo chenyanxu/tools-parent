@@ -39,7 +39,7 @@ public class PermissionInit {
             "(id, createby, creationdate, updateby, updatedate, applicationid, roleid, version_) " +
             "VALUES ('%s', '管理员', '%s', '管理员', '%s','%s', '1',  '1');";
     // 数据授权清理脚本
-    private String dataAuthClearSql = "update sys_function set datapermission=false where applicationid=1;";
+    private String dataAuthClearSql = "update sys_function set datapermission=false where applicationid='1';";
 
     String strNow = Util.getNowString();
 

@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
  */
 public class V2_2__insert_permit implements JdbcMigration {
     public void migrate(Connection connection) throws Exception {
-        PreparedStatement statement = connection.prepareStatement("insert into PERSON (ID, NAME) values (9, 'Ms. Bar 123');");
+        PreparedStatement statement = connection.prepareStatement("insert into PERSON (ID, NAME) values ('9', 'Ms. Bar 123');");
         try {
             statement.execute();
         } finally {

@@ -1,5 +1,5 @@
 --上级领导职位
-INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES (401, '管理员', '2016-09-01 14:53:05.530000', '管理员', '2016-09-01 14:53:05.530000', '工作流测试', '上级领导', 42153, 1);
-INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES (404, '管理员', '2016-09-01 15:03:58.946000', '管理员', '2016-09-01 15:03:58.946000', '公务车申请流程', '校党委书记', 42011, 1);
-INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES (403, '管理员', '2016-09-01 15:03:41.000000', '管理员', '2016-09-01 15:04:14.151000', '公务车申请流程', '副校级领导', 42011, 1);
-INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES (402, '管理员', '2016-09-01 15:03:08.000000', '管理员', '2016-09-01 15:04:22.220000', '公务车申请流程', '校务部副部长', 42011, 1);
+INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES ('401', '管理员', '2016-09-01 14:53:05.530000', '管理员', '2016-09-01 14:53:05.530000', '工作流测试', '上级领导', '42153', 1);
+INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES ('404', '管理员', '2016-09-01 15:03:58.946000', '管理员', '2016-09-01 15:03:58.946000', '公务车申请流程', '校党委书记', '42011', 1);
+INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES ('403', '管理员', '2016-09-01 15:03:41.000000', '管理员', '2016-09-01 15:04:14.151000', '公务车申请流程', '副校级领导', '42011', 1);
+INSERT INTO public.sys_duty (id, createby, creationdate, updateby, updatedate, comment, name, orgid, version_) VALUES ('402', '管理员', '2016-09-01 15:03:08.000000', '管理员', '2016-09-01 15:04:22.220000', '公务车申请流程', '校务部副部长', '42011', 1);
