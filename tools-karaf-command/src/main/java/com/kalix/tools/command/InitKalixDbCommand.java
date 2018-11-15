@@ -45,6 +45,10 @@ public class InitKalixDbCommand implements Action {
                 String listName = application.getId() + application_suffix;
                 Util.outPrint("begin init " + application.getId() + " database...");
                 InputStream inputStream = loader.getResourceAsStream(listName);
+                if (inputStream == null) {
+                    Util.outPrint("There is no " + application.getId() + " database need to init...");
+                    continue;
+                }
                 BufferedReader br = null;
                 try {
                     br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
