@@ -1,13 +1,13 @@
 
--- add 艺术中心企业招聘角色
+-- add 智能就业管理企业招聘角色
 INSERT INTO public.sys_role (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, app, name, remark, version_)
-  VALUES (702, '管理员', -1, '2018-03-06 08:11:01.916000', '管理员', -1, '2018-03-06 08:11:01.916000', '艺术中心', '企业角色', '企业角色', 1);
--- add 艺术中心学生应聘角色
+  VALUES (702, '管理员', -1, '2018-03-06 08:11:01.916000', '管理员', -1, '2018-03-06 08:11:01.916000', '智能就业管理', '企业角色', '企业角色', 1);
+-- add 智能就业管理学生应聘角色
 INSERT INTO public.sys_role (id, createby, createbyid, creationdate, updateby, updatebyid, updatedate, app, name, remark, version_)
-  VALUES (703, '管理员', -1, '2018-03-06 08:11:01.916000', '管理员', -1, '2018-03-06 08:11:01.916000', '艺术中心', '学生角色', '学生角色', 1);
+  VALUES (703, '管理员', -1, '2018-03-06 08:11:01.916000', '管理员', -1, '2018-03-06 08:11:01.916000', '智能就业管理', '学生角色', '学生角色', 1);
 
 
--- add 艺术中心数据权限（默认查本人，新建查全部的，为admin准备）
+-- add 智能就业管理数据权限（默认查本人，新建查全部的，为admin准备）
 INSERT INTO "public"."sys_data_auth" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "appid", "menuid", "remark", "type", "version_")
   VALUES ('71', '管理员', '-1', '2018-03-09 10:14:38.332', '管理员', '-1', NULL, 'art', 'companyMenu', '', '1', '1');
 INSERT INTO "public"."sys_data_auth" ("id", "createby", "createbyid", "creationdate", "updateby", "updatebyid", "updatedate", "appid", "menuid", "remark", "type", "version_")
