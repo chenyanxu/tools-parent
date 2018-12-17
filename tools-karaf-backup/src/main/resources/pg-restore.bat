@@ -1,0 +1,1 @@
+D:\Program Files\PostgreSQL\9.5\bin\pg_restore.exe --host localhost --port 5432 --username "postgres" --dbname "kalix" -W  --verbose "d:\kalix_2018-12-17_1110.backup"

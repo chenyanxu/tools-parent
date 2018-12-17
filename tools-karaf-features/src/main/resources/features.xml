@@ -40,8 +40,13 @@
 
     <feature name="postgresql-driver">
         <!--<feature>bonecp</feature>-->
-        <bundle>mvn:org.postgresql/postgresql/${postgresql.version}</bundle>
+        <bundle>mvn:org.postgresql/postgresql/42.2.5</bundle>
     </feature>
+
+    <!--<feature name="postgresql-driver" version="42.2.5">
+        &lt;!&ndash;<feature>bonecp</feature>&ndash;&gt;
+        <bundle>mvn:org.postgresql/postgresql/42.2.5</bundle>
+    </feature>-->
 
     <feature name="oracle-driver">
         <bundle>wrap:mvn:com.oracle/ojdbc14/10.2.0.4.0</bundle>
