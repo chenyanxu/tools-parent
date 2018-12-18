@@ -5,6 +5,7 @@
 - [debug karaf](#debug-karaf)
 - [减少redis占用空间](#减少redis占用空间)
 - [修改karaf默认端口](#修改karaf默认端口)
+- [启动karaf的进度条](#启动karaf的进度条)
 
 ## 如何获得 osgi service
 
@@ -136,3 +137,11 @@ heapdir D:\tools\redis-data
     karaf@root()> instance:start second
 ```
 
+## 启动karaf的进度条
+修改/etc/config.properties 文件
+```
+#
+# Don't delay the console startup. Set to true if you want the console to start after all other bundles
+#
+karaf.delay.console=true
+```
