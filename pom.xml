@@ -29,7 +29,8 @@
         <module>tools-karaf-flyway</module>
         <module>tools-karaf-assembly</module>
         <module>apache-karaf</module>
-        <module>tools-karaf-backup</module>
+        <!--<module>tools-karaf-backup</module>-->
+        <module>tools-karaf-sshd</module>
         <!--<module>webconsole</module>-->
     </modules>
 
