@@ -48,5 +48,13 @@ public class SshConfiguration {
         this.password = password;
     }
 
-    public SshConfiguration(){}
+    /**
+     * 默认设置
+     */
+    public SshConfiguration(){
+        this.setHost("localhost");
+        this.setUserName("karaf");
+        this.setPassword("karaf");
+        this.setPort(8101);
+    }
 }

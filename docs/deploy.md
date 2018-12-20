@@ -24,7 +24,7 @@ source /etc/profile
 ```
 ### 创建工程目录
 ```batch
- mkdir -p /java-develop/project
+ mkdir -p ~/java-develop/project
 ```
 ### 安装git
 ```batch
@@ -51,9 +51,9 @@ mvn install:install-file -Dfile=./openjpa-2.4.0.Release.pom -DgroupId=org.apache
 ```
 ### 安装karaf
 ```batch
-wget  http://archive.apache.org/dist/karaf/4.1.2/apache-karaf-4.1.2.tar.gz
-mkdir /java-develop/tools
-tar xvf apache-karaf-4.1.2.tar.gz
+wget  http://archive.apache.org/dist/karaf/4.2.1/apache-karaf-4.2.1.tar.gz
+mkdir ~/java-develop/tools
+tar xvf apache-karaf-4.2.1.tar.gz
 karaf@root()> feature:install service-wrapper
 wrapper:install
 ```
