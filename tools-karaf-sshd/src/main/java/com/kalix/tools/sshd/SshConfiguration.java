@@ -1,8 +1,19 @@
 package com.kalix.tools.sshd;
 
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+
+import java.util.Dictionary;
+
 /**
  *
  */
+@Component(
+        name = "com.kalix.tools.sshd.sshconfiguration",
+        immediate = true
+)
 public class SshConfiguration {
     private String host;
     private int    port;
@@ -49,12 +60,37 @@ public class SshConfiguration {
     }
 
     /**
+     * 该方法会自动被容器调用
+     * @param context
+     */
+    @Activate
+    public void activate(ComponentContext context) {
+        open(context.getProperties());
+    }
+
+    @Deactivate
+    public void deactivate() {
+
+    }
+
+    public void open(Dictionary<String, Object> config) {
+        this.setHost(getValue(config, "host","localhost"));
+        this.setUserName(getValue(config, "username","karaf"));
+        this.setPassword(getValue(config, "password","karaf"));
+        this.setPort(Integer.parseInt((getValue(config, "port","8101"))));
+    }
+
+    private String getValue(Dictionary<String, Object> config, String key, String defaultValue) {
+        String value = (String)config.get(key);
+        return (value != null) ? value :  defaultValue;
+    }
+    /**
      * 默认设置
      */
     public SshConfiguration(){
-        this.setHost("localhost");
-        this.setUserName("karaf");
-        this.setPassword("karaf");
-        this.setPort(8101);
+//        this.setHost("localhost");
+//        this.setUserName("karaf");
+//        this.setPassword("karaf");
+//        this.setPort(8101);
     }
 }
