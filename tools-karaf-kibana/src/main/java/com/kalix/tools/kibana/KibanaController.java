@@ -55,21 +55,25 @@ public class KibanaController {
     private File workingDirectory;
     private DaemonExecutor executor;
     private DefaultExecuteResultHandler executeResultHandler;
-    private String hostname = "http://localhost:";
+
+
+    public KibanaController() {
+
+    }
 
     public KibanaController(File workingDirectory) {
-        this.workingDirectory = workingDirectory;
-        this.workingDirectory.mkdirs();
-        this.executor = new DaemonExecutor();
-        PumpStreamHandler pumpStreamHandler = new PumpStreamHandler(new LogOutputStream() {
-            @Override
-            protected void processLine(String line, int logLevel) {
-                KIBANA_LOGGER.info(line);
-            }
-        });
-        executor.setStreamHandler(pumpStreamHandler);
-        executor.setWatchdog(new ExecuteWatchdog(ExecuteWatchdog.INFINITE_TIMEOUT));
-        executeResultHandler = new DefaultExecuteResultHandler();
+//        this.workingDirectory = workingDirectory;
+//        this.workingDirectory.mkdirs();
+//        this.executor = new DaemonExecutor();
+//        PumpStreamHandler pumpStreamHandler = new PumpStreamHandler(new LogOutputStream() {
+//            @Override
+//            protected void processLine(String line, int logLevel) {
+//                KIBANA_LOGGER.info(line);
+//            }
+//        });
+//        executor.setStreamHandler(pumpStreamHandler);
+//        executor.setWatchdog(new ExecuteWatchdog(ExecuteWatchdog.INFINITE_TIMEOUT));
+//        executeResultHandler = new DefaultExecuteResultHandler();
     }
 
     static boolean isWindows() {
@@ -82,6 +86,7 @@ public class KibanaController {
 
     /**
      * download kibana from remote server
+     *
      * @throws Exception
      */
     public void download() throws Exception {
@@ -155,81 +160,81 @@ public class KibanaController {
         }
     }
 
-    public void createDashboardLog(int httpPort) throws Exception {
+    public void createDashboardLog(String hostname, int httpPort) throws Exception {
         LOGGER.debug("Create Log Levels visualization");
         String visualization = readResource("resources/visualization_log_levels.json");
         LOGGER.debug("");
-        
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/log-levels", visualization);
+
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/log-levels", visualization);
 
         LOGGER.debug("Create Logger Names visualization");
         visualization = readResource("resources/visualization_logger_names.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/logger-names", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/logger-names", visualization);
 
         LOGGER.debug("Create Logs Bundle visualization");
         visualization = readResource("resources/visualization_logs_bundle.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/logs-bundle", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/logs-bundle", visualization);
 
         LOGGER.debug("Create Log dashboard");
         String dashboard = readResource("resources/dashboard_log.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/dashboard/log", dashboard);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/dashboard/log", dashboard);
     }
 
-    public void createDashboardJmx(int httpPort) throws Exception {
+    public void createDashboardJmx(String hostname, int httpPort) throws Exception {
         LOGGER.debug("Create Available Processors visualization");
         String visualization = readResource("resources/visualization_available_processors.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/available-processors", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/available-processors", visualization);
 
         LOGGER.debug("Create Classloading visualization");
         visualization = readResource("resources/visualization_classloading.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/classloading", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/classloading", visualization);
 
         LOGGER.debug("Create Compilation visualization");
         visualization = readResource("resources/visualization_compilation.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/compilation", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/compilation", visualization);
 
         LOGGER.debug("Create GarbageCollector visualization");
         visualization = readResource("resources/visualization_garbagecollector.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/garbagecollector", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/garbagecollector", visualization);
 
         LOGGER.debug("Create Load visualization");
         visualization = readResource("resources/visualization_load.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/load", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/load", visualization);
 
         LOGGER.debug("Create Memory visualization");
         visualization = readResource("resources/visualization_memory.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/memory", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/memory", visualization);
 
         LOGGER.debug("Create Open Files visualization");
         visualization = readResource("resources/visualization_open_files.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/open-files", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/open-files", visualization);
 
         LOGGER.debug("Create System Memory visualization");
         visualization = readResource("resources/visualization_system_memory.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/system-memory", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/system-memory", visualization);
 
         LOGGER.debug("Create Threading visualization");
         visualization = readResource("resources/visualization_threading.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/threading", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/threading", visualization);
 
         LOGGER.debug("Create Uptime visualization");
         visualization = readResource("resources/visualization_uptime.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/visualization/uptime", visualization);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/visualization/uptime", visualization);
 
         LOGGER.debug("Create JMX dashboard");
         String dashboard = readResource("resources/dashboard_jmx.json");
-        updateKibanaSettings(hostname + httpPort + "/kibana/api/saved_objects/dashboard/jmx", dashboard);
+        updateKibanaSettings(hostname + httpPort + "/api/saved_objects/dashboard/jmx", dashboard);
     }
 
     private void updateKibanaSettings(String url, String request) throws Exception {
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
+        LOGGER.debug("Request Url : " + url);
         HttpEntity entity = new StringEntity(request, ContentType.APPLICATION_JSON);
         post.setHeader("kbn-xsrf", "anything");
         post.setEntity(entity);
-//        httpClient.execute(post);
         HttpResponse response = httpClient.execute(post);
-        System.out.println("Response Code : "
+        LOGGER.debug("Response Code : "
                 + response.getStatusLine().getStatusCode());
 
         BufferedReader rd = new BufferedReader(
@@ -240,6 +245,7 @@ public class KibanaController {
         while ((line = rd.readLine()) != null) {
             result.append(line);
         }
+        LOGGER.debug(result.toString());
     }
 
     private String readResource(String resourceName) throws Exception {
@@ -255,6 +261,7 @@ public class KibanaController {
 
     /**
      * start kibana command
+     *
      * @throws Exception
      */
     public void start() throws Exception {
@@ -270,6 +277,13 @@ public class KibanaController {
     public void stop() {
         LOGGER.debug("Stopping Kibana");
 //        executor.getWatchdog().destroyProcess();
+    }
+
+    public static void main(String str[]) throws Exception {
+        KibanaController controller = new KibanaController();
+        String visualization = controller.readResource("resources/visualization_threading.json");
+        controller.updateKibanaSettings("http://localhost:5601/api/saved_objects/visualization/threading_new", visualization);
+
     }
 
 }
