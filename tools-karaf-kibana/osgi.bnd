@@ -1,0 +1,14 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Bundle-Category: Kalix Karaf Tools
+Private-Package: org.apache.commons.compress*, \
+                 org.apache.commons.exec*, \
+                 org.brotli.dec, \
+                 org.eclipse.jetty.proxy, \
+                 org.tukaani.xz, \
+                 org.apache.http*, \
+                 org.apache.commons.codec*
+Import-Package: !org.brotli.dec,!org.tukaani.xz,*
