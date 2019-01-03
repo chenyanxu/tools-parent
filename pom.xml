@@ -28,8 +28,8 @@
         <module>tools-karaf-features</module>
         <module>tools-karaf-flyway</module>
         <module>tools-karaf-backup</module>
-        <module>tools-karaf-sshd</module>
-        <module>tools-karaf-kibana</module>
+        <!--<module>tools-karaf-sshd</module>-->
+        <!--<module>tools-karaf-kibana</module>-->
         <module>apache-karaf</module>
         <module>tools-karaf-assembly</module>
 

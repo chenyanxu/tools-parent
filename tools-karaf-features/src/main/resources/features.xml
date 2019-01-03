@@ -430,7 +430,7 @@
         <feature>couchdb</feature>
         <feature>apache-oltu</feature>
         <feature>retrofit</feature>
-        <feature>kalix-decanter</feature>
+        <!--<feature>kalix-decanter</feature>-->
     </feature>
 
     <feature name="retrofit">
