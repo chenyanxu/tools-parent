@@ -8,4 +8,6 @@
 install -s mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch/0.1.55_1
 ```
 
+## logstash-kalix.conf
+导入外部log文件到es中，新建一个文件，此时logstash监控该文件，然后复制log内容给这个文件，就会进行正常解析了。
 

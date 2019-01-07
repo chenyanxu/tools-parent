@@ -39,7 +39,7 @@ add following maven:
       then feature:repo-add  mvn:org.drools/drools-karaf-features/6.1.0.Final/xml/features
 
 
-安装开发环境
+安装开发环境 
 1.删除karaf目录下的data目录,然后删除deploy目录下的全部jar包
 2.重启karaf后，命令行输入 feature:repo-add mvn:com.kalix.tools/tools-karaf-features/1.0.1-SNAPSHOT/xml/features 
 3.输入 feature:install -v kalix-base，此时开发环境以及安装成功
