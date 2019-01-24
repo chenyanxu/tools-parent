@@ -8,7 +8,7 @@ CREATE EXTENSION zombodb;
 //创建对应函数，指定为中文分词和分词类型：  
 SELECT zdb.define_analyzer('kalix_analyzer', '{"tokenizer": "ik_max_word"}');  
 //将函数指定为表的数据类型：  
-CREATE DOMAIN myik AS text;
+CREATE DOMAIN kalix_analyzer AS text;
 
 ```
 ## install ik to elasticsearch
