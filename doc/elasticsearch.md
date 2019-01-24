@@ -17,7 +17,7 @@ CREATE DOMAIN kalix_analyzer AS text;
 @Entity
 @Table(name = "trying_news")
 public class NewsBean extends PersistentEntity {
-    @Column(name = "content", columnDefinition = "myik")
+    @Column(name = "content", columnDefinition = "kalix_analyzer")
     @Lob
     private String content; //内容
 }
