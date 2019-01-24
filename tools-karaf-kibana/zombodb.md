@@ -1,4 +1,4 @@
-##zombodb实现es中文分词
+## zombodb实现es中文分词
 1. 安装中文分词：
 进入[https://github.com/medcl/elasticsearch-analysis-ik/releases]()，选择和本机下elasticsearch相匹配的版本，将下载好的安装包解压到`elasticsearch\plugins\ik`目录下。
 ```
