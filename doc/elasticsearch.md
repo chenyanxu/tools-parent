@@ -2,7 +2,7 @@
 ## install zombodb to postgresql
 > zombodb can only installed in linux version of postgresql
 
-```
+```sql
 //在数据库中创建ZomboDB扩展：  
 CREATE EXTENSION zombodb;  
 //创建对应函数，指定为中文分词和分词类型：  
@@ -13,7 +13,7 @@ CREATE DOMAIN kalix_analyzer AS text;
 ```
 ## install ik to elasticsearch
 ## create entity bean
-```
+```java
 @Entity
 @Table(name = "trying_news")
 public class NewsBean extends PersistentEntity {
@@ -25,7 +25,7 @@ public class NewsBean extends PersistentEntity {
 ## change following files 
 ### persistence-jpa.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     <persistence-unit transaction-type="JTA" name="news-cm">
@@ -64,18 +64,18 @@ public class NewsBean extends PersistentEntity {
 </persistence>
 ```
 ### create.sql
-```
+```sql
 CREATE INDEX idx_trying_news ON trying_news USING zombodb ((trying_news.*)) WITH (url='http://106.12.199.69:9200/');
 ```
 
 ## drop.sql
-```
+```sql
 DROP INDEX IF EXISTS  idx_trying_news;
 ```
 
 ## full test search example
 ### NewsBeanServiceImpl
-```
+```java
     @Override
     public void full_text(String str) {
         String str="SELECT * FROM trying_news WHERE trying_news ==> 'content:" + str + "'";
