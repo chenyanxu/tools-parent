@@ -15,3 +15,8 @@ https://github.com/juezhan/osgidemo
 
 ### upgrade log
 http://karaf.922171.n3.nabble.com/OpenJPA-with-AriesJPA-Java-peristence-td4053032.html
+
+### need todo 
+* https://github.com/jbonofre/karaf-vineyard
+* https://github.com/jbonofre/karaf-hadoop
+* https://github.com/jbonofre/karaf-boot
