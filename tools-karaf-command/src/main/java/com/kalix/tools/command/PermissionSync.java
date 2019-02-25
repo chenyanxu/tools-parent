@@ -223,12 +223,13 @@ public class PermissionSync {
         if (!strBtns.equals("null")) {
             String[] btns = strBtns.split(";");
             build = new StringBuilder();
+            int lp = -1;
             for (String btn : btns) {
                 String[] values = btn.split(",");
                 String strName = values[0];
                 String strKey = values[1];
-
                 int btnId = -1;
+                lp++;
                 String btnSql = String.format(funBtnSelectIdSql, String.valueOf(appId), strKey, String.valueOf(btnParentId));
                 rs = statement.executeQuery(btnSql);
                 if (rs.next()) {
@@ -237,6 +238,7 @@ public class PermissionSync {
                 String btnStr = "";
                 if (btnId == -1) { // 新增
                     btnId = this.getNewId(funMaxIdSql, 1001);
+                    btnId += lp;
                     btnStr = String.format(funInsertSql, String.valueOf(btnId), strNow, strNow, String.valueOf(appId),
                             strKey, "1", strName, String.valueOf(btnParentId), menu.getPermission() + ":" + strKey, "0", ""); // 格式化字符串
                     Util.outPrint("insert button data of " + menu.getId());
