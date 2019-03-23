@@ -42,6 +42,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.kalix.tools</groupId>
+            <artifactId>tools-karaf-backup</artifactId>
+            <version>${project.tools.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-web</artifactId>
             <version>${project.framework.version}</version>

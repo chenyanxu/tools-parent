@@ -421,10 +421,14 @@
         <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
         <bundle>wrap:mvn:com.github.abel533/ECharts/3.0.0.2</bundle>
         <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle>wrap:mvn:dom4j/dom4j/1.6.1</bundle>
+        <bundle>wrap:mvn:commons-httpclient/commons-httpclient/3.1</bundle>
         <bundle>mvn:org.apache.shiro/shiro-web/${shiro.version}</bundle>
         <bundle start-level="5">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
         <bundle>mvn:org.flywaydb/flyway-core/4.0.3</bundle>
         <bundle>mvn:io.jsonwebtoken/jjwt/0.9.0</bundle>
+        <bundle>wrap:mvn:com.alibaba/fastjson/1.2.47</bundle>
+        <!--<bundle>mvn:cn.rongcloud.im/server-sdk-java/3.0.1</bundle>-->
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch/0.1.55_1</bundle>
         <feature>activiti</feature>
         <feature>couchdb</feature>
