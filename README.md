@@ -20,3 +20,16 @@ http://karaf.922171.n3.nabble.com/OpenJPA-with-AriesJPA-Java-peristence-td405303
 * https://github.com/jbonofre/karaf-vineyard
 * https://github.com/jbonofre/karaf-hadoop
 * https://github.com/jbonofre/karaf-boot
+* https://github.com/ops4j/org.ops4j.pax.keycloak
+
+### also need to do
+``` 
+Developer commands
+karaf@root()> bundle:diag
+karaf@root()> bundle:load-test
+karaf@root()> bundle:tree-show
+karaf@root()> system:framework -debug
+...
+● Artifacts watcher (automatically update SNAPSHOT)
+karaf@root()> bundle:watch *
+```

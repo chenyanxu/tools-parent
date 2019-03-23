@@ -65,3 +65,33 @@
     }
 ```
 
+> **创建唯一索引的办法。
+@Table(name = "mooc_videos",uniqueConstraints=@UniqueConstraint(columnNames = {"title", "cname"}))
+
+```java
+package com.kalix.training.videos.entities;
+
+import com.kalix.framework.core.api.persistence.PersistentEntity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+/**
+ * 视频实体类
+ */
+@Entity
+@Table(name = "mooc_videos",uniqueConstraints=@UniqueConstraint(columnNames = {"title", "cname"}))
+public class VideosBean extends PersistentEntity {
+    private String title; //标题名称
+    private String videoUrl; //视频网址
+    private int hits; //学习人数
+    private long cid; //课程id
+    private String cname; //课程id
+    private long vid; //标题级别
+    private long sequence; // 排序
+    private String audit; //审核
+    private long isLeaf;    // 是否是子节点
+    private int time; // 视频时长
+
+```
