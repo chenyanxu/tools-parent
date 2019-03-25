@@ -32,6 +32,7 @@
         <module>tools-karaf-kibana</module>
         <module>apache-karaf</module>
         <module>tools-karaf-assembly</module>
+        <module>tools-karaf-hadoop</module>
 
         <!--<module>webconsole</module>-->
     </modules>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kalix.tools</groupId>
+        <artifactId>tools-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tools-karaf-hadoop</artifactId>
+    <name>Kalix Tools Karaf Hadoop</name>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>com.kalix.tools.hadoop</bundle.symbolicName>
+    </properties>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.kalix.framework.core</groupId>-->
+            <!--<artifactId>framework-core-api</artifactId>-->
+            <!--<version>${project.framework.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.hadoop-client</artifactId>
+            <version>2.7.2_1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.enterprise</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        <!-- custom felix gogo command -->
+        <dependency>
+            <groupId>org.apache.karaf.shell</groupId>
+            <artifactId>org.apache.karaf.shell.core</artifactId>
+            <version>4.2.4</version>
+        </dependency>
+
+    </dependencies>
+</project>
