@@ -6,3 +6,8 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Bundle-Category: Kalix Karaf Tools
 DynamicImport-Package: *
 Karaf-Commands: *
+Include-Resource: {maven-resources}, \
+    @org.apache.servicemix.bundles.hadoop-client-2.7.2_1.jar!/core-default.xml, \
+    @org.apache.servicemix.bundles.hadoop-client-2.7.2_1.jar!/hdfs-default.xml, \
+    @org.apache.servicemix.bundles.hadoop-client-2.7.2_1.jar!/mapred-default.xml, \
+    @org.apache.servicemix.bundles.hadoop-client-2.7.2_1.jar!/hadoop-metrics.properties
