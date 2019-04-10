@@ -430,7 +430,7 @@
         <bundle>wrap:mvn:com.alibaba/fastjson/1.2.47</bundle>
         <!--<bundle>mvn:cn.rongcloud.im/server-sdk-java/3.0.1</bundle>-->
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsch/0.1.55_1</bundle>
-        <feature>activiti</feature>
+        <!--<feature>activiti</feature>-->
         <feature>couchdb</feature>
         <feature>apache-oltu</feature>
         <feature>retrofit</feature>
