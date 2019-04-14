@@ -37,3 +37,7 @@ karaf@root()> system:framework -debug
 ● Artifacts watcher (automatically update SNAPSHOT)
 karaf@root()> bundle:watch *
 ```
+
+### shiro
+https://github.com/apache/aries/tree/trunk/blueprint/blueprint-authz
+https://github.com/apache/aries-jax-rs-whiteboard/tree/master/integrations/shiro
