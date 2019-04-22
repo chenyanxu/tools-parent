@@ -39,3 +39,7 @@ karaf@root()> bundle:watch *
 ```
 ### 
 https://github.com/jonashackt/spring-boot-vuejs
+
+### shiro
+https://github.com/apache/aries/tree/trunk/blueprint/blueprint-authz
+https://github.com/apache/aries-jax-rs-whiteboard/tree/master/integrations/shiro
