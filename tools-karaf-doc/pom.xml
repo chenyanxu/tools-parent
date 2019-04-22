@@ -88,8 +88,8 @@
                 <configuration>
                     <sourceDirectory>src/main/asciidoc</sourceDirectory>
                     <headerFooter>true</headerFooter>
-                    <imagesDir>src/main/asciidoc/images</imagesDir>
-                    <outputDirectory>target/generated-docs/html</outputDirectory>
+                    <imagesDir>images</imagesDir>
+                    <outputDirectory>target/generated-docs</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

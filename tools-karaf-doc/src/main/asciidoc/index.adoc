@@ -12,34 +12,33 @@
 // limitations under the License.
 //
 
-Apache Karaf Decanter 2.x - Documentation
-=========================================
-Apache Software Foundation
+Kalix 1.x - 开发文档
+=================
 :doctype: article
 :toc: left
 :toclevels: 3
 :toc-position: left
-:toc-title: Apache Karaf Decanter 2.x - Documentation
+:toc-title: Kalix 1.x - 开发文档
 :numbered:
 
 image::asf_logo.png[pdfwidth=35%,align=center]
 
-== User Guide
+== 使用说明
 
 include::user-guide/introduction.adoc[]
 
 include::user-guide/collectors.adoc[]
 
-include::user-guide/appenders.adoc[]
+//include::user-guide/appenders.adoc[]
 
-include::user-guide/alerting.adoc[]
+//include::user-guide/alerting.adoc[]
 
-== Developer Guide
+== 开发指南
 
 include::dev-guide/architecture.adoc[]
 
-include::dev-guide/custom-collector.adoc[]
+include::dev-guide/osgi-event.adoc[]
 
-include::dev-guide/custom-appender.adoc[]
+//include::dev-guide/custom-appender.adoc[]
 
-include::dev-guide/custom-alerter.adoc[]
+//include::dev-guide/custom-alerter.adoc[]
