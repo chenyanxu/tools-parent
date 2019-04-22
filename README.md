@@ -37,3 +37,5 @@ karaf@root()> system:framework -debug
 ● Artifacts watcher (automatically update SNAPSHOT)
 karaf@root()> bundle:watch *
 ```
+### 
+https://github.com/jonashackt/spring-boot-vuejs

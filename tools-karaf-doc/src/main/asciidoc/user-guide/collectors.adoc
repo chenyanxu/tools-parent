@@ -1,0 +1,792 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+=== Collectors
+
+Decanter collectors harvest the monitoring data, and send this data to the Decanter appenders.
+
+Two kinds of collector are available:
+
+* Event Driven Collectors react to events and "broadcast" the data to the appenders.
+* Polled Collectors are periodically executed by the Decanter Scheduler. When executed, the collectors harvest the
+data and send to the appenders.
+
+==== Log
+
+The Decanter Log Collector is an event driven collector. It automatically reacts when a log occurs, and
+send the log details (level, logger name, message, etc) to the appenders.
+
+The `decanter-collector-log` feature installs the log collector:
+
+----
+karaf@root()> feature:install decanter-collector-log
+----
+
+The log collector doesn't need any configuration, the installation of the decanter-collector-log feature is enough.
+
+[NOTE]
+=====================================================================
+The Decanter log collector is using `osgi:DecanterLogCollectorAppender` appender.
+In order to work, your Apache Karaf Pax Logging configuration should contain this appender.
+
+The default Apache Karaf `etc/org.ops4j.pax.logging.cfg` configuration file is already fine:
+
+----
+log4j.rootLogger = DEBUG, out, osgi:*
+----
+
+If you want, you can explicitly specify the `DecanterLogCollectorAppender` appender:
+
+----
+log4j.rootLogger = DEBUG, out, osgi:DecanterLogCollectorAppender, osgi:VmLogAppender
+----
+
+=====================================================================
+
+==== CXF Logging feature integration
+
+The link:http://cxf.apache.org/docs/message-logging.html[CXF message logging] nicely integrates with Decanter. Simply add the link:https://github.com/apache/cxf/blob/master/rt/features/logging/src/main/java/org/apache/cxf/ext/logging/LoggingFeature.java[org.apache.cxf.ext.logging.LoggingFeature] to your service.
+
+This will automatically log the messages from all clients and endpoints to slf4j. All meta data can be found in the MDC attributes. The message logging can be switched on/off per service using the org.ops4j.pax.logging.cfg.
+
+When using with Decanter make sure you enable the log collector to actually process the message logs.
+
+==== Log Socket
+
+The Decanter Log Socket Collector is an event driven collector. It creates a socket, waiting for incoming event. The expected
+events are log4j LoggingEvent. The log4j LoggingEvent is transformed as a Map containing the log details (level, logger name, message, ...).
+This Map is sent to the appenders.
+
+The collector allows you to remotely use Decanter. For instance, you can have an application running on a different platform (spring-boot,
+application servers, ...). This application can use a log4j socket appender that send the logging events to the Decanter
+log socket collector.
+
+The `decanter-collector-log-socket` feature install the log socket collector:
+
+----
+karaf@root()> feature:install decanter-collector-log-socket
+----
+
+This feature installs the collector and a default `etc/org.apache.karaf.decanter.collector.log.socket.cfg` configuration file
+containing:
+
+----
+#
+# Decanter Log/Log4j Socket collector configuration
+#
+
+#port=4560
+#workers=10
+
+----
+
+* the `port` property defines the port number where the collector is bound and listen for incoming logging event. Default is 4560.
+* the `workers` properties defines the number of threads (workers) which can deal with multiple clients in the same time.
+
+==== File
+
+The Decanter File Collector is an event driven collector. It automatically reacts when new lines are appended into
+a file (especially a log file). It acts like the tail Unix command. Basically, it's an alternative to the log collector.
+The log collector reacts for local Karaf log messages, whereas the file collector can react to any files, included log
+file from other system than Karaf. It means that you can monitor and send collected data for any system (even not Java
+base, or whatever).
+
+The file collector deals with file rotation, file not found.
+
+The `decanter-collector-file` feature installs the file collector:
+
+----
+karaf@root()> feature:install decanter-collector-file
+----
+
+Now, you have to create a configuration file for each file that you want to monitor. In the etc folder, you have to
+create a file with the following format name `etc/org.apache.karaf.decanter.collector.file-ID.cfg` where ID is an ID
+of your choice.
+
+This file contains:
+
+----
+type=my
+path=/path/to/file
+any=value
+----
+
+* `type` is an ID (mandatory) that allows you to easily identify the monitored file
+* `path` is the location of the file that you want to monitore
+* all other values (like `any`) will be part of the collected data. It means that you can add your own custom data, and
+easily create queries bases on this data.
+
+You can also filter the lines read from the file using the `regex` property.
+
+For instance:
+
+----
+regex=(.*foo.*)
+----
+
+Only the line matching the `regex` will be sent to the dispatcher.
+
+For instance, instead of the log collector, you can create the following `etc/org.apache.karaf.decanter.collector.file-karaf.cfg`
+file collector configuration file:
+
+----
+type=karaf-log-file
+path=/path/to/karaf/data/log/karaf.log
+regex=(.*my.*)
+my=stuff
+----
+
+The file collector will tail on `karaf.log` file, and send any new line matching the `regex` in this log file as collected data.
+
+By default, the collector use the `org.apache.karaf.decanter.impl.parser.IdentityParser` parser to parse the line into
+a typed Object (Long, Integer or String) before send it to the EventDispatcher data map.
+
+You can write your own parser by implementing the `org.apache.karaf.decanter.api.parser.Parser` interface and declare
+it into the file collector configuration file:
+
+----
+parser.target=(parserId=myParser)
+----
+
+==== EventAdmin
+
+The Decanter EventAdmin Collector is an event-driven collector, listening for all internal events happening in
+the Apache Karaf Container.
+
+[NOTE]
+================================================
+It's the perfect way to audit all actions performed on resources (features, bundles, configurations, ...) by users
+(via local shell console, SSH, or JMX).
+
+We recommend to use this collector to implement users and actions auditing.
+================================================
+
+The `decanter-collector-eventadmin` feature installs the eventadmin collector:
+
+----
+karaf@root()> feature:install decanter-collector-eventadmin
+----
+
+By default, the eventadmin collector is listening for all OSGi framework and Karaf internal events.
+
+You can specify additional events to trap by providing a `etc/org.apache.karaf.decanter.collector.eventadmin-my.cfg' configuration
+file, containing the EventAdmin topics you want to listen:
+
+----
+event.topics=my/*
+----
+
+[NOTE]
+================================================
+By default, the events contain timestamp and subject.
+You can disable this by modifying `etc/org.apache.felix.eventadmin.impl.EventAdmin` configuration file:
+
+----
+org.apache.felix.eventadmin.AddTimestamp=true
+org.apache.felix.eventadmin.AddSubject=true
+----
+================================================
+
+==== JMX
+
+The Decanter JMX Collector is a polled collector, executed periodically by the Decanter Scheduler.
+
+The JMX collector connects to a JMX MBeanServer (local or remote), and retrieves all attributes of each available MBeans.
+The JMX metrics (attribute values) are send to the appenders.
+
+In addition, the JMX collector also supports the execution of operations on dedicated ObjectName that you configure via `cfg` file.
+
+The `decanter-collector-jmx` feature installs the JMX collector, and a default configuration file:
+
+----
+karaf@root()> feature:install decanter-collector-jmx
+----
+
+This feature brings a `etc/org.apache.karaf.decanter.collector.jmx-local.cfg` configuration file containing:
+
+----
+#
+# Decanter Local JMX collector configuration
+#
+
+# Name/type of the JMX collection
+type=jmx-local
+
+# URL of the JMX MBeanServer.
+# local keyword means the local platform MBeanServer or you can specify to full JMX URL
+# like service:jmx:rmi:///jndi/rmi://hostname:port/karaf-instance
+url=local
+
+# Username to connect to the JMX MBeanServer
+#username=karaf
+
+# Password to connect to the JMX MBeanServer
+#password=karaf
+
+# Object name filter to use. Instead of harvesting all MBeans, you can select only
+# some MBeans matching the object name filter
+#object.name=org.apache.camel:context=*,type=routes,name=*
+
+# Several object names can also be specified.
+# What matters is that the property names begin with "object.name".
+#object.name.system=java.lang:*
+#object.name.karaf=org.apache.karaf:type=http,name=*
+#object.name.3=org.apache.activemq:*
+
+# You can also execute operations on some MBeans, providing the object name, operation, arguments (separated by ,)
+# and signatures (separated by ,) for the arguments (separated by |)
+#operation.name.rootLogger=org.apache.karaf:type=log,name=root|getLevel|rootLogger|java.lang.String
+----
+
+This file harvests the data of the local MBeanServer:
+
+* the `type` property is a name (of your choice) allowing you to easily identify the harvested data
+* the `url` property is the MBeanServer to connect. "local" is reserved keyword to specify the local MBeanServer.
+Instead of "local", you can use the JMX service URL. For instance, for Karaf version 3.0.0, 3.0.1, 3.0.2, and 3.0.3,
+as the local MBeanServer is secured, you can specify `service:jmx:rmi:///jndi/rmi://localhost:1099/karaf-root`. You
+can also polled any remote MBean server (Karaf based or not) providing the service URL.
+* the `username` property contains the username to connect to the MBean server. It's only required if the MBean server
+is secured.
+* the `password` property contains the password to connect to the MBean server. It's only required if the MBean server
+is secured.
+* the `object.name` prefix is optional. If this property is not specified, the collector will retrieve the attributes
+of all MBeans. You can filter to consider only some MBeans. This property contains the ObjectName filter to retrieve
+the attributes only to some MBeans. Several object names can be listed, provided the property prefix is `object.name.`.
+* any other values will be part of the collected data. It means that you can add your own property if you want to add
+additional data, and create queries based on this data.
+* the `operation.name` prefix is also optional. You can use it to execute an operation. The value format is `objectName|operation|arguments|signatures`.
+
+You can retrieve multiple MBean servers. For that, you just create a new configuration file using the file name format
+`etc/org.apache.karaf.decanter.collector.jmx-[ANYNAME].cfg`.
+
+===== JMXMP
+
+The Karaf Decanter JMX collector by default uses RMI protocol for JMX. But it also supports JMXMP protocol.
+
+The features to install are the sames: `decanter-collector-jmx`.
+
+However, you have to enable the `jmxmp` protocol support in the Apache Karaf instance hosting Karaf Decanter.
+
+You can download the `jmxmp` protocol provider artifact on Maven Central: [http://repo.maven.apache.org/maven2/org/glassfish/external/opendmk_jmxremote_optional_jar/1.0-b01-ea/opendmk_jmxremote_optional_jar-1.0-b01-ea.jar]
+
+The `opendmk_jmxremote_optional_jar-1.0-b01-ea.jar` file has to be copied in the `lib/boot` folder of your Apache Karaf instance.
+
+Then, you have to add the new JMX remote packages by editing `etc/config.properties`, appending the following to the `org.osgi.framework.system.packages.extra` property:
+
+----
+org.osgi.framework.system.packages.extra = \
+    ...
+    javax.remote, \
+    com.sun.jmx, \
+    com.sun.jmx.remote, \
+    com.sun.jmx.remote.protocol, \
+    com.sun.jmx.remote.generic, \
+    com.sun.jmx.remote.opt, \
+    com.sun.jmx.remote.opt.internal, \
+    com.sun.jmx.remote.opt.security, \
+    com.sun.jmx.remote.opt.util, \
+    com.sun.jmx.remote.profile, \
+    com.sun.jmx.remote.profile.sasl, \
+    com.sun.jmx.remote.profile.tls, \
+    com.sun.jmx.remote.socket, \
+    javax.management, \
+    javax.management.remote, \
+    javax.management.remote.generic, \
+    javax.management.remote.jmxmp, \
+    javax.management.remote.message
+----
+
+Then, you can create a new Decanter JMX collector by creating a new file, like `etc/org.apache.karaf.decanter.collector.jmx-mycollector.cfg` containing something like:
+
+----
+type=jmx-mycollector
+url=service:jmx:jmxmp://host:port
+jmx.remote.protocol.provider.pkgs=com.sun.jmx.remote.protocol
+----
+
+You can see:
+* the `url` property contains an URL with `jmxmp` instead of `rmi`.
+* in order to support `jmxmp` protocol, you have to set the protocol provider via the `jmx.remote.protocol.provider.pkgs` property (by default, Karaf Decanter JMX collector uses the `rmi` protocol provider)
+
+==== ActiveMQ (JMX)
+
+The ActiveMQ JMX collector is just a special configuration of the JMX collector.
+
+The `decanter-collector-activemq` feature installs the default JMX collector, with the specific ActiveMQ JMX configuration:
+
+----
+karaf@root()> feature:install decanter-collector-jmx-activemq
+----
+
+This feature installs the same collector as the `decanter-collector-jmx`, but also add the
+`etc/org.apache.karaf.decanter.collector.jmx-activemq.cfg` configuration file.
+
+This file contains:
+
+----
+#
+# Decanter Local ActiveMQ JMX collector configuration
+#
+
+# Name/type of the JMX collection
+type=jmx-activemq
+
+# URL of the JMX MBeanServer.
+# local keyword means the local platform MBeanServer or you can specify to full JMX URL
+# like service:jmx:rmi:///jndi/rmi://hostname:port/karaf-instance
+url=local
+
+# Username to connect to the JMX MBeanServer
+#username=karaf
+
+# Password to connect to the JMX MBeanServer
+#password=karaf
+
+# Object name filter to use. Instead of harvesting all MBeans, you can select only
+# some MBeans matching the object name filter
+object.name=org.apache.activemq:*
+----
+
+This configuration actually contains a filter to retrieve only the ActiveMQ JMX MBeans.
+
+==== Camel (JMX)
+
+The Camel JMX collector is just a special configuration of the JMX collector.
+
+The `decanter-collector-jmx-camel` feature installs the default JMX collector, with the specific Camel JMX configuration:
+
+----
+karaf@root()> feature:install decanter-collector-jmx-camel
+----
+
+This feature installs the same collector as the `decanter-collector-jmx`, but also add the
+`etc/org.apache.karaf.decanter.collector.jmx-camel.cfg` configuration file.
+
+This file contains:
+
+----
+#
+# Decanter Local Camel JMX collector configuration
+#
+
+# Name/type of the JMX collection
+type=jmx-camel
+
+# URL of the JMX MBeanServer.
+# local keyword means the local platform MBeanServer or you can specify to full JMX URL
+# like service:jmx:rmi:///jndi/rmi://hostname:port/karaf-instance
+url=local
+
+# Username to connect to the JMX MBeanServer
+#username=karaf
+
+# Password to connect to the JMX MBeanServer
+#password=karaf
+
+# Object name filter to use. Instead of harvesting all MBeans, you can select only
+# some MBeans matching the object name filter
+object.name=org.apache.camel:context=*,type=routes,name=*
+----
+
+This configuration actually contains a filter to retrieve only the Camel Routes JMX MBeans.
+
+==== Camel Tracer & Notifier
+
+Decanter provides a Camel Tracer Handler that you can set on a Camel Tracer. It also provides a Camel Event Notifier.
+
+===== Camel Tracer
+
+If you enable the tracer on a Camel route, all tracer events (exchanges on each step of the route) are send to the
+appenders.
+
+The `decanter-collector-camel` feature provides the Camel Tracer Handler:
+
+----
+karaf@root()> feature:install decanter-collector-camel
+----
+
+Now, you can use the Decanter Camel Tracer Handler in a tracer that you can use in routes.
+
+For instance, the following route definition shows how to enable tracer on a route, and use the Decanter Tracer Handler
+in the Camel Tracer:
+
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <reference id="dispatcher" interface="org.osgi.service.event.EventAdmin"/>
+
+    <bean id="traceHandler" class="org.apache.karaf.decanter.collector.camel.DecanterTraceEventHandler">
+        <property name="dispatcher" ref="dispatcher"/>
+    </bean>
+
+    <bean id="tracer" class="org.apache.camel.processor.interceptor.Tracer">
+        <property name="traceHandler" ref="traceHandler"/>
+        <property name="enabled" value="true"/>
+        <property name="traceOutExchanges" value="true"/>
+        <property name="logLevel" value="OFF"/>
+    </bean>
+
+    <camelContext trace="true" xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="test">
+            <from uri="timer:fire?period=10000"/>
+            <setBody><constant>Hello World</constant></setBody>
+            <to uri="log:test"/>
+        </route>
+    </camelContext>
+
+</blueprint>
+----
+
+You can extend the Decanter event with any property using a custom `DecanterCamelEventExtender`:
+
+----
+public interface DecanterCamelEventExtender {
+
+    void extend(Map<String, Object> decanterData, Exchange camelExchange);
+
+}
+----
+
+You can inject your extender using `setExtender(myExtender)` on the `DecanterTraceEventHandler`. Decanter will automatically
+call your extender to populate extra properties.
+
+===== Camel Event Notifier
+
+Decanter also provides `DecanterEventNotifier` implementing a Camel event notifier: http://camel.apache.org/eventnotifier-to-log-details-about-all-sent-exchanges.html
+
+It's very similar to the Decanter Camel Tracer. You can control the camel contexts and routes to which you want to trap event.
+
+==== System
+
+The system collector is a polled collector (periodically executed by the Decanter Scheduler).
+
+This collector executes operating system commands (or scripts) and send the execution output to the appenders.
+
+The `decanter-collector-system` feature installs the system collector:
+
+----
+karaf@root()> feature:install decanter-collector-system
+----
+
+This feature installs a default `etc/org.apache.karaf.decanter.collector.system.cfg` configuration file containing:
+
+----
+#
+# Decanter OperationSystem Collector configuration
+#
+
+# This collector executes system commands, retrieve the exec output/err
+# sent to the appenders
+#
+# The format is command.key=command_to_execute
+# where command is a reserved keyword used to identify a command property
+# for instance:
+#
+# command.df=df -h
+# command.free=free
+#
+# You can also create a script containing command like:
+#
+#   df -k / | awk -F " |%" '/dev/{print $8}'
+#
+# This script will get the available space on the / filesystem for instance.
+# and call the script:
+#
+# command.df=/bin/script
+#
+# Another example of script to get the temperature:
+#
+#   sensors|grep temp1|awk '{print $2}'|cut -b2,3,4,5
+#
+----
+
+You can add the commands that you want to execute using the format:
+
+----
+command.name=system_command
+----
+
+The collector will execute each command described in this file, and send the execution output to the appenders.
+
+For instance, if you want to periodically send the free space available on the / filesystem, you can add:
+
+----
+command.df=df -k / | awk -F " |%" '/dev/{print $8}'
+----
+
+==== Network socket
+
+The Decanter network socket collector listens for incoming messages coming from a remote network socket collector.
+
+The `decanter-collector-socket` feature installs the network socket collector:
+
+----
+karaf@root()> feature:install decanter-collector-socket
+----
+
+This feature installs a default `etc/org.apache.karaf.decanter.collector.socket.cfg` configuration file containing:
+
+----
+# Decanter Socket Collector
+
+# Port number on which to listen
+#port=34343
+
+# Number of worker threads to deal with
+#workers=10
+
+# Protocol tcp(default) or udp
+#protocol=tcp
+
+# Unmarshaller to use
+# Unmarshaller is identified by data format. The default is json, but you can use another unmarshaller
+unmarshaller.target=(dataFormat=json)
+----
+
+* the `port` property contains the port number where the network socket collector is listening
+* the `workers` property contains the number of worker thread the socket collector is using for connection
+* the `protocol` property contains the protocol used by the collector for transferring data with the client
+* the `unmarshaller.target` property contains the unmarshaller used by the collector to transform the data
+sended by the client.
+
+==== JMS
+
+The Decanter JMS collector consumes the data from a JMS queue or topic. It's a way to aggregate collected data coming
+from remote and several machines.
+
+The `decanter-collector-jms` feature installs the JMS collector:
+
+----
+karaf@root()> feature:install decanter-collector-jms
+----
+
+This feature also installs a default `etc/org.apache.karaf.decanter.collector.jms.cfg` configuration file containing:
+
+----
+######################################
+# Decanter JMS Collector Configuration
+######################################
+
+# Name of the JMS connection factory
+connection.factory.name=jms/decanter
+
+# Name of the destination
+destination.name=decanter
+
+# Type of the destination (queue or topic)
+destination.type=queue
+
+# Connection username
+# username=
+
+# Connection password
+# password=
+----
+
+* the `connection.factory.name` is the name of the ConnectionFactory OSGi service to use
+* the `destination.name` is the name of the queue or topic where to consume messages from the JMS broker
+* the `destination.type` is the type of the destination (queue or topic)
+* the `username` and `password` properties are the credentials to use with a secured connection factory
+
+==== MQTT
+
+The Decanter MQTT collector receives collected messages from a MQTT broker. It's a way to aggregate collected data coming
+from remote and several machines.
+
+The `decanter-collector-mqtt` feature installs the MQTT collector:
+
+----
+karaf@root()> feature:install decanter-collector-mqtt
+----
+
+This feature also installs a default `etc/org.apache.karaf.decanter.collector.mqtt.cfg` configuration file containing:
+
+----
+#######################################
+# Decanter MQTT Collector Configuration
+#######################################
+
+# URI of the MQTT broker
+server.uri=tcp://localhost:61616
+
+# MQTT Client ID
+client.id=decanter
+
+# MQTT topic name
+topic=decanter
+----
+
+* the `server.uri` is the location of the MQTT broker
+* the `client.id` is the Decanter MQTT client ID
+* the `topic` is the MQTT topic pattern where to receive the messages
+
+==== Kafka
+
+The Decanter Kafka collector receives collected messages from a Kafka broker. It's a way to aggregate collected data coming
+from remote and several machines.
+
+The `decanter-collector-kafka` feature installs the Kafka collector:
+
+----
+karaf@root()> feature:install decanter-collector-kafka
+----
+
+This feature also installs a default `etc/org.apache.karaf.decanter.collector.kafka.cfg` configuration file containing:
+
+----
+###############################
+# Decanter Kafka Configuration
+###############################
+
+# A list of host/port pairs to use for establishing the initial connection to the Kafka cluster
+#bootstrap.servers=localhost:9092
+
+# An id string to identify the group where the consumer belongs to
+#group.id=decanter
+
+# Enable auto commit of consumed messages
+#enable.auto.commit=true
+
+# Auto commit interval (in ms) triggering the commit
+#auto.commit.interval.ms=1000
+
+# Timeout on the consumer session
+#session.timeout.ms=30000
+
+# Serializer class for key that implements the Serializer interface
+#key.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+# Serializer class for value that implements the Serializer interface.
+#value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+# Name of the topic
+#topic=decanter
+
+# Security (SSL)
+#security.protocol=SSL
+
+# SSL truststore location (Kafka broker) and password
+#ssl.truststore.location=${karaf.etc}/keystores/keystore.jks
+#ssl.truststore.password=karaf
+
+# SSL keystore (if client authentication is required)
+#ssl.keystore.location=${karaf.etc}/keystores/clientstore.jks
+#ssl.keystore.password=karaf
+#ssl.key.password=karaf
+
+# (Optional) SSL provider (default uses the JVM one)
+#ssl.provider=
+
+# (Optional) SSL Cipher suites
+#ssl.cipher.suites=
+
+# (Optional) SSL Protocols enabled (default is TLSv1.2,TLSv1.1,TLSv1)
+#ssl.enabled.protocols=TLSv1.2,TLSv1.1,TLSv1
+
+# (Optional) SSL Truststore type (default is JKS)
+#ssl.truststore.type=JKS
+
+# (Optional) SSL Keystore type (default is JKS)
+#ssl.keystore.type=JKS
+
+# Security (SASL)
+# For SASL, you have to configure Java System property as explained in http://kafka.apache.org/documentation.html#security_ssl
+----
+
+The configuration is similar to the Decanter Kafka appender. Please, see Kafka collector for details.
+
+==== Rest Servlet
+
+The Decanter Rest Servlet collector registers a servlet on the OSGi HTTP service (by default on `/decanter/collect`).
+
+It listens for incoming collected messages on this servlet.
+
+The `decanter-collector-rest-servlet` feature installs the collector:
+
+----
+karaf@root()> feature:install decanter-collector-rest-servlet
+----
+
+==== Dropwizard Metrics
+
+The Decanter Dropwizard Metrics collector get a `MetricSet` OSGi service and periodically get the metrics in the set.
+
+The `decanter-collector-dropwizard` feature installs the collector:
+
+----
+karaf@root()> feature:install decanter-collector-dropwizard
+----
+
+As soon as a `MetricSet` (like `MetricRegistry`) service will be available, the collector will get the metrics and
+send to the Decanter dispatcher.
+
+==== JDBC
+
+The Decanter JDBC collector periodically executes a query on a database and send the query result to the dispatcher.
+
+The `decanter-collector-jdbc` installs the JDBC collector:
+
+----
+karaf@root()> feature:install decanter-collector-jdbc
+----
+
+The feature also installs the `etc/org.apache.karaf.decanter.collector.jdbc.cfg` configuration file:
+
+----
+#######################################
+# Decanter JDBC Collector Configuration
+#######################################
+
+# DataSource to use
+dataSource.target=(osgi.jndi.service.name=jdbc/decanter)
+
+# SQL Query to retrieve data
+query=select * from TABLE
+----
+
+This configuration file allows you to configure the datasource to use and the SQL query to perform:
+
+* the `datasource.name` property contains the name of the JDBC datasource to use to connect to the database. You can
+  create this datasource using the Karaf `jdbc:create` command (provided by the `jdbc` feature).
+* the `query` property contains the SQL query to perform on the database and retrieve data.
+
+This collector is periodically executed by the Karaf scheduler.
+
+==== Customizing properties in collectors
+
+You can add, rename or remove properties collected by the collectors before sending it to the dispatcher.
+
+In the collector configuration file (for instance `etc/org.apache.karaf.decanter.collector.jmx-local.cfg` for the local JMX collector), you
+can add any property. By default, the property is added to the data sent to the dispatcher.
+
+You can prefix the configuration property with the action you can perform before sending:
+
+* `fields.add.` adds a property to the data sent. The following add property `hello` with value `world`:
+
+    ----
+    fields.add.hello=world
+    ----
+
+* `fields.remove.` removes a property to the data sent:
+
+    ----
+    fields.remove.hello=
+    ----
+
+* `fields.rename.` rename a property with another name:
+
+    ----
+    fields.rename.helo=hello
+    ----

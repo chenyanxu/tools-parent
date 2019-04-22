@@ -1,0 +1,1457 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+=== Appenders
+
+Decanter appenders receive the data from the collectors, and store the data into a storage backend.
+
+==== Log
+
+The Decanter Log Appender creates a log message for each event received from the collectors.
+
+The `decanter-appender-log` feature installs the log appender:
+
+----
+karaf@root()> feature:install decanter-appender-log
+----
+
+The log appender doesn't require any configuration.
+
+==== Elasticsearch & Kibana
+
+[WARNING]
+===============================================
+For production, we recommend to use a dedicated instance of Elasticsearch and Kibana. The following features are not recommended
+for production.
+===============================================
+
+Decanter provides three appenders for Elasticsearch:
+
+* decanter-appender-elasticsearch-rest (recommanded) is an appender which directly uses the Elasticsearch HTTP REST API. It's compliant with any Elasticsearch version (1.x, 2.x, 5.x, 6.x).
+* decanter-appender-elasticsearch-jest (deprecated) is an appender which directly uses the Elasticsearch HTTP REST API, working with any Elasticsearch version (1.x, 2.x, 5.x, 6.x).
+* decanter-appender-elasticsearch-native-1.x is an appender which uses the Elasticsearch 1.x Java Client API. It's compliant only with Elasticsearch 1.x versions.
+* decanter-appender-elasticsearch-native-2.x is an appender which uses the Elasticsearch 2.x Java Client API. It's compliant only with Elasticsearch 2.x versions.
+
+These appenders store the data (coming from the collectors) into an Elasticsearch node.
+They transformm the data as a json document, stored into Elasticsearch.
+
+===== Elasticsearch 5.x/6.x Rest Appender
+
+The Decanter Elasticsearch Rest appender uses the Elasticsearch Rest client provided since Elasticsearch 5.x. It can be use with Elasticsearch 5.x or 6.x versions.
+
+The `decanter-appender-elasticsearch-rest` feature installs this appender:
+
+----
+karaf@root()> feature:install decanter-appender-elasticsearch-rest
+----
+
+===== Elasticsearch HTTP REST Jest appender
+
+The Decanter Elasticsearch HTTP REST API appender uses the Elasticsearch REST API. It works with any Elasticsearch version (1.x and 2.x).
+
+The `decanter-appender-elasticsearch-jest` feature installs this appender:
+
+----
+karaf@root()> feature:install decanter-appender-elasticsearch-jest
+----
+
+This feature installs the appender and the `etc/org.apache.karaf.decanter.appender.elasticsearch.jest.cfg` configuration file
+containing:
+
+----
+#########################################################
+# Decanter Elasticsearch HTTP Jest Appender Configuration
+#########################################################
+
+# HTTP address of the elasticsearch node
+# NB: the appender uses discovery via elasticsearch nodes API
+address=http://localhost:9200
+
+# Basic username and password authentication
+# username=user
+# password=password
+----
+
+The file contains the Elasticsearch node location:
+
+* the `address` is the HTTP URL of the Elasticsearch node. Default is `http://localhost:9200`.
+* the `username` is the username used for authentication (optional)
+* the `password` is the password used for authentication (optional)
+
+===== Elasticsearch 1.x Native appender
+
+The Elasticsearch 1.x Native appender uses the Elasticsearch 1.x Java Client API. It's very specific to
+Elasticsearch 1.x versions, and can't run with Elasticsearch 2.x.
+
+The `decanter-appender-elasticsearch-native-1.x` feature installs the elasticsearch appender:
+
+----
+karaf@root()> feature:install decanter-appender-elasticsearch-native-1.x
+----
+
+This feature installs the elasticsearch appender, especially the `etc/org.apache.karaf.decanter.appender.elasticsearch.cfg`
+configuration file containing:
+
+----
+################################################
+# Decanter Elasticsearch Appender Configuration
+################################################
+
+# Hostname of the elasticsearch instance
+host=localhost
+# Port number of the elasticsearch instance
+port=9300
+# Name of the elasticsearch cluster
+clusterName=elasticsearch
+----
+
+This file contains the elasticsearch instance connection properties:
+
+* the `host` property contains the hostname (or IP address) of the Elasticsearch instance
+* the `port` property contains the port number of the Elasticsearch instance
+* the `clusterName` property contains the name of the Elasticsearch cluster where to send the data
+
+===== Elasticsearch 2.x Native appender
+
+The Elasticsearch 2.x Native appender uses the Elasticsearch 2.x Java Client API. It's very specific to
+Elasticsearch 2.x versions, and can't run with Elasticsearch 1.x.
+
+The `decanter-appender-elasticsearch-native-2.x` feature installs the elasticsearch appender:
+
+----
+karaf@root()> feature:install decanter-appender-elasticsearch-native-2.x
+----
+
+This feature installs the elasticsearch appender, especially the `etc/org.apache.karaf.decanter.appender.elasticsearch.cfg`
+configuration file containing:
+
+----
+################################################
+# Decanter Elasticsearch Appender Configuration
+################################################
+
+# Hostname of the elasticsearch instance
+host=localhost
+# Port number of the elasticsearch instance
+port=9300
+# Name of the elasticsearch cluster
+clusterName=elasticsearch
+----
+
+This file contains the elasticsearch instance connection properties:
+
+* the `host` property contains the hostname (or IP address) of the Elasticsearch instance
+* the `port` property contains the port number of the Elasticsearch instance
+* the `clusterName` property contains the name of the Elasticsearch cluster where to send the data
+
+===== Embedding Decanter Elasticsearch (1.x and 2.x)
+
+[NOTE]
+=========================================
+For a larger and shared production platform, we recommend to dedicate a Elasticsearch instance on its own JVM.
+It allows you some specific tuning for elasticsearch.
+Another acceptable configuration is to set up the Decanter embedded Elasticsearch instance as part (client) of a larger
+cluster.
+
+The following Decanter Elasticsearch embedded instance setup works perfectly fine for Karaf Decanter monitoring purpose,
+especially for the current Karaf instance.
+=========================================
+
+For convenience, Decanter provides `elasticsearch` feature starting an embedded Elasticsearch instance:
+
+----
+karaf@root()> feature:install elasticsearch
+----
+
+Decanter provides versions of this feature, depending of the Elasticsearch version you want to use (1.x or 2.x).
+
+You can see the feature version available:
+
+----
+karaf@root()> feature:version-list elasticsearch
+----
+
+Thanks to this elasticsearch instance, by default, the decanter-appender-elasticsearch* appenders will send the data to this instance.
+
+The feature also installs the `etc/elasticsearch.yml` configuration file, different depending of the Elasticsearch version.
+
+For Elasticsearch 1.x:
+
+----
+###############################################################################
+##################### Elasticsearch Decanter Configuration ####################
+###############################################################################
+
+# WARNING: change in this configuration file requires a refresh or restart of
+# the elasticsearch bundle
+
+################################### Cluster ###################################
+
+# Cluster name identifies your cluster for auto-discovery. If you're running
+# multiple clusters on the same network, make sure you're using unique names.
+#
+cluster.name: elasticsearch
+cluster.routing.schedule: 50ms
+
+
+#################################### Node #####################################
+
+# Node names are generated dynamically on startup, so you're relieved
+# from configuring them manually. You can tie this node to a specific name:
+#
+node.name: decanter
+
+# Every node can be configured to allow or deny being eligible as the master,
+# and to allow or deny to store the data.
+#
+# Allow this node to be eligible as a master node (enabled by default):
+#
+#node.master: true
+#
+# Allow this node to store data (enabled by default):
+#
+node.data: true
+
+# You can exploit these settings to design advanced cluster topologies.
+#
+# 1. You want this node to never become a master node, only to hold data.
+#    This will be the "workhorse" of your cluster.
+#
+#node.master: false
+#node.data: true
+#
+# 2. You want this node to only serve as a master: to not store any data and
+#    to have free resources. This will be the "coordinator" of your cluster.
+#
+#node.master: true
+#node.data: false
+#
+# 3. You want this node to be neither master nor data node, but
+#    to act as a "search load balancer" (fetching data from nodes,
+#    aggregating results, etc.)
+#
+#node.master: false
+#node.data: false
+
+# Use the Cluster Health API [http://localhost:9200/_cluster/health], the
+# Node Info API [http://localhost:9200/_nodes] or GUI tools
+# such as <http://www.elasticsearch.org/overview/marvel/>,
+# <http://github.com/karmi/elasticsearch-paramedic>,
+# <http://github.com/lukas-vlcek/bigdesk> and
+# <http://mobz.github.com/elasticsearch-head> to inspect the cluster state.
+
+# A node can have generic attributes associated with it, which can later be used
+# for customized shard allocation filtering, or allocation awareness. An attribute
+# is a simple key value pair, similar to node.key: value, here is an example:
+#
+#node.rack: rack314
+
+# By default, multiple nodes are allowed to start from the same installation location
+# to disable it, set the following:
+#node.max_local_storage_nodes: 1
+
+
+#################################### Index ####################################
+
+# You can set a number of options (such as shard/replica options, mapping
+# or analyzer definitions, translog settings, ...) for indices globally,
+# in this file.
+#
+# Note, that it makes more sense to configure index settings specifically for
+# a certain index, either when creating it or by using the index templates API.
+#
+# See <http://elasticsearch.org/guide/en/elasticsearch/reference/current/index-modules.html> and
+# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/indices-create-index.html>
+# for more information.
+
+# Set the number of shards (splits) of an index (5 by default):
+#
+#index.number_of_shards: 5
+
+# Set the number of replicas (additional copies) of an index (1 by default):
+#
+#index.number_of_replicas: 1
+
+# Note, that for development on a local machine, with small indices, it usually
+# makes sense to "disable" the distributed features:
+#
+#index.number_of_shards: 1
+#index.number_of_replicas: 0
+
+# These settings directly affect the performance of index and search operations
+# in your cluster. Assuming you have enough machines to hold shards and
+# replicas, the rule of thumb is:
+#
+# 1. Having more *shards* enhances the _indexing_ performance and allows to
+#    _distribute_ a big index across machines.
+# 2. Having more *replicas* enhances the _search_ performance and improves the
+#    cluster _availability_.
+#
+# The "number_of_shards" is a one-time setting for an index.
+#
+# The "number_of_replicas" can be increased or decreased anytime,
+# by using the Index Update Settings API.
+#
+# Elasticsearch takes care about load balancing, relocating, gathering the
+# results from nodes, etc. Experiment with different settings to fine-tune
+# your setup.
+
+# Use the Index Status API (<http://localhost:9200/A/_status>) to inspect
+# the index status.
+
+
+#################################### Paths ####################################
+
+# Path to directory containing configuration (this file and logging.yml):
+#
+#path.conf: /path/to/conf
+
+# Path to directory where to store index data allocated for this node.
+#
+#path.data: /path/to/data
+#
+# Can optionally include more than one location, causing data to be striped across
+# the locations (a la RAID 0) on a file level, favouring locations with most free
+# space on creation. For example:
+#
+#path.data: /path/to/data1,/path/to/data2
+path.data: data
+
+# Path to temporary files:
+#
+#path.work: /path/to/work
+
+# Path to log files:
+#
+#path.logs: /path/to/logs
+
+# Path to where plugins are installed:
+#
+#path.plugins: /path/to/plugins
+path.plugins: ${karaf.home}/elasticsearch/plugins
+
+#################################### Plugin ###################################
+
+# If a plugin listed here is not installed for current node, the node will not start.
+#
+#plugin.mandatory: mapper-attachments,lang-groovy
+
+
+################################### Memory ####################################
+
+# Elasticsearch performs poorly when JVM starts swapping: you should ensure that
+# it _never_ swaps.
+#
+# Set this property to true to lock the memory:
+#
+#bootstrap.mlockall: true
+
+# Make sure that the ES_MIN_MEM and ES_MAX_MEM environment variables are set
+# to the same value, and that the machine has enough memory to allocate
+# for Elasticsearch, leaving enough memory for the operating system itself.
+#
+# You should also make sure that the Elasticsearch process is allowed to lock
+# the memory, eg. by using `ulimit -l unlimited`.
+
+
+############################## Network And HTTP ###############################
+
+# Elasticsearch, by default, binds itself to the 0.0.0.0 address, and listens
+# on port [9200-9300] for HTTP traffic and on port [9300-9400] for node-to-node
+# communication. (the range means that if the port is busy, it will automatically
+# try the next port).
+
+# Set the bind address specifically (IPv4 or IPv6):
+#
+#network.bind_host: 192.168.0.1
+
+# Set the address other nodes will use to communicate with this node. If not
+# set, it is automatically derived. It must point to an actual IP address.
+#
+#network.publish_host: 192.168.0.1
+
+# Set both 'bind_host' and 'publish_host':
+#
+#network.host: 192.168.0.1
+network.host: 127.0.0.1
+
+# Set a custom port for the node to node communication (9300 by default):
+#
+#transport.tcp.port: 9300
+
+# Enable compression for all communication between nodes (disabled by default):
+#
+#transport.tcp.compress: true
+
+# Set a custom port to listen for HTTP traffic:
+#
+#http.port: 9200
+
+# Set a custom allowed content length:
+#
+#http.max_content_length: 100mb
+
+# Enable HTTP:
+#
+http.enabled: true
+http.cors.enabled: true
+http.cors.allow-origin: /.*/
+
+
+################################### Gateway ###################################
+
+# The gateway allows for persisting the cluster state between full cluster
+# restarts. Every change to the state (such as adding an index) will be stored
+# in the gateway, and when the cluster starts up for the first time,
+# it will read its state from the gateway.
+
+# There are several types of gateway implementations. For more information, see
+# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/modules-gateway.html>.
+
+# The default gateway type is the "local" gateway (recommended):
+#
+#gateway.type: local
+
+# Settings below control how and when to start the initial recovery process on
+# a full cluster restart (to reuse as much local data as possible when using shared
+# gateway).
+
+# Allow recovery process after N nodes in a cluster are up:
+#
+#gateway.recover_after_nodes: 1
+
+# Set the timeout to initiate the recovery process, once the N nodes
+# from previous setting are up (accepts time value):
+#
+#gateway.recover_after_time: 5m
+
+# Set how many nodes are expected in this cluster. Once these N nodes
+# are up (and recover_after_nodes is met), begin recovery process immediately
+# (without waiting for recover_after_time to expire):
+#
+#gateway.expected_nodes: 2
+
+
+############################# Recovery Throttling #############################
+
+# These settings allow to control the process of shards allocation between
+# nodes during initial recovery, replica allocation, rebalancing,
+# or when adding and removing nodes.
+
+# Set the number of concurrent recoveries happening on a node:
+#
+# 1. During the initial recovery
+#
+#cluster.routing.allocation.node_initial_primaries_recoveries: 4
+#
+# 2. During adding/removing nodes, rebalancing, etc
+#
+#cluster.routing.allocation.node_concurrent_recoveries: 2
+
+# Set to throttle throughput when recovering (eg. 100mb, by default 20mb):
+#
+#indices.recovery.max_bytes_per_sec: 20mb
+
+# Set to limit the number of open concurrent streams when
+# recovering a shard from a peer:
+#
+#indices.recovery.concurrent_streams: 5
+
+
+################################## Discovery ##################################
+
+# Discovery infrastructure ensures nodes can be found within a cluster
+# and master node is elected. Multicast discovery is the default.
+
+# Set to ensure a node sees N other master eligible nodes to be considered
+# operational within the cluster. This should be set to a quorum/majority of
+# the master-eligible nodes in the cluster.
+#
+#discovery.zen.minimum_master_nodes: 1
+
+# Set the time to wait for ping responses from other nodes when discovering.
+# Set this option to a higher value on a slow or congested network
+# to minimize discovery failures:
+#
+#discovery.zen.ping.timeout: 3s
+
+# For more information, see
+# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery-zen.html>
+
+# Unicast discovery allows to explicitly control which nodes will be used
+# to discover the cluster. It can be used when multicast is not present,
+# or to restrict the cluster communication-wise.
+#
+# 1. Disable multicast discovery (enabled by default):
+#
+#discovery.zen.ping.multicast.enabled: false
+#
+# 2. Configure an initial list of master nodes in the cluster
+#    to perform discovery when new nodes (master or data) are started:
+#
+#discovery.zen.ping.unicast.hosts: ["host1", "host2:port"]
+
+# EC2 discovery allows to use AWS EC2 API in order to perform discovery.
+#
+# You have to install the cloud-aws plugin for enabling the EC2 discovery.
+#
+# For more information, see
+# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery-ec2.html>
+#
+# See <http://elasticsearch.org/tutorials/elasticsearch-on-ec2/>
+# for a step-by-step tutorial.
+
+# GCE discovery allows to use Google Compute Engine API in order to perform discovery.
+#
+# You have to install the cloud-gce plugin for enabling the GCE discovery.
+#
+# For more information, see <https://github.com/elasticsearch/elasticsearch-cloud-gce>.
+
+# Azure discovery allows to use Azure API in order to perform discovery.
+#
+# You have to install the cloud-azure plugin for enabling the Azure discovery.
+#
+# For more information, see <https://github.com/elasticsearch/elasticsearch-cloud-azure>.
+
+################################## Slow Log ##################################
+
+# Shard level query and fetch threshold logging.
+
+#index.search.slowlog.threshold.query.warn: 10s
+#index.search.slowlog.threshold.query.info: 5s
+#index.search.slowlog.threshold.query.debug: 2s
+#index.search.slowlog.threshold.query.trace: 500ms
+
+#index.search.slowlog.threshold.fetch.warn: 1s
+#index.search.slowlog.threshold.fetch.info: 800ms
+#index.search.slowlog.threshold.fetch.debug: 500ms
+#index.search.slowlog.threshold.fetch.trace: 200ms
+
+#index.indexing.slowlog.threshold.index.warn: 10s
+#index.indexing.slowlog.threshold.index.info: 5s
+#index.indexing.slowlog.threshold.index.debug: 2s
+#index.indexing.slowlog.threshold.index.trace: 500ms
+
+################################## GC Logging ################################
+
+#monitor.jvm.gc.young.warn: 1000ms
+#monitor.jvm.gc.young.info: 700ms
+#monitor.jvm.gc.young.debug: 400ms
+
+#monitor.jvm.gc.old.warn: 10s
+#monitor.jvm.gc.old.info: 5s
+#monitor.jvm.gc.old.debug: 2s
+
+################################## Security ################################
+
+# Uncomment if you want to enable JSONP as a valid return transport on the
+# http server. With this enabled, it may pose a security risk, so disabling
+# it unless you need it is recommended (it is disabled by default).
+#
+#http.jsonp.enable: true
+----
+
+For Elasticsearch 2.x:
+
+----
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please see the documentation for further information on configuration options:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+cluster.name: elasticsearch
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+node.name: decanter
+#
+# Add custom attributes to the node:
+#
+# node.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+# path.data: /path/to/data
+path.data: data
+path.home: data
+#
+# Path to log files:
+#
+# path.logs: /path/to/logs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+# bootstrap.mlockall: true
+#
+# Make sure that the `ES_HEAP_SIZE` environment variable is set to about half the memory
+# available on the system and that the owner of the process is allowed to use this limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+# network.host: 192.168.0.1
+#
+# Set a custom port for HTTP:
+#
+# http.port: 9200
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+# discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+#
+# Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
+#
+# discovery.zen.minimum_master_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html>
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+# gateway.recover_after_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html>
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Disable starting multiple nodes on a single system:
+#
+# node.max_local_storage_nodes: 1
+#
+# Require explicit names when deleting indices:
+#
+# action.destructive_requires_name: true
+----
+
+It's a "standard" elasticsearch configuration file, allowing you to configure the embedded elasticsearch instance.
+
+Warning: if you change the `etc/elasticsearch.yml` file, you have to restart (with the `bundle:restart` command) the
+Decanter elasticsearch bundle in order to load the changes.
+
+The Decanter elasticsearch node also supports loading and override of the settings using a
+`etc/org.apache.karaf.decanter.elasticsearch.cfg` configuration file.
+This file is not provided by default, as it's used for override of the default settings.
+
+You can override the following elasticsearch properties in this configuration file:
+
+* `cluster.name`
+* `http.enabled`
+* `node.data`
+* `node.name`
+* `node.master`
+* `path.data`
+* `network.host`
+* `cluster.routing.schedule`
+* `path.plugins`
+* `http.cors.enabled`
+* `http.cors.allow-origin`
+
+The advantage of using this file is that the elasticsearch node is automatically restarted in order to reload the
+settings as soon as you change the cfg file.
+
+===== Embedding Decanter Kibana 3.x (only working with Elasticsearch 1.x)
+
+In addition of the embedded elasticsearch 1.x instance, Decanter also provides an embedded Kibana 3.x instance, containing
+ready to use Decanter dashboards.
+
+The `kibana` feature installs the embedded kibana instance:
+
+----
+karaf@root()> feature:install kibana/3.1.1
+----
+
+By default, the kibana instance is available on `http://host:8181/kibana`.
+
+The Decanter Kibana instance provides ready to use dashboards:
+
+* Karaf dashboard uses the data harvested by the default JMX collector, and the log collector. Especially, it provides
+details about the threads, memory, garbage collection, etc.
+* Camel dashboard uses the data harvested by the default JMX collector, or the Camel (JMX) collector. It can also
+leverage the Camel Tracer collector. It provides details about routes processing time, the failed exchanges, etc. This
+dashboard requires some tuning (updating the queries to match the route IDs).
+* ActiveMQ dashboard uses the data harvested by the default JMX collector, or the ActiveMQ (JMX) collector. It provides
+details about the pending queue, the system usage, etc.
+* OperatingSystem dashboard uses the data harvested by the system collector. The default dashboard expects data containing
+the filesystem usage, and temperature data. It's just a sample, you have to tune the system collector and adapt this
+dashboard accordingly.
+
+You can change these dashboards to add new panels, change the existing panels, etc.
+
+Of course, you can create your own dashboards, starting from blank or simple dashboards.
+
+By default, Decanter Kibana uses embedded elasticsearch instance. However, it's possible to use a remote elasticsearch
+instance by providing the elasticsearch parameter on the URL like this for instance:
+
+----
+http://localhost:8181/kibana?elasticsearch=http://localhost:9400
+----
+
+===== Embedding Decanter Kibana 4.x (only working with Elasticsearch 2.x)
+
+In addition of the embedded elasticsearch 2.x instance, Decanter also provides an embedded Kibana 4.x instance.
+
+The `kibana` feature installs the embedded kibana instance:
+
+----
+karaf@root()> feature:install kibana/4.1.2
+----
+
+By default, the kibana instance is available on `http://host:8181/kibana`.
+
+[NOTE]
+===========================================
+Decanter Kibana 4 automatically detects collector features. Then, it automatically creates corresponding dashboards.
+
+However, you still have a complete control of the visualizations and dashboards. You can update the index to
+automatically include new fields and create your own visualizations and dashboards.
+
+The default dashboard displayed is the "System" dashboard, requiring the jmx collector.
+===========================================
+
+===== Kibana 6.x
+
+The `kibana` 6.x feature doesn't really embeds Kibana like Kibana 3 or 4 features.
+
+However, it's a convenient feature that download and starts a Kibana instance for you.
+
+----
+karaf@root()> feature:install kibana/6.1.1
+----
+
+The Kibana instance is started in a dedicated JVM and bound to port 5601 by default. However, the Decanter Kibana feature creates a proxy servlet.
+
+So, as for other Kibana features, you can access Kibana using `http://host:8181/kibana` in your browser.
+
+[NOTE]
+===========================================
+Decanter Kibana 6.x automatically detects collector features and installs the corresponding dashboards.
+
+However, in order to work, the only setup you have to do is to create an index pattern `*` with `default` as name (in the advanced settings).
+===========================================
+
+===== Elasticsearch Head console
+
+In addition of the embedded elasticsearch instance, Decanter also provides a web console allowing you to monitor and
+manage your elasticsearch cluster. It's a ready to use elastisearch-head console, directly embedded in Karaf.
+
+The `elasticsearch-head` feature installs the embedded elasticsearch-head web console, corresponding to the
+elasticsearch version you are using.
+
+We can install `elasticsearch-head` 1.x feature, working with elasticsearch 1.x:
+
+----
+karaf@root()> feature:install elasticsearch-head/1.7.3
+----
+
+or 2.x feature, working with elasticsearch 2.x:
+
+----
+karaf@root()> feature:install elasticsearch-head/2.2.0
+----
+
+By default, the elasticsearch-head web console is available on `http://host:8181/elasticsearch-head`.
+
+==== File
+
+The Decanter File appender stores the collected data in a CSV file.
+
+The `decanter-appender-file` feature installs the file appender:
+
+----
+karaf@root()> feature:install decanter-appender-file
+----
+
+By default, the file appender stores the collected data in `${karaf.data}/decanter` file. You can change the file where to store the data
+using the `filename` property in `etc/org.apache.karaf.decanter.appender.file.cfg` configuration file.
+
+You can also change the marshaller to use. By default, the marshaller used is the CSV one. But you can switch to the JSON one
+using the `marshaller.target` property in `etc/org.apache.karaf.decanter.appender.file.cfg` configuration file.
+
+==== JDBC
+
+The Decanter JDBC appender allows your to store the data (coming from the collectors) into a database.
+
+The Decanter JDBC appender transforms the data as a json string. The appender stores the json string and the timestamp
+into the database.
+
+The `decanter-appender-jdbc` feature installs the jdbc appender:
+
+----
+karaf@root()> feature:install decanter-appender-jdbc
+----
+
+This feature also installs the `etc/org.apache.karaf.decanter.appender.jdbc.cfg` configuration file:
+
+----
+#######################################
+# Decanter JDBC Appender Configuration
+#######################################
+
+# Name of the JDBC datasource
+datasource.name=jdbc/decanter
+
+# Name of the table storing the collected data
+table.name=decanter
+
+# Dialect (type of the database)
+# The dialect is used to create the table
+# Supported dialects are: generic, derby, mysql
+# Instead of letting Decanter created the table, you can create the table by your own
+dialect=generic
+----
+
+This configuration file allows you to specify the connection to the database:
+
+* the `datasource.name` property contains the name of the JDBC datasource to use to connect to the database. You can
+create this datasource using the Karaf `jdbc:create` command (provided by the `jdbc` feature).
+* the `table.name` property contains the table name in the database. The Decanter JDBC appender automatically creates
+the table for you, but you can create the table by yourself. The table is simple and contains just two column:
+** timestamp as INTEGER
+** content as VARCHAR or CLOB
+* the `dialect` property allows you to specify the database type (generic, mysql, derby). This property is only used for
+the table creation.
+
+==== JMS
+
+The Decanter JMS appender "forwards" the data (collected by the collectors) to a JMS broker.
+
+The appender sends a JMS Map message to the broker. The Map message contains the harvested data.
+
+The `decanter-appender-jms` feature installs the JMS appender:
+
+----
+karaf@root()> feature:install decanter-appender-jms
+----
+
+This feature also installs the `etc/org.apache.karaf.decanter.appender.jms.cfg` configuration file containing:
+
+----
+#####################################
+# Decanter JMS Appender Configuration
+#####################################
+
+# Name of the JMS connection factory
+connection.factory.name=jms/decanter
+
+# Name of the destination
+destination.name=decanter
+
+# Type of the destination (queue or topic)
+destination.type=queue
+
+# Connection username
+# username=
+
+# Connection password
+# password=
+----
+
+This configuration file allows you to specify the connection properties to the JMS broker:
+
+* the `connection.factory.name` property specifies the JMS connection factory to use. You can create this JMS connection
+factory using the `jms:create` command (provided by the `jms` feature).
+* the `destination.name` property specifies the JMS destination name where to send the data.
+* the `destination.type` property specifies the JMS destination type (queue or topic).
+* the `username` property is optional and specifies the username to connect to the destination.
+* the `password` property is optional and specifies the username to connect to the destination.
+
+==== Camel
+
+The Decanter Camel appender sends the data (collected by the collectors) to a Camel endpoint.
+
+It's a very flexible appender, allowing you to use any Camel route to transform and forward the harvested data.
+
+The Camel appender creates a Camel exchange and set the "in" message body with a Map of the harvested data.
+The exchange is send to a Camel endpoint.
+
+The `decanter-appender-camel` feature installs the Camel appender:
+
+----
+karaf@root()> feature:install decanter-appender-camel
+----
+
+This feature also installs the `etc/org.apache.karaf.decanter.appender.camel.cfg` configuration file containing:
+
+----
+#
+# Decanter Camel appender configuration
+#
+
+# The destination.uri contains the URI of the Camel endpoint
+# where Decanter sends the collected data
+destination.uri=direct-vm:decanter
+----
+
+This file allows you to specify the Camel endpoint where to send the data:
+
+* the `destination.uri` property specifies the URI of the Camel endpoint where to send the data.
+
+The Camel appender send an exchange. The "in" message body contains a Map of the harvested data.
+
+For instance, in this configuration file, you can specify:
+
+----
+destination.uri=direct-vm:decanter
+----
+
+And you can deploy the following Camel route definition:
+
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+  <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="decanter">
+      <from uri="direct-vm:decanter"/>
+      ...
+      ANYTHING
+      ...
+    </route>
+  </camelContext>
+
+</blueprint>
+----
+
+This route will receive the Map of harvested data. Using the body of the "in" message, you can do what you want:
+
+* transform and convert to another data format
+* use any Camel EIPs (Enterprise Integration Patterns)
+* send to any Camel endpoint
+
+==== Kafka
+
+The Decanter Kafka appender sends the data (collected by the collectors) to a Kafka topic.
+
+The `decanter-appender-kafka` feature installs the Kafka appender:
+
+----
+karaf@root()> feature:install decanter-appender-kafka
+----
+
+This feature installs a default `etc/org.apache.karaf.decanter.appender.kafka.cfg` configuration file containing:
+
+----
+##################################
+# Decanter JMS Kafka Configuration
+##################################
+
+# A list of host/port pairs to use for establishing the initial connection to the Kafka cluster
+#bootstrap.servers=localhost:9092
+
+# An id string to pass to the server when making requests
+# client.id
+
+# The compression type for all data generated by the producer
+# compression.type=none
+
+# The number of acknowledgments the producer requires the leader to have received before considering a request complete
+# - 0: the producer doesn't wait for ack
+# - 1: the producer just waits for the leader
+# - all: the producer waits for leader and all followers (replica), most secure
+# acks=all
+
+# Setting a value greater than zero will cause the client to resend any record whose send fails with a potentially transient error
+# retries=0
+
+# The producer will attempt to batch records together into fewer requests whenever multiple records are being sent to the same partition
+# batch.size=16384
+
+# The total bytes of memory the producer can use to buffer records waiting to be sent to the server.
+# If records are sent faster than they can be delivered to the server the producer will either block or throw an exception
+# buffer.memory=33554432
+
+# Serializer class for key that implements the Serializer interface
+# key.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+# Serializer class for value that implements the Serializer interface.
+# value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+# Producer request timeout
+# request.timeout.ms=5000
+
+# Max size of the request
+# max.request.size=2097152
+
+# Name of the topic
+# topic=decanter
+
+# Security (SSL)
+# security.protocol=SSL
+
+# SSL truststore location (Kafka broker) and password
+# ssl.truststore.location=${karaf.etc}/keystores/keystore.jks
+# ssl.truststore.password=karaf
+
+# SSL keystore (if client authentication is required)
+# ssl.keystore.location=${karaf.etc}/keystores/clientstore.jks
+# ssl.keystore.password=karaf
+# ssl.key.password=karaf
+
+# (Optional) SSL provider (default uses the JVM one)
+# ssl.provider=
+
+# (Optional) SSL Cipher suites
+# ssl.cipher.suites=
+
+# (Optional) SSL Protocols enabled (default is TLSv1.2,TLSv1.1,TLSv1)
+# ssl.enabled.protocols=TLSv1.2,TLSv1.1,TLSv1
+
+# (Optional) SSL Truststore type (default is JKS)
+# ssl.truststore.type=JKS
+
+# (Optional) SSL Keystore type (default is JKS)
+# ssl.keystore.type=JKS
+
+# Security (SASL)
+# For SASL, you have to configure Java System property as explained in http://kafka.apache.org/documentation.html#security_ssl
+----
+
+This file allows you to define how the messages are sent to the Kafka broker:
+
+* the `bootstrap.servers` contains a lit of host:port of the Kafka brokers. Default value is `localhost:9092`.
+* the `client.id` is optional. It identifies the client on the Kafka broker.
+* the `compression.type` defines if the messages have to be compressed on the Kafka broker. Default value is `none` meaning no compression.
+* the `acks` defines the acknowledgement policy. Default value is `all`. Possible values are:
+** `0` means the appender doesn't wait acknowledge from the Kafka broker. Basically, it means there's no guarantee that messages have been received completely by the broker.
+** `1` means the appender waits the acknowledge only from the leader. If the leader falls down, it's possible messages are lost if the replicas are not yet be created on the followers.
+** `all` means the appender waits the acknowledge from the leader and all followers. This mode is the most reliable as the appender will receive the acknowledge only when all replicas have been created. NB: this mode doesn't make sense if you have a single node Kafka broker or a replication factor set to 1.
+* the `retries` defines the number of retries performed by the appender in case of error. The default value is `0` meaning no retry at all.
+* the `batch.size` defines the size of the batch records. The appender will attempt to batch records together into fewer requests whenever multiple records are being sent to the same Kafka partition. The default value is 16384.
+* the `buffer.memory` defines the size of the buffer the appender uses to send to the Kafka broker. The default value is 33554432.
+* the `key.serializer` defines the full qualified class name of the Serializer used to serializer the keys. The default is a String serializer (`org.apache.kafka.common.serialization.StringSerializer`).
+* the `value.serializer` defines the full qualified class name of the Serializer used to serializer the values. The default is a String serializer (`org.apache.kafka.common.serialization.StringSerializer`).
+* the `request.timeout.ms` is the time the producer wait before considering the message production on the broker fails (default is 5s).
+* the `max.request.size` is the max size of the request sent to the broker (default is 2097152 bytes).
+* the `topic` defines the name of the topic where to send data on the Kafka broker.
+
+It's also possible to enable SSL security (with Kafka 0.9.x) using the SSL properties.
+
+==== Redis
+
+The Decanter Redis appender sends the data (collected by the collectors) to a Redis broker.
+
+The `decanter-appender-redis` feature installs the Redis appender:
+
+----
+karaf@root()> feature:install decanter-appender-redis
+----
+
+This feature also installs a default `etc/org.apache.karaf.decanter.appender.redis.cfg` configuration file containing:
+
+----
+#######################################
+# Decanter Redis Appender Configuration
+#######################################
+
+#
+# Location of the Redis broker
+# It's possible to use a list of brokers, for instance:
+# host= locahost:6389,localhost:6332,localhost:6419
+#
+# Default is localhost:6379
+#
+address=localhost:6379
+
+#
+# Define the connection mode.
+# Possible modes: Single (default), Master_Slave, Sentinel, Cluster
+#
+mode=Single
+
+#
+# Name of the Redis map
+# Default is Decanter
+#
+map=Decanter
+
+#
+# For Master_Slave mode, we define the location of the master
+# Default is localhost:6379
+#
+#masterAddress=localhost:6379
+
+#
+# For Sentinel model, define the name of the master
+# Default is myMaster
+#
+#masterName=myMaster
+
+#
+# For Cluster mode, define the scan interval of the nodes in the cluster
+# Default value is 2000 (2 seconds).
+#
+#scanInterval=2000
+----
+
+This file allows you to configure the Redis broker to use:
+
+* the `address` property contains the location of the Redis broker
+* the `mode` property defines the Redis topology to use (Single, Master_Slave, Sentinel, Cluster)
+* the `map` property contains the name of the Redis map to use
+* the `masterAddress` is the location of the master when using the Master_Slave topology
+* the `masterName` is the name of the master when using the Sentinel topology
+* the `scanInternal` is the scan interval of the nodes when using the Cluster topology
+
+==== MQTT
+
+The Decanter MQTT appender sends the data (collected by the collectors) to a MQTT broker.
+
+The `decanter-appender-mqtt` feature installs the MQTT appender:
+
+----
+karaf@root()> feature:install decanter-appender-mqtt
+----
+
+This feature installs a default `etc/org.apache.karaf.decanter.appender.mqtt.cfg` configuration file containing:
+
+----
+#server=tcp://localhost:9300
+#clientId=decanter
+#topic=decanter
+----
+
+This file allows you to configure the location and where to send in the MQTT broker:
+
+* the `server` contains the location of the MQTT broker
+* the `clientId` identifies the appender on the MQTT broker
+* the `topic` is the name of the topic where to send the messages
+
+==== Cassandra
+
+The Decanter Cassandra appender allows you to store the data (coming from the collectors) into an Apache Cassandra database.
+
+The `decanter-appender-cassandra` feature installs this appender:
+
+----
+karaf@root()> feature:install decanter-appender-cassandra
+----
+
+This feature installs the appender and a default `etc/org.apache.karaf.decanter.appender.cassandra.cfg` configuration file
+containing:
+
+----
+###########################################
+# Decanter Cassandra Appender Configuration
+###########################################
+
+# Name of Keyspace
+keyspace.name=decanter
+
+# Name of table to write to
+table.name=decanter
+
+# Cassandra host name
+cassandra.host=
+
+# Cassandra port
+cassandra.port=9042
+----
+
+* the `keyspace.name` property identifies the keyspace used for Decanter data
+* the `table.name` property defines the name of the table where to store the data
+* the `cassandra.host` property contains the hostname or IP address where the Cassandra instance is running (default is localhost)
+* the `cassandra.port` property contains the port number of the Cassandra instance (default is 9042)
+
+==== MongoDB
+
+The Decanter MongoDB appender allows you to store the data (coming from the collectors) into a MongoDB database.
+
+The `decanter-appender-mongodb` feature installs this appender:
+
+----
+karaf@root()> feature:install decanter-appender-mongodb
+----
+
+This feature installs the appender and a default `etc/org.apache.karaf.decanter.appender.mongodb.cfg` configuration file
+containing:
+
+----
+################################
+# Decanter MongoDB Configuration
+################################
+
+# MongoDB connection URI
+#uri=mongodb://localhost
+
+# MongoDB database name
+#database=decanter
+
+# MongoDB collection name
+#collection=decanter
+----
+
+* the `uri` property contains the location of the MongoDB instance
+* the `database` property contains the name of the MongoDB database
+* the `collection` property contains the name of the MongoDB collection
+
+==== Network socket
+
+The Decanter network socket appender send the collected data to a remote Decanter network socket collector.
+
+The use case could be to dedicate a Karaf instance as a central monitoring platform, receiving collected data from
+the other nodes.
+
+The `decanter-appender-socket` feature installs this appender:
+
+----
+karaf@root()> feature:install decanter-appender-socket
+----
+
+This feature installs the appender and a default `etc/org.apache.karaf.decanter.appender.socket.cfg` configuration file
+containing:
+
+----
+# Decanter Socket Appender
+
+# Hostname (or IP address) where to send the collected data
+#host=localhost
+
+# Port number where to send the collected data
+#port=34343
+----
+
+* the `host` property contains the hostname or IP address of the remote network socket collector
+* the `port` property contains the port number of the remote network socket collector
+
+==== OrientDB
+
+The Decanter OrientDB appender stores the collected data into OrientDB Document database.
+
+You can use an external OrientDB instance or you can use an embedded instance provided by Decanter.
+
+===== OrientDB appender
+
+The `decanter-appender-orientdb` feature installs the OrientDB appender.
+
+This feature installs the `etc/org.apache.karaf.decanter.appender.orientdb.cfg` configuration file allowing you to setup the location
+of the OrientDB database to use:
+
+----
+#################################
+# Decanter OrientDB Configuration
+#################################
+
+# OrientDB connection URL
+#url=remote:localhost/decanter
+
+# OrientDB database username
+#username=root
+
+# OrientDB database password
+#password=decanter
+----
+
+where:
+
+* `url` is the location of the OrientDB Document database. By default, it uses `remote:localhost/decanter` corresponding to the OrientDB embedded instance.
+* `username` is the username to connect to the remote OrientDB Document database.
+* `password` is the password to connect to the remote OrientDB Document database.
+
+===== OrientDB embedded instance
+
+[WARNING]
+============================================
+For production, we recommend to use a dedicated OrientDB instance. The following feature is not recommended for production.
+============================================
+
+The `orientdb` feature starts an OrientDB embedded datase. It also installs the `etc/orientdb-server-config.xml` configuration file allowing you to configure the OrientBD instance:
+
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orient-server>
+    <handlers>
+        <handler class="com.orientechnologies.orient.graph.handler.OGraphServerHandler">
+            <parameters>
+                <parameter value="true" name="enabled"/>
+                <parameter value="50" name="graph.pool.max"/>
+            </parameters>
+        </handler>
+        <handler class="com.orientechnologies.orient.server.handler.OJMXPlugin">
+            <parameters>
+                <parameter value="false" name="enabled"/>
+                <parameter value="true" name="profilerManaged"/>
+            </parameters>
+        </handler>
+        <handler class="com.orientechnologies.orient.server.handler.OServerSideScriptInterpreter">
+            <parameters>
+                <parameter value="true" name="enabled"/>
+                <parameter value="SQL" name="allowedLanguages"/>
+            </parameters>
+        </handler>
+    </handlers>
+    <network>
+        <protocols>
+            <protocol implementation="com.orientechnologies.orient.server.network.protocol.binary.ONetworkProtocolBinary" name="binary"/>
+            <protocol implementation="com.orientechnologies.orient.server.network.protocol.http.ONetworkProtocolHttpDb" name="http"/>
+        </protocols>
+        <listeners>
+            <listener protocol="binary" socket="default" port-range="2424-2430" ip-address="0.0.0.0"/>
+            <listener protocol="http" socket="default" port-range="2480-2490" ip-address="0.0.0.0">
+                <commands>
+                    <command implementation="com.orientechnologies.orient.server.network.protocol.http.command.get.OServerCommandGetStaticContent" pattern="GET|www GET|studio/ GET| GET|*.htm GET|*.html GET|*.xml GET|*.jpeg GET|*.jpg GET|*.png GET|*.gif GET|*.js GET|*.css GET|*.swf GET|*.ico GET|*.txt GET|*.otf GET|*.pjs GET|*.svg GET|*.json GET|*.woff GET|*.woff2 GET|*.ttf GET|*.svgz" stateful="false">
+                        <parameters>
+                            <entry value="Cache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nPragma: no-cache" name="http.cache:*.htm *.html"/>
+                            <entry value="Cache-Control: max-age=120" name="http.cache:default"/>
+                        </parameters>
+                    </command>
+                    <command implementation="com.orientechnologies.orient.graph.server.command.OServerCommandGetGephi" pattern="GET|gephi/*" stateful="false"/>
+                </commands>
+                <parameters>
+                    <parameter value="utf-8" name="network.http.charset"/>
+                    <parameter value="true" name="network.http.jsonResponseError"/>
+                </parameters>
+            </listener>
+        </listeners>
+    </network>
+    <storages/>
+    <users>
+    </users>
+    <properties>
+        <entry value="1" name="db.pool.min"/>
+        <entry value="50" name="db.pool.max"/>
+        <entry value="false" name="profiler.enabled"/>
+    </properties>
+    <isAfterFirstTime>true</isAfterFirstTime>
+</orient-server>
+----
+
+Most of the values can be let as they are, however, you can tweak some:
+
+* `<listener/>` allows you to configure the protocol and port numbers used by the OrientDB instance. You can define the IP address on which the instance is bound (`ip-address`), the port numbers range to use (`port-range`) for each protocol (`binary` or `http`).
+* the `db.pool.min` and `db.pool.max` can be increased if you have a large number of connections on the instance.
+
+==== Dropwizard Metrics
+
+The Dropwizard Metrics appender receives the harvested data from the dispatcher and push in a Dropwizard Metrics
+`MetricRegistry`. You can register this `MetricRegistry` in your own application or use a Dropwizard Metrics Reporter
+to "push" these metrics to some backend.
+
+The `decanter-appender-dropwizard` feature provides the Decanter event handler registering the harvested data ino the
+`MetricRegistry`:
+
+----
+karaf@root()> feature:install decanter-appender-dropwizard
+----
+
+==== TimescaleDB
+
+The Decanter TimescaleDB appender stores the collected data into TimescaleDB database.
+
+You have to install a TimescaleDB before using the appender.
+
+You can install a test database with Docker for dev:
+
+```
+docker run -d --name timescaledb -p 5432:5432 -e POSTGRES_PASSWORD=decanter -e POSTGRES_USER=decanter -e POSTGRES_DATABASE=decanter timescale/timescaledb
+```
+
+===== TimescaleDB appender
+
+The `decanter-appender-timescaledb` feature installs the TimescaleDB appender.
+
+As TimescaleDB is a PostgreSQL database extension, the *timescaledb* feature will install all required features to configure
+your datasource (jdbc, jndi, postgreSQL driver, pool datasource).
+
+This feature installs the `etc/org.apache.karaf.decanter.appender.timescaledb.cfg` configuration file allowing you to setup the location
+of the TimescaleDB database to use:
+
+----
+#################################
+# Decanter TimescaleDB Configuration
+#################################
+
+# DataSource to use
+dataSource.target=(osgi.jndi.service.name=jdbc/decanter-timescaledb)
+
+# Name of the table storing the collected data
+table.name=decanter
+
+# Marshaller to use (json is recommended)
+marshaller.target=(dataFormat=json)
+----
+
+where:
+
+* `datasource.target` property contains the name of the JDBC datasource to use to connect to the database. You can
+create this datasource using the Karaf `jdbc:create` command (provided by the `jdbc` feature).
+* `table.name` property contains the table name in the database. The Decanter JDBC appender automatically
+activates the Timescale extenssion, creates the table for you and migrates the table to a TimescaleDB hypertable.
+The table is simple and contains just two column:
+** `timestamp` as BIGINT
+** `content` as TEXT
+* `marshaller.target` is the marshaller used to serialize data into the table.
+
+===== WebSocket Servlet
+
+The `decanter-appender-websocket-servlet` feature expose a websocket on wich client can register. Then, Decanter will send the collected data to the connected clients.
+
+It's very easy to use. First install the feature:
+
+```
+karaf@root()> feature:install decanter-appender-websocket-servlet
+```
+
+The feature register the WebSocket endpoint on `http://localhost:8181/decanter-websocket` by default:
+
+```
+karaf@root()> http:list
+ID │ Servlet                  │ Servlet-Name   │ State       │ Alias               │ Url
+───┼──────────────────────────┼────────────────┼─────────────┼─────────────────────┼────────────────────────
+55 │ DecanterWebSocketServlet │ ServletModel-2 │ Deployed    │ /decanter-websocket │ [/decanter-websocket/*]
+```
+
+The alias can be configured via the `etc/org.apache.karaf.decanter.appender.websocket.servlet.cfg` configuration file installed by the feature.
+
+You can now register your websocket client on this URL. You can use `curl` as client to test:
+
+```
+curl --include \
+     --no-buffer \
+     --header "Connection: Upgrade" \
+     --header "Upgrade: websocket" \
+     --header "Host: localhost:8181" \
+     --header "Origin: http://localhost:8181/decanter-websocket" \
+     --header "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" \
+     --header "Sec-WebSocket-Version: 13" \
+     http://localhost:8181/decanter-websocket
+```
