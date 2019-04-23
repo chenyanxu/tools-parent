@@ -1,4 +1,4 @@
-package com.kalix.trying.event.vue.internal;
+package com.kalix.tools.vue.internal;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

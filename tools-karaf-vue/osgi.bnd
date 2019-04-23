@@ -4,6 +4,6 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Bundle-Category: Kalix Karaf Tools
-Web-ContextPath: vue
+Web-ContextPath: vue-demo
 Import-Package: *
 Include-Resource: target/dist

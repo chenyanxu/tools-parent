@@ -20,4 +20,16 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+==== 说明
+
+该项目主要演示了vuejs2在java maven中的使用，参考文档如下：
+https://www.cnblogs.com/frost-yen/p/9576335.html[webpack+vue-cli打包如何引用相对路径]
+https://blog.codecentric.de/en/2018/04/spring-boot-vuejs/[A Lovely Spring View: Spring Boot & Vue.js]
+
+* 复制 pom.xml
+* 生成 InitActivator
+* 生成 osgi.bnd
+
+==== 参考文档
+
 
