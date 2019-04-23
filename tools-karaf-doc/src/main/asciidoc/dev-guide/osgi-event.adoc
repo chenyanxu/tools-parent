@@ -61,16 +61,15 @@ public class AuditBusinessEventImpl implements EventHandler {
 ----
 
 [NOTE]
-================================================
+====
 在post的接收代码中使用shiroService获得当前登录的用户时，是无法获得正确的用户名称的。
-
 ----
     @Override
     public void handleEvent(Event event) {
         String userName = shiroService.getCurrentUserRealName();
     }
 ----
-================================================
+====
 
 OSGi Event Admin 的事件模型，与传统的 JMS 相比，OSGi Event Admin 事件不是持久化的，也就是说，通过 Event Admin 发布的事件只在本次应用会话期间存在，当 OSGi 应用重新启动后，所有的未处理的事件将全部丢失。
 
