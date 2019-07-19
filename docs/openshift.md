@@ -25,10 +25,14 @@ $ oc new-app openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex
 ## install couchdb
 ## install postgresql
 ```bash
-  docker tag sameersbn/postgresql 172.30.14.164:5000/openshift/postgresql
-  oc new-app openshift/postgresql -e 'PG_PASSWORD=1234' -e 'DB_NAME=kalix' -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass'
-  oc create -f https://github.com/chenyanxu/karaf-s2i/blob/master/postgresql/postgresql-pvc.yaml
-  oc volumes dc/postgresql --add --claim-name=postgresql --mount-path=/var/lib/postgresql \ -t persistentVolumeClaim --overwrite
+  oc adm policy add-scc-to-user anyuid -z default  
+  ## docker tag sameersbn/postgresql:9.6 172.30.14.164:5000/openshift/postgresql
+  oc new-app sameersbn/postgresql:9.6 -e 'PG_PASSWORD=1234' -e 'DB_NAME=kalix' -e 'REPLICATION_USER=repluser' -e 'REPLICATION_PASS=repluserpass'
+  oc create -f https://raw.githubusercontent.com/chenyanxu/karaf-s2i/master/postgresql/postgresql-pvc.yaml
+  oc volumes dc/postgresql --add --claim-name=postgresql --mount-path=/var/lib/postgresql -t persistentVolumeClaim --overwrite
+  oc volumes dc/postgresql-96-centos7 --add --claim-name=postgresql --mount-path=/var/lib/pgsql/data -t persistentVolumeClaim --overwrite
+   
+   
 ```
   成功界面
 ```bash
