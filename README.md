@@ -43,3 +43,12 @@ https://github.com/jonashackt/spring-boot-vuejs
 ### shiro
 https://github.com/apache/aries/tree/trunk/blueprint/blueprint-authz
 https://github.com/apache/aries-jax-rs-whiteboard/tree/master/integrations/shiro
+
+### web
+
+#### swagger
+http://localhost:8181/swagger
+
+#### oauth2 
+http://localhost:8181/oauth2/index.jsp
+用户名:admin 密码：1234

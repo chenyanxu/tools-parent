@@ -161,3 +161,4 @@ Restore your databases
 cat your_dump.sql | docker exec -i your-db-container psql -U postgres
 
 ```
+vim /etc/origin/node/node-config.yaml
