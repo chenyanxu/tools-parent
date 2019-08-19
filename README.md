@@ -48,7 +48,13 @@ https://github.com/apache/aries-jax-rs-whiteboard/tree/master/integrations/shiro
 
 #### swagger
 http://localhost:8181/swagger
+src: framework-parent/framework-webapp-swagger
 
 #### oauth2 
 http://localhost:8181/oauth2/index.jsp
 用户名:admin 密码：1234
+src: middleware-parent/oauth-parent
+
+#### websocket 
+http://localhost:8181/websocket-chat
+src: middleware-parent/websocket-parent
