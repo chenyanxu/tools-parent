@@ -58,3 +58,6 @@ src: middleware-parent/oauth-parent
 #### websocket 
 http://localhost:8181/websocket-chat
 src: middleware-parent/websocket-parent
+
+#### jdbc
+https://access.redhat.com/documentation/en-us/red_hat_fuse/7.1/html/transaction_guide/using-jdbc-data-sources#canonical-pax-jdbc-config-example
