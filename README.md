@@ -70,3 +70,25 @@ org.osgi.service.http.port.secure=8443
 ```
 #### check in webconsole
 you can access webconsole in https://localhost:8443/system/console/bundles
+
+### web
+
+#### swagger
+http://localhost:8181/swagger
+src: framework-parent/framework-webapp-swagger
+
+#### oauth2 
+http://localhost:8181/oauth2/index.jsp
+用户名:admin 密码：1234
+src: middleware-parent/oauth-parent
+
+#### websocket 
+http://localhost:8181/websocket-chat
+src: middleware-parent/websocket-parent
+
+#### jdbc
+https://access.redhat.com/documentation/en-us/red_hat_fuse/7.1/html/transaction_guide/using-jdbc-data-sources#canonical-pax-jdbc-config-example
+
+#### 数据库纠错 pg
+SELECT * FROM pg_stat_activity;
+可以查询当前执行的sql语句

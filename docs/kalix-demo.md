@@ -7,8 +7,8 @@ cd  s2i/karaf/images/jboss
 ```
 ## build hello world
 ```
- oc new-app --strategy=source kalix-s2i~git://github.com/minikiller/camel-hello-world \
- -e MAVEN_ARGS="install -P karaf-assemble"
+ oc new-app --strategy=source fabric8/kalix-s2i~git://github.com/minikiller/camel-hello-world \
+ --env MAVEN_ARGS="install -P karaf-assemble"
  oc set env bc/camel-hello-world MAVEN_ARGS="install -P karaf-assemble"
  oc logs -f  bc/camel-hello-world
  oc expose svc/camel-hello-world

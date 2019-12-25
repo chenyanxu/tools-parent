@@ -1,0 +1,6 @@
+user=greycode
+company=Grey`s Code
+email=anywalker@163.com
+edition=enterprise
+release-version=1.0.0
+valid-until=2015.12.31

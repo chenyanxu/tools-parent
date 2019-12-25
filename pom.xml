@@ -28,12 +28,14 @@
         <module>tools-karaf-features</module>
         <module>tools-karaf-flyway</module>
         <module>tools-karaf-backup</module>
-        <!--<module>tools-karaf-sshd</module>-->
+        <module>tools-karaf-sshd</module>
         <module>tools-karaf-kibana</module>
         <module>apache-karaf</module>
         <module>tools-karaf-assembly</module>
         <!--<module>tools-karaf-hadoop</module>-->
         <module>tools-karaf-doc</module>
+        <module>tools-karaf-vue</module>
+        <module>tools-karaf-license</module>
 
         <!--<module>webconsole</module>-->
     </modules>
