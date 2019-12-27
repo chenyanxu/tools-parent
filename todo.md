@@ -18,3 +18,13 @@ https://work.weixin.qq.com/wework_admin/register_wx?from=sem_baidu&keyword=brand
  
  
  ipmitool -H 171.99.0.5 -I lanplus -U root -P root power status
+ 
+### todo next
+* search druid 
+* guava  
+* zookeeper
+
+* https://jenkins.io/doc/book/pipeline/
+* https://developers.redhat.com/blog/2018/08/29/intro-to-podman/
+
+ 

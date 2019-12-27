@@ -92,3 +92,23 @@ https://access.redhat.com/documentation/en-us/red_hat_fuse/7.1/html/transaction_
 #### 数据库纠错 pg
 SELECT * FROM pg_stat_activity;
 可以查询当前执行的sql语句
+
+### add couchdb https
+#### download openssl from https://tecadmin.net/install-openssl-on-windows/ 
+#### create privkey.pem and couchdb.pem
+```
+openssl genrsa > privkey.pem
+openssl req -new -x509 -key privkey.pem -out couchdb.pem -days 1095
+```
+#### change configuration
+Now, you need to edit CouchDB’s configuration, by editing your local.ini file. Here is what you need to do.
+Under the [ssl] section, enable HTTPS and set up the newly generated certificates:
+
+```
+[ssl]
+enable = true
+cert_file = /etc/couchdb/cert/couchdb.pem
+key_file = /etc/couchdb/cert/privkey.pem
+```
+####  restart couchdb service 
+you can access web https://localhost:6984/
